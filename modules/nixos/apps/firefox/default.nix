@@ -18,10 +18,5 @@ in {
       enable = true;
       package = pkgs.firefox;
     };
-
-    # home.persist.directories = [
-    #   ".firefox"
-    #   ".cache/firefox"
-    # ];
   };
 }

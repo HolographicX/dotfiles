@@ -30,10 +30,11 @@ in {
       time.enable = true;
       xkb.enable = true;
       theme.enable = true;
-      gnome.enable = true; # TODO: migrate to hyprland
+      gnome.enable = true;
     };
 
     # --- apps and stuff -----
     apps.firefox.enable = true;
+    apps.alacritty.enable = true;
   };
 }
