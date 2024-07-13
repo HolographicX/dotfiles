@@ -29,6 +29,8 @@ in {
       epiphany
       geary
       yelp
+      gnome-font-viewer
+      gnome-system-monitor
     ]) ++ (with pkgs.gnome; [
       gnome-music
       gnome-characters
@@ -38,8 +40,6 @@ in {
       atomix # puzzle game
       gnome-contacts
       gnome-initial-setup
-      gnome-font-viewer
-      gnome-system-monitor
       gnome-maps
     ]);
     

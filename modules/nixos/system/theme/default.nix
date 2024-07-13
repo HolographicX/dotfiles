@@ -10,11 +10,6 @@
 with lib;
 with lib.custom; let
   cfg = config.system.theme;
-  inherit
-    (inputs.nix-colors.lib-contrib {inherit pkgs;})
-    gtkThemeFromScheme
-    ;
-    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 in {
   options.system.theme = with types; {
     enable = mkBoolOpt false "Enable theme";
@@ -30,7 +25,6 @@ in {
         
         imports = [
           catppuccin.homeManagerModules.catppuccin 
-          nix-colors.homeManagerModules.default
         ];
         catppuccin = {
           accent = "lavender";
@@ -38,7 +32,7 @@ in {
           flavor = "mocha";
           pointerCursor.enable = true;
         };
-        gtk = with pkgs; {
+        gtk = {
           enable = true;
           catppuccin.enable = true;
 
@@ -53,7 +47,7 @@ in {
           };
         };
         
-        qt = with pkgs; {
+        qt = {
           enable = true;
           platformTheme.name = "kvantum";
           style.name = "kvantum";

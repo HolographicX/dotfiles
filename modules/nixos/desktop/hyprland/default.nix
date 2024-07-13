@@ -41,12 +41,11 @@ in
     };
 
     programs.dconf.enable = true;
+    programs.hyprland.enable = true;
+    programs.hyprland.xwayland.enable = true;
 
     home = {
       programs = {
-        hyprland.enable = true;
-        hyprland.xwayland.enable = true;
-        hyprland.nvidiaPatches = true;
         swaylock = {
           enable = true;
           package = pkgs.swaylock-effects;
