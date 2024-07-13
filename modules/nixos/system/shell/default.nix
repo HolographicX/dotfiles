@@ -48,6 +48,7 @@ in {
       };
       shellInit = ''
         zoxide init fish | source
+        set -g fish_greeting
 
         function , --description 'add software to shell session'
               nix shell nixpkgs#$argv[1..-1]

@@ -18,6 +18,7 @@ in {
     environment.systemPackages = with pkgs; [
       nil
       nixfmt-classic
+      nixpkgs-fmt
       nix-index
       nix-prefetch-git
     ];
