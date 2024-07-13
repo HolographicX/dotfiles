@@ -1,8 +1,6 @@
-{ options
-, config
+{ config
 , lib
 , pkgs
-, namespace
 , inputs
 , ...
 }:

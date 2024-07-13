@@ -1,5 +1,4 @@
 {
-  options,
   config,
   lib,
   pkgs,
@@ -30,7 +29,11 @@ in {
       time.enable = true;
       xkb.enable = true;
       theme.enable = true;
+    };
+
+    desktop = {
       gnome.enable = true;
+      hyprland.enable = true;
     };
 
     # --- apps and stuff -----
