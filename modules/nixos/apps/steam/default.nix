@@ -3,16 +3,14 @@
   config,
   lib,
   pkgs,
-  namespace,
   ...
 }:
 with lib;
-with lib.${namespace};
 let
-  cfg = config.${namespace}.apps.steam;
+  cfg = config.apps.steam;
 in
 {
-  options.${namespace}.apps.steam = with types; {
+  options.apps.steam = with types; {
     enable = mkBoolOpt false "Whether or not to enable support for Steam.";
   };
 
