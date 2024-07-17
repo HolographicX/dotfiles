@@ -22,8 +22,25 @@ in
 
 
     environment.systemPackages = with pkgs; [
-      launcher
       adoptopenjdk-jre-bin
+      brightnessctl
+      cliphist
+      fuzzel
+      grim
+      hyprpicker
+      tesseract
+      imagemagick
+      pavucontrol
+      playerctl
+      swappy
+      swaylock-effects
+      swayidle
+      slurp
+      swww
+      wayshot
+      wlsunset
+      wl-clipboard
+      wf-recorder
     ];
 
     environment.sessionVariables = {
@@ -32,11 +49,8 @@ in
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     };
 
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
     hardware = {
-      opengl.enable = true;
+      graphics.enable = true;
       nvidia.modesetting.enable = true;
     };
 
@@ -202,10 +216,9 @@ in
             bind =
               let SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
               in [
-                "Super, C, exec, code --password-store=gnome"
-                "Super, T, exec, foot --override shell=fish"
+                "Super, X, exec, codium --password-store=gnome"
+                "Super, Enter, exec, alacritty"
                 "Super, E, exec, nautilus --new-window"
-                "Super+Alt, E, exec, thunar"
                 "Super, W, exec, firefox"
                 "Control+Super, W, exec, thorium-browser --ozone-platform-hint=wayland --gtk-version=4 --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation"
                 "Super, X, exec, gnome-text-editor --new-window"
@@ -214,7 +227,7 @@ in
                 "Control+Super, V, exec, pavucontrol"
                 "Control+Shift, Escape, exec, gnome-system-monitor"
                 "Super, Period, exec, pkill fuzzel || ~/.local/bin/fuzzel-emoji"
-                "Super, Q, killactive, "
+                "Super, C, killactive, "
                 "Super+Alt, Space, togglefloating, "
                 "Shift+Super+Alt, Q, exec, hyprctl kill"
                 "Control+Shift+Alt, Delete, exec, pkill wlogout || wlogout -p layer-shell"
@@ -228,7 +241,7 @@ in
                 "Super+Alt, R, exec, ~/.config/ags/scripts/record-script.sh"
                 "Control+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen"
                 "Super+Shift+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen-sound"
-                "Super+Shift, C, exec, hyprpicker -a"
+                "Super, P, exec, hyprpicker -a"
                 "Super, V, exec, pkill fuzzel || cliphist list | fuzzel --no-fuzzy --dmenu | cliphist decode | wl-copy"
                 ''
                   Control+Super+Shift,S,exec,grim -g "${SLURP_COMMAND}" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
@@ -391,9 +404,9 @@ in
               "noanim, sideright"
               "noanim, sideleft"
             ];
-            source = [
-              "./colors.conf"
-            ];
+            # source = [
+            #   "./colors.conf"
+            # ];
           };
         };
       };

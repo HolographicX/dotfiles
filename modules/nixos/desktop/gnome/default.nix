@@ -30,7 +30,6 @@ in {
       geary
       yelp
       gnome-font-viewer
-      gnome-system-monitor
     ]) ++ (with pkgs.gnome; [
       gnome-music
       gnome-characters

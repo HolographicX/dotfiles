@@ -30,7 +30,6 @@ in {
           accent = "lavender";
           enable = true;
           flavor = "mocha";
-          pointerCursor.enable = true;
         };
         gtk = {
           enable = true;
@@ -44,6 +43,11 @@ in {
             package = pkgs.capitaine-cursors;
             name = "capitaine-cursors";
             size = 18;
+          };
+          font = {
+            name = "Rubik";
+            package = pkgs.google-fonts.override { fonts = [ "Rubik" ]; };
+            size = 11;
           };
         };
         
