@@ -38,7 +38,7 @@ in {
       enable = true;
       enableFishIntegration = true;
     };
-    # Actual Shell Configurations
+
     home.programs.fish = {
       enable = true;
       catppuccin.enable = true;
@@ -52,6 +52,30 @@ in {
 
         function , --description 'add software to shell session'
               nix shell nixpkgs#$argv[1..-1]
+        end
+
+        function bind_bang, --description 'add !! functionality'
+            switch (commandline -t)[-1]
+                case "!"
+                    commandline -t -- $history[1]
+                    commandline -f repaint
+                case "*"
+                    commandline -i !
+            end
+        end
+
+        function bind_dollar, --description 'add !$ functionality'
+            switch (commandline -t)[-1]
+                case "!"
+                    commandline -f backward-delete-char history-token-search-backward
+                case "*"
+                    commandline -i '$'
+            end
+        end
+
+        function fish_user_key_bindings
+            bind ! bind_bang
+            bind '$' bind_dollar
         end
       '';
     };

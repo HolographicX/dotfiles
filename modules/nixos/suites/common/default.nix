@@ -39,5 +39,6 @@ in {
     # --- apps and stuff -----
     apps.firefox.enable = true;
     apps.alacritty.enable = true;
+    apps.steam.enable = true;
   };
 }
