@@ -43,7 +43,7 @@ in {
     ]);
     
     environment.systemPackages = with pkgs.gnomeExtensions; [ 
-        tray-icons-reloaded
+        appindicator
       ];
     
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
@@ -59,7 +59,7 @@ in {
         # `gnome-extensions list` for a list
         enabled-extensions = [
           "user-theme@gnome-shell-extensions.gcampax.github.com"
-          "trayIconsReloaded@selfmade.pl"
+          "appindicatorsupportrgcjonas@gmail.com"
         ];
       };
       "org/gnome/shell/extensions/user-theme" = {  
