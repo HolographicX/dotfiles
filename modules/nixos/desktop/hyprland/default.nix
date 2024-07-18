@@ -16,16 +16,16 @@ in
     enable = mkBoolOpt false "Enable hyprland";
   };
   config = mkIf cfg.enable {
-    # desktop.addons = {
-
-    # };
+    desktop.addons = {
+      anyrun.enable = true;
+      ags.enable = true;
+    };
 
 
     environment.systemPackages = with pkgs; [
       adoptopenjdk-jre-bin
       brightnessctl
       cliphist
-      fuzzel
       grim
       hyprpicker
       tesseract
@@ -33,7 +33,6 @@ in
       pavucontrol
       playerctl
       swappy
-      swaylock-effects
       swayidle
       slurp
       swww
@@ -60,6 +59,7 @@ in
 
     home = {
       programs = {
+        fuzzel.enable = true;
         swaylock = {
           enable = true;
           package = pkgs.swaylock-effects;

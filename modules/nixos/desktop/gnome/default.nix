@@ -42,11 +42,6 @@ in {
       gnome-initial-setup
       gnome-maps
     ]);
-    
-    environment.systemPackages = with pkgs.gnomeExtensions; [ 
-        appindicator
-      ];
-    
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
     programs.dconf.enable = true;
@@ -168,11 +163,6 @@ in {
       "system/locale" = {
         region = "hu_HU.UTF-8";
       };
-
-      "com/github/stunkymonkey/nautilus-open-any-terminal" = {
-        terminal = "foot";
-      };
-
     };
 
   };
