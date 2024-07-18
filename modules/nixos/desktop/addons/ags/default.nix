@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
@@ -15,9 +16,12 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      imports = [
-        inputs.ags.homeManagerModules.default
-      ];
+
+      extraOptions = {
+        imports = [
+          inputs.ags.homeManagerModules.default
+        ];
+      };
 
       programs.ags = {
         enable = true;

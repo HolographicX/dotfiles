@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
@@ -16,9 +17,11 @@ in {
   config = mkIf cfg.enable {
     home = {
 
-      imports = [
-        inputs.anyrun.homeManagerModules.default
-      ];
+      extraOptions = {
+        imports = [
+          inputs.anyrun.homeManagerModules.default
+        ];
+      };
 
       programs.anyrun = {
         enable = true;

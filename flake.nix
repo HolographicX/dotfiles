@@ -14,7 +14,7 @@
     };
     nix-colors.url = "github:misterio77/nix-colors";
 
-
+    impurity.url = "github:outfoxxed/impurity.nix";
     more-waita = {
       url = "github:somepaulo/MoreWaita";
       flake = false;
