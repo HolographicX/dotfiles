@@ -16,12 +16,18 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      material-symbols
+      gammastep
       ollama
       pywal
-      sassc
+      dart-sass
       (python311.withPackages (p: [
+        p.pillow
         p.material-color-utilities
-        p.pywayland
+        p.libsass
+        p.setproctitle # for keep system awake
+        p.pywayland # for keep system awake
+        p.psutil
       ]))
     ];
 
