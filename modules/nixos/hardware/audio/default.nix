@@ -2,6 +2,7 @@
   options,
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -13,6 +14,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      orca
+      piper-tts
+      easyeffects
+    ];
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -23,6 +29,5 @@ in {
       jack.enable = true;
       pulse.enable = true;
     };
-    programs.noisetorch.enable = true;
   };
 }

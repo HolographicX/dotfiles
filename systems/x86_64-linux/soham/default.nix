@@ -14,9 +14,6 @@
     vim
     wget
     vscodium
-    orca
-    piper-tts
-    easyeffects
   ];
   
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.

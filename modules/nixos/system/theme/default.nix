@@ -10,6 +10,37 @@
 with lib;
 with lib.custom; let
   cfg = config.system.theme;
+  moreWaita = pkgs.stdenv.mkDerivation {
+    name = "MoreWaita";
+    src = inputs.more-waita;
+    installPhase = ''
+      mkdir -p $out/share/icons
+      mv * $out/share/icons
+    '';
+  };
+
+  nerdfonts = (pkgs.nerdfonts.override {
+    fonts = [
+      "Ubuntu"
+      "UbuntuMono"
+      "CascadiaCode"
+      "FantasqueSansMono"
+      "JetBrainsMono"
+      "FiraCode"
+      "Mononoki"
+      "SpaceMono"
+    ];
+  });
+  google-fonts = (pkgs.google-fonts.override {
+    fonts = [
+      # Sans
+      "Gabarito" "Lexend"
+      # Serif
+      "Chakra Petch" "Crimson Text"
+    ];
+  });
+  cursor-package = pkgs.capitaine-cursors;
+  cursor-theme = "capitaine-cursors";
 in {
   options.system.theme = with types; {
     enable = mkBoolOpt false "Enable theme";
@@ -21,8 +52,21 @@ in {
         enable = true;
         flavor = "mocha";
       };
+      environment.systemPackages = with pkgs; [
+        adwaita-qt6
+        adw-gtk3
+        material-symbols
+        nerdfonts
+        noto-fonts
+        noto-fonts-cjk-sans
+        google-fonts
+      ];
+      environment.sessionVariables = {
+          XCURSOR_THEME = cursor-theme;
+          XCURSOR_SIZE = "18";
+      };
+
       home.extraOptions = with inputs; {
-        
         imports = [
           catppuccin.homeManagerModules.catppuccin 
         ];
@@ -31,17 +75,20 @@ in {
           enable = true;
           flavor = "mocha";
         };
+
         gtk = {
           enable = true;
           catppuccin.enable = true;
-
-          iconTheme = {
-            name = "MoreWaita";
-            package = pkgs.morewaita-icon-theme;
-          };
+          iconTheme.name = moreWaita.name;
+          gtk3.extraCss = ''
+            headerbar, .titlebar,
+            .csd:not(.popup):not(tooltip):not(messagedialog) decoration{
+              border-radius: 0;
+            }
+          '';
           cursorTheme = {
-            package = pkgs.capitaine-cursors;
-            name = "capitaine-cursors";
+            package = cursor-package;
+            name = cursor-theme;
             size = 18;
           };
           font = {
@@ -56,28 +103,18 @@ in {
           platformTheme.name = "kvantum";
           style.name = "kvantum";
         };
-
-        dconf.settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-          };
-          "org/gnome/shell" = {
-            disable-user-extensions = false;
-
-            # `gnome-extensions list` for a list
-            enabled-extensions = [
-              "user-theme@gnome-shell-extensions.gcampax.github.com"
-              "trayIconsReloaded@selfmade.pl"
-              "Vitals@CoreCoding.com"
-              "dash-to-panel@jderose9.github.com"
-              "sound-output-device-chooser@kgshank.net"
-              "space-bar@luchrioh"
-            ];
-          };
-          "org/gnome/shell/extensions/user-theme" = {  
-            name = "catppuccin-mocha-lavender-standard+normal";
-          };
-
+      };
+      home.file = {
+        ".local/share/fonts" = {
+          recursive = true;
+          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
+        };
+        ".fonts" = {
+          recursive = true;
+          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
+        };
+        ".local/share/icons/MoreWaita" = {
+          source = "${moreWaita}/share/icons";
         };
       };
     };

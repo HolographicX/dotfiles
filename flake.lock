@@ -103,6 +103,22 @@
         "type": "github"
       }
     },
+    "more-waita": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1714324684,
+        "narHash": "sha256-E8zkq8Zfn90Qrn5clXquHAQhAI4K4/7JV7fjujf1P7U=",
+        "owner": "somepaulo",
+        "repo": "MoreWaita",
+        "rev": "0f4ed19f51b5ca8f0622c9e154886efb2a5ff59b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "somepaulo",
+        "repo": "MoreWaita",
+        "type": "github"
+      }
+    },
     "nix-colors": {
       "inputs": {
         "base16-schemes": "base16-schemes",
@@ -157,6 +173,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "more-waita": "more-waita",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "snowfall-lib": "snowfall-lib"

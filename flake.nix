@@ -13,6 +13,10 @@
       inputs.flake-utils-plus.url = "github:fl42v/flake-utils-plus";
     };
     nix-colors.url = "github:misterio77/nix-colors";
+    more-waita = {
+      url = "github:somepaulo/MoreWaita";
+      flake = false;
+    };
   };
 
   outputs = inputs: let
