@@ -18,7 +18,6 @@ in {
     environment.systemPackages = with pkgs; [
       custom.materialyoucolor-python
       ddcutil
-      gammastep
       ollama
       pywal
       dart-sass
@@ -38,11 +37,22 @@ in {
     ];
 
     home = {
-
       extraOptions = {
         imports = [
           inputs.ags.homeManagerModules.default
         ];
+
+        # night light
+        services.gammastep = {
+          enable = true;
+          latitude = 48.1;
+          longitude = 7.6; 
+          temperature = {
+            day = 4000;
+            night = 3500;
+          };
+        };
+
       };
 
       programs.ags = {

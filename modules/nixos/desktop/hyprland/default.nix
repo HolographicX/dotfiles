@@ -28,7 +28,6 @@ in
       ### Utils
       axel
       cliphist
-      gammastep
 
       ### Player and Audio
       pavucontrol
