@@ -16,6 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      custom.materialyoucolor-python
       ddcutil
       gammastep
       ollama
@@ -24,8 +25,9 @@ in {
       gradience
       foot
       gojq
+      libnotify
       glib
-      (python311.withPackages (p: [
+      (python312.withPackages (p: [
         p.pillow
         p.material-color-utilities
         p.libsass
@@ -47,6 +49,7 @@ in {
         enable = true;
         extraPackages = with pkgs; [
           gtksourceview
+          material-symbols
         ];
       };
     };
