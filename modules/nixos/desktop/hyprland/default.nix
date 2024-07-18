@@ -99,8 +99,8 @@ in
       "hypr/hyprland" = mkCfg "/hypr/hyprland";
       "hypr/hyprlock" = mkCfg "/hypr/hyprlock";
       "hypr/shaders" = mkCfg "/hypr/shaders";
-      "hypridle.conf" = mkCfg "/hypr/hypridle.conf";
-      "hyprlock.conf" = mkCfg "/hypr/hyprlock.conf";
+      "hypr/hypridle.conf" = mkCfg "/hypr/hypridle.conf";
+      "hypr/hyprlock.conf" = mkCfg "/hypr/hyprlock.conf";
     };
     home.extraOptions = {
         # hack gnome settings into hyprland

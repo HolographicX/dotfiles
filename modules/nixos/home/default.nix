@@ -24,6 +24,9 @@ with lib.custom; {
 
 
     extraOptions = mkOpt attrs {} "Options to pass directly to home-manager.";
+    
+    pointerCursor = mkOpt attrs {} "Pointer cursor.";
+
   };
 
   config = with inputs; {
@@ -32,6 +35,7 @@ with lib.custom; {
       home.file = mkAliasDefinitions options.home.file;
       xdg.enable = true;
       xdg.configFile = mkAliasDefinitions options.home.configFile;
+      home.pointerCursor = mkAliasDefinitions options.home.pointerCursor;
       programs = mkAliasDefinitions options.home.programs;
     };
 

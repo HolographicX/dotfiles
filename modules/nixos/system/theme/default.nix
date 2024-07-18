@@ -61,9 +61,13 @@ in {
         noto-fonts-cjk-sans
         google-fonts
       ];
-      environment.sessionVariables = {
-          XCURSOR_THEME = cursor-theme;
-          XCURSOR_SIZE = "18";
+
+      home.pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        package = cursor-package;
+        name = cursor-theme;
+        size = 18;
       };
 
       home.extraOptions = with inputs; {
@@ -86,11 +90,6 @@ in {
               border-radius: 0;
             }
           '';
-          cursorTheme = {
-            package = cursor-package;
-            name = cursor-theme;
-            size = 18;
-          };
           font = {
             name = "Rubik";
             package = pkgs.google-fonts.override { fonts = [ "Rubik" ]; };
