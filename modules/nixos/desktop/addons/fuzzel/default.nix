@@ -18,6 +18,7 @@ in {
     home.extraOptions.programs.fuzzel.enable = true;
     home.configFile = {
       "fuzzel".source = ../../.config/fuzzel;
+      recursive = true;
     };
   };
 }
