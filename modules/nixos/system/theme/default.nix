@@ -70,6 +70,8 @@ in {
         size = 18;
       };
 
+    home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors";
+
       home.extraOptions = with inputs; {
         imports = [
           catppuccin.homeManagerModules.catppuccin 

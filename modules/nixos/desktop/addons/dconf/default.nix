@@ -40,6 +40,7 @@ in {
       "org/gnome/desktop/peripherals/touchpad" = {
         tap-to-click = true;
         two-finger-scrolling-enabled = true;
+        click-method = "areas";
       };
 
       "org/gnome/desktop/search-providers" = {

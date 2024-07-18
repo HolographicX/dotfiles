@@ -21,6 +21,7 @@ in
       ags.enable = true;
       fuzzel.enable = true;
       dconf.enable = true;
+      ollama.enable = true;
     };
 
 
