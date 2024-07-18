@@ -23,6 +23,7 @@ in {
     };
 
     environment.gnome.excludePackages = (with pkgs; [
+      gnome-connections
       gnome-photos
       gnome-tour
       gedit
