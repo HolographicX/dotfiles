@@ -86,11 +86,13 @@ in
     home.file.".local/bin" = {
       source = ../.local/bin;
       recursive = true;
+      executable = true;
     };
     home.configFile = let
       mkCfg = name: {
         source = ../.config + name;
         recursive = true;
+        executable = true;
       };
     in {
       "hypr/custom" = mkCfg "/hypr/custom";
@@ -100,16 +102,28 @@ in
       "hypridle.conf" = mkCfg "/hypr/hypridle.conf";
       "hyprlock.conf" = mkCfg "/hypr/hyprlock.conf";
     };
-    home.extraOptions.wayland.windowManager.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      systemd.enable = true;
-      settings = {
-        exec-once = [
-          "ags"
-        ];
+    home.extraOptions = {
+        # hack gnome settings into hyprland
+        xdg.desktopEntries."org.gnome.Settings" = {
+          name = "Settings";
+          comment = "Gnome Control Center";
+          icon = "org.gnome.Settings";
+          exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+          categories = [ "X-Preferences" ];
+          terminal = false;
+        };
+
+      wayland.windowManager.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        systemd.enable = true;
+        settings = {
+          exec-once = [
+            "ags"
+          ];
+        };
+        extraConfig = builtins.readFile (../.config/hypr/hyprland.conf);
       };
-      extraConfig = builtins.readFile (../.config/hypr/hyprland.conf);
     };
   };
 }

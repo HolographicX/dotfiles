@@ -41,7 +41,7 @@ in {
         imports = [
           inputs.ags.homeManagerModules.default
         ];
-
+        
         # night light
         services.gammastep = {
           enable = true;
