@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.discord;
+  cfg = config.apps.vscodium;
 in
 {
-  options.apps.discord = with types; {
+  options.apps.vscodium = with types; {
     enable = mkBoolOpt false "Discord.";
   };
 
