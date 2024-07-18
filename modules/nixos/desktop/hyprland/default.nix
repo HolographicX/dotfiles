@@ -25,9 +25,10 @@ in
 
 
     environment.systemPackages = with pkgs; [
-      ### Basic
+      ### Utils
       axel
       cliphist
+      gammastep
 
       ### Player and Audio
       pavucontrol
@@ -43,9 +44,8 @@ in
       ydotool
 
       ### Gnome
-      gnome.gnome-keyring
+      gnome-keyring
       gnome.gnome-control-center
-      gammastep
 
       ### Widgets
       hyprlock
@@ -54,7 +54,6 @@ in
       wl-clipboard
 
       ### Fonts and Themes
-      # fonts are in nixos.nix
       adw-gtk3
       libsForQt5.qt5ct
 
@@ -82,28 +81,27 @@ in
       _JAVA_AWT_WM_NONREPARENTING = "1";
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     };
-
     programs.hyprland.enable = true;
     programs.hyprland.xwayland.enable = true;
     
     home.file.".local/bin" = {
-      source = "../.local/bin";
+      source = ../.local/bin;
       recursive = true;
     };
-    xdg.configFile = let
+    home.configFile = let
       mkCfg = name: {
-        source = "../.config/${name}";
+        source = ../.config + name;
         recursive = true;
       };
     in {
-      "hypr/custom" = mkCfg "hypr/custom";
-      "hypr/hyprland" = mkCfg "hypr/hyprland";
-      "hypr/hyprlock" = mkCfg "hypr/hyprlock";
-      "hypr/shaders" = mkCfg "hypr/shaders";
-      "hypridle.conf" = mkCfg "hypridle.conf";
-      "hyprlock.conf" = mkCfg "hyprlock.conf";
+      "hypr/custom" = mkCfg "/hypr/custom";
+      "hypr/hyprland" = mkCfg "/hypr/hyprland";
+      "hypr/hyprlock" = mkCfg "/hypr/hyprlock";
+      "hypr/shaders" = mkCfg "/hypr/shaders";
+      "hypridle.conf" = mkCfg "/hypr/hypridle.conf";
+      "hyprlock.conf" = mkCfg "/hypr/hyprlock.conf";
     };
-    wayland.windowManager.hyprland = {
+    home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
       systemd.enable = true;
@@ -112,7 +110,7 @@ in
           "ags"
         ];
       };
-      extraConfig = builtins.readFile ("../.config/hypr/hyprland.conf");
+      extraConfig = builtins.readFile (../.config/hypr/hyprland.conf);
     };
   };
 }
