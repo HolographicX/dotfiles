@@ -25,12 +25,14 @@ in
 
     environment.systemPackages = with pkgs; [
       adoptopenjdk-jre-bin
+      bc
       brightnessctl
       cliphist
       grim
       hyprpicker
       tesseract
       imagemagick
+      jq
       pavucontrol
       playerctl
       swappy
@@ -41,6 +43,7 @@ in
       wlsunset
       wl-clipboard
       wf-recorder
+      yad
     ];
 
     environment.sessionVariables = {

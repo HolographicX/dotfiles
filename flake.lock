@@ -232,16 +232,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1721291486,
-        "narHash": "sha256-/3fFLdpGImmzA4JQE8ZM40QnXcntRMGk63Jv7RUpdZI=",
+        "lastModified": 1720957393,
+        "narHash": "sha256-oedh2RwpjEa+TNxhg5Je9Ch6d3W1NKi7DbRO1ziHemA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "04c1bf453d870fae5a44db87df4364cc21a360f7",
+        "rev": "693bc46d169f5af9c992095736e82c3488bf7dbb",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "release-24.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -255,8 +255,7 @@
         "more-waita": "more-waita",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_2",
-        "snowfall-lib": "snowfall-lib",
-        "unstable": "unstable"
+        "snowfall-lib": "snowfall-lib"
       }
     },
     "snowfall-lib": {
@@ -308,21 +307,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "unstable": {
-      "locked": {
-        "lastModified": 1721296618,
-        "narHash": "sha256-bEoD5uJKSyi9wXx8V9muzLnnFZ9SPWQyvH2fjvVGFPo=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "bfb339b377e531fb54401676870872bb9e2ea84f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
         "type": "github"
       }
     }
