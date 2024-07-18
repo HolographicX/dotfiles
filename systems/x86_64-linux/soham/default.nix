@@ -13,7 +13,6 @@
     # Any particular packages only for this host
     vim
     wget
-    vscodium
   ];
   
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.

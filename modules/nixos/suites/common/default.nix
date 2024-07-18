@@ -41,5 +41,6 @@ in {
     apps.alacritty.enable = true;
     apps.steam.enable = true;
     apps.discord.enable = true;
+    apps.vscodium.enable = true;
   };
 }
