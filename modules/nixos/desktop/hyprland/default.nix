@@ -19,6 +19,7 @@ in
     desktop.addons = {
       anyrun.enable = true;
       ags.enable = true;
+      fuzzel.enable = true;
     };
 
 
@@ -59,7 +60,6 @@ in
 
     home = {
       programs = {
-        fuzzel.enable = true;
         swaylock = {
           enable = true;
           package = pkgs.swaylock-effects;
@@ -217,7 +217,7 @@ in
               let SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
               in [
                 "Super, X, exec, codium --password-store=gnome"
-                "Super, Enter, exec, alacritty"
+                "Super, Return, exec, alacritty"
                 "Super, E, exec, nautilus --new-window"
                 "Super, W, exec, firefox"
                 "Control+Super, W, exec, thorium-browser --ozone-platform-hint=wayland --gtk-version=4 --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation"
