@@ -15,6 +15,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      ollama
+      pywal
+      sassc
+      (python311.withPackages (p: [
+        p.material-color-utilities
+        p.pywayland
+      ]))
+    ];
+
     home = {
 
       extraOptions = {
@@ -25,8 +35,8 @@ in {
 
       programs.ags = {
         enable = true;
-        configDir = null; # if ags dir is managed by home-manager, it'll end up being read-only. not too cool.
-        # configDir = ./.config/ags;
+        # configDir = null; # if ags dir is managed by home-manager, it'll end up being read-only. not too cool.
+        configDir = ../../.config/ags;
 
         extraPackages = with pkgs; [
           gtksourceview
