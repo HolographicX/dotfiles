@@ -22,6 +22,7 @@ in {
       pywal
       dart-sass
       gradience
+      gammastep
       foot
       gojq
       libnotify
@@ -41,18 +42,6 @@ in {
         imports = [
           inputs.ags.homeManagerModules.default
         ];
-        
-        # night light
-        services.gammastep = {
-          enable = true;
-          latitude = 48.1;
-          longitude = 7.6; 
-          temperature = {
-            day = 4000;
-            night = 3500;
-          };
-        };
-
       };
 
       programs.ags = {
@@ -63,10 +52,16 @@ in {
         ];
       };
     };
-    home.configFile."ags" = {
-      source = ../../.config/ags;
-      recursive = true;
-      executable = true;
+    home.configFile = {
+      "ags" = {
+        source = ../../.config/ags;
+        recursive = true;
+        executable = true;
+      };
+      gammastep = {
+        source = ../../.config/gammastep;
+        recursive = true;
+      };
     };
   };
 }
