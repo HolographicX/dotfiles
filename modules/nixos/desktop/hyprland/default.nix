@@ -35,6 +35,7 @@ in
       libdbusmenu
       playerctl
       swww
+      blueberry
 
       ### GTK
       webp-pixbuf-loader

@@ -42,5 +42,7 @@ in {
     apps.steam.enable = true;
     apps.discord.enable = true;
     apps.vscodium.enable = true;
+    apps.lutris.enable = true;
+    services.easyeffects.enable = true;
   };
 }

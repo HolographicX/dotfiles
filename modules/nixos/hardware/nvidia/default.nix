@@ -16,6 +16,10 @@ in {
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    hardware.graphics = {
+      enable = true;
+      enable32bit = true;
+    };
     # hardware.nvidia.powerManagement = {
     #   enable = true;
     #   finegrained = true;

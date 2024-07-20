@@ -53,6 +53,7 @@ in {
         flavor = "mocha";
       };
       environment.systemPackages = with pkgs; [
+        gnome3.adwaita-icon-theme
         adwaita-qt6
         adw-gtk3
         material-symbols
