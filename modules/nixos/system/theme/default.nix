@@ -53,7 +53,7 @@ in {
         flavor = "mocha";
       };
       environment.systemPackages = with pkgs; [
-        gnome3.adwaita-icon-theme
+        adwaita-icon-theme
         adwaita-qt6
         adw-gtk3
         material-symbols
@@ -70,8 +70,6 @@ in {
         name = cursor-theme;
         size = 18;
       };
-
-    home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors";
 
       home.extraOptions = with inputs; {
         imports = [
