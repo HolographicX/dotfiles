@@ -20,7 +20,8 @@ in {
     
     services.ssh.enable = true;
     services.printing.enable = true;
-
+    services.flatpak.enable = true;
+    
     environment.systemPackages = [ pkgs.custom.sys ];
 
     system = {
@@ -46,5 +47,6 @@ in {
     apps.cemu.enable = true;
     apps.cartridges.enable = true;
     services.easyeffects.enable = true;
+    apps.ludusavi.enable = true;
   };
 }

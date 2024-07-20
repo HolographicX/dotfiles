@@ -23,6 +23,7 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs = inputs: let
@@ -54,6 +55,7 @@
       systems.modules.nixos = with inputs; [
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
+        nix-flatpak.nixosModules.nix-flatpak
       ];
 
       templates = import ./templates {};
