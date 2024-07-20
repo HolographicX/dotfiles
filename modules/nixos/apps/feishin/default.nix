@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.firefox;
+  cfg = config.apps.feishin;
 in {
-  options.apps.firefox = with types; {
+  options.apps.feishin = with types; {
     enable = mkBoolOpt false "Enable or disable firefox browser";
   };
 
