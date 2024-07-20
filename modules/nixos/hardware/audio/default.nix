@@ -17,7 +17,6 @@ in {
     environment.systemPackages = with pkgs; [
       orca
       piper-tts
-      easyeffects
     ];
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
