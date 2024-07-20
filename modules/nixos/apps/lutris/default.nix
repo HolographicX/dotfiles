@@ -7,13 +7,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.firefox;
+  cfg = config.apps.lutris;
 in {
-  options.apps.firefox = with types; {
+  options.apps.lutris = with types; {
     enable = mkBoolOpt false "Enable or disable firefox browser";
   };
 
   config = mkIf cfg.enable {
-    programs.lutris.enable = true;
+    environment.systemPackages = with pkgs; [
+      lutris
+    ];
   };
 }
