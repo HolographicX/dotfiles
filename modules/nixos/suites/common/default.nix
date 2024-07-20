@@ -43,6 +43,7 @@ in {
     apps.discord.enable = true;
     apps.vscodium.enable = true;
     apps.lutris.enable = true;
+    apps.cemu.enable = true;
     services.easyeffects.enable = true;
   };
 }

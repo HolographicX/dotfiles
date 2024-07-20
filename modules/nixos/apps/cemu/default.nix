@@ -7,15 +7,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.lutris;
+  cfg = config.apps.cemu;
 in {
-  options.apps.lutris = with types; {
-    enable = mkBoolOpt false "Enable or disable lutris";
+  options.apps.cemu = with types; {
+    enable = mkBoolOpt false "Enable or disable cemu";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      lutris
+      cemu
     ];
   };
 }
