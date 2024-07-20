@@ -48,5 +48,6 @@ in {
     apps.cartridges.enable = true;
     services.easyeffects.enable = true;
     apps.ludusavi.enable = true;
+    apps.feishin.enable = true;
   };
 }

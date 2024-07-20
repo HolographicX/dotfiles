@@ -54,10 +54,6 @@ in {
 
     home = {
       file = {
-        "Documents/.keep".text = "";
-        "Downloads/.keep".text = "";
-        "Music/.keep".text = "";
-        "Pictures/.keep".text = "";
         ".face".source = cfg.icon;
         "Pictures/${
           cfg.icon.fileName or (builtins.baseNameOf cfg.icon)

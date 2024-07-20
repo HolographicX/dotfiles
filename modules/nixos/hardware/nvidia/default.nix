@@ -2,6 +2,7 @@
   options,
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -16,16 +17,20 @@ in {
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    hardware.nvidia.powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+
+    # OpenGL support
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = [ pkgs.mesa.drivers ];
     };
-    # hardware.nvidia.powerManagement = {
-    #   enable = true;
-    #   finegrained = true;
-    # };
 
     environment.variables = {
+      LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver-32/lib";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     };
     environment.shellAliases = {nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings";};
