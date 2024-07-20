@@ -44,6 +44,7 @@ in {
     apps.vscodium.enable = true;
     apps.lutris.enable = true;
     apps.cemu.enable = true;
+    apps.cartridges.enable = true;
     services.easyeffects.enable = true;
   };
 }
