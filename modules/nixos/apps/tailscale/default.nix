@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.apps.tailscale;
 in
 {
-  options.apps.vscodium = with types; {
+  options.apps.tailscale = with types; {
     enable = mkBoolOpt false "Tailscale.";
   };
 
