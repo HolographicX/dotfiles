@@ -1,1 +1,1 @@
-{ channels, ... }: final: prev: { inherit (channels.stable) cemu; }
+{ channels, ... }: final: prev: { inherit (channels.nix-stable) cemu; }

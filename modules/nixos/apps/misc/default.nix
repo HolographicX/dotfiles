@@ -30,6 +30,7 @@ in {
       ffmpeg
       python3
       neofetch
+      pciutils
     ];
   };
 }

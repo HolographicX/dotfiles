@@ -11,7 +11,7 @@ with lib.custom; let
 in
 {
   options.apps.vscodium = with types; {
-    enable = mkBoolOpt false "Discord.";
+    enable = mkBoolOpt false "Vscodium.";
   };
 
   config = mkIf cfg.enable {

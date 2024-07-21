@@ -14,12 +14,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.videoDrivers = ["nvidia" "intel"];
+    services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.powerManagement = {
       enable = true;
-      finegrained = true;
+      # finegrained = true;
     };
 
     # OpenGL support
@@ -30,13 +30,11 @@ in {
     };
 
     environment.variables = {
-      LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver-32/lib";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     };
     environment.shellAliases = {nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings";};
 
     # Hyprland settings
-    programs.hyprland.enableNvidiaPatches = true;
     environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
   };
 }

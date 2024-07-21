@@ -17,6 +17,7 @@ in {
 
     hardware.audio.enable = true;
     hardware.networking.enable = true;
+    hardware.nvidia.enable = true;
     
     services.ssh.enable = true;
     services.printing.enable = true;
@@ -49,5 +50,6 @@ in {
     services.easyeffects.enable = true;
     apps.ludusavi.enable = true;
     apps.feishin.enable = true;
+    apps.tailscale.enable = true;
   };
 }
