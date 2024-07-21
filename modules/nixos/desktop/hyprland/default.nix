@@ -88,13 +88,12 @@ in
     home.file.".local/bin" = {
       source = ../.local/bin;
       recursive = true;
-      executable = true;
     };
+
     home.configFile = let
       mkCfg = name: {
         source = ../.config + name;
         recursive = true;
-        executable = true;
       };
     in {
       "hypr/custom" = mkCfg "/hypr/custom";
