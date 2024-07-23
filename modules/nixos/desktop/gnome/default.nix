@@ -24,10 +24,6 @@ in {
       desktopManager.gnome.enable = true;
       excludePackages = [ pkgs.xterm ];
     };
-
-    environment.systemPackages = with pkgs; [ gnome-network-displays ];
-    networking.firewall.allowedTCPPorts = [ 7236 7250 ];
-    networking.firewall.allowedUDPPorts = [ 7236 5353 ];
     
     environment.gnome.excludePackages = (with pkgs; [
       gnome-connections

@@ -51,5 +51,6 @@ in {
     apps.ludusavi.enable = true;
     apps.feishin.enable = true;
     apps.tailscale.enable = true;
+    apps.onlyofficec.enable = true;
   };
 }
