@@ -7,11 +7,11 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.vscodium;
+  cfg = config.apps.onlyoffice;
 in
 {
-  options.apps.vscodium = with types; {
-    enable = mkBoolOpt false "Vscodium.";
+  options.apps.onlyoffice = with types; {
+    enable = mkBoolOpt false "onlyoffice.";
   };
 
   config = mkIf cfg.enable {

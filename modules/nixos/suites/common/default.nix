@@ -39,6 +39,7 @@ in {
     };
 
     # --- apps and stuff -----
+    apps.misc.enable = true;
     apps.firefox.enable = true;
     apps.alacritty.enable = true;
     apps.steam.enable = true;
@@ -51,6 +52,6 @@ in {
     apps.ludusavi.enable = true;
     apps.feishin.enable = true;
     apps.tailscale.enable = true;
-    apps.onlyofficec.enable = true;
+    apps.onlyoffice.enable = true;
   };
 }
