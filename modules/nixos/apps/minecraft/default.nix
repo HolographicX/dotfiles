@@ -1,16 +1,17 @@
 {
   options,
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.prismlauncher;
-in {
-  options.apps.prismlauncher = with types; {
-    enable = mkBoolOpt false "Enable or disable prismlauncher";
+  cfg = config.apps.minecraft;
+in
+{
+  options.apps.minecraft = with types; {
+    enable = mkBoolOpt false "Minecraft.";
   };
 
   config = mkIf cfg.enable {

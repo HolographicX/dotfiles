@@ -53,6 +53,5 @@ in {
     apps.feishin.enable = true;
     apps.tailscale.enable = true;
     apps.onlyoffice.enable = true;
-    apps.prismlauncher.enable = true;
   };
 }
