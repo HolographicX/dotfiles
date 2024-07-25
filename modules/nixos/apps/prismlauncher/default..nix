@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.minecraft;
+  cfg = config.apps.prismlauncher;
 in {
-  options.apps.minecraft = with types; {
-    enable = mkBoolOpt false "Enable or disable minecraft";
+  options.apps.prismlauncher = with types; {
+    enable = mkBoolOpt false "Enable or disable prismlauncher";
   };
 
   config = mkIf cfg.enable {
