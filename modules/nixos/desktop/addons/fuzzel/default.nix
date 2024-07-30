@@ -16,9 +16,9 @@ in {
 
   config = mkIf cfg.enable {
     home.extraOptions.programs.fuzzel.enable = true;
-      home.configFile."fuzzel" = {
-        source = ../../.config/fuzzel;
-        recursive = true;
-      };
+    home.configFile."fuzzel" = {
+      source = ../../.config/fuzzel;
+      recursive = true;
+    };
   };
 }
