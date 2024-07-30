@@ -54,5 +54,6 @@ in {
     apps.tailscale.enable = true;
     apps.onlyoffice.enable = true;
     apps.minecraft.enable = true;
+    apps.obsidian.enable = true;
   };
 }
