@@ -52,7 +52,7 @@ in {
     apps.ludusavi.enable = true;
     apps.feishin.enable = true;
     apps.tailscale.enable = true;
-    apps.onlyoffice.enable = true;
+    apps.libreoffice.enable = true;
     apps.minecraft.enable = true;
     apps.obsidian.enable = true;
   };
