@@ -80,7 +80,7 @@ export const HyprToggleIcon = async (icon, name, hyprlandConfigValue, props = {}
 }
 
 export const ModuleNightLight = async (props = {}) => {
-    if (!exec(`bash -c 'command -v gammastep'`)) return null;
+    if (!exec(`bash -c 'command -v gammastep -O 4000'`)) return null;
     return Widget.Button({
         attribute: {
             enabled: false,
@@ -90,7 +90,7 @@ export const ModuleNightLight = async (props = {}) => {
         onClicked: (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) Utils.execAsync('gammastep').catch(print)
+            if (self.attribute.enabled) Utils.execAsync('gammastep -O 4000').catch(print)
             else Utils.execAsync('pkill gammastep')
                 .then(() => {
                     // disable the button until fully terminated to avoid race

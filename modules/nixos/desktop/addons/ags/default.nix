@@ -16,7 +16,6 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      custom.materialyoucolor-python
       ddcutil
       ollama
       pywal
@@ -57,10 +56,6 @@ in {
         source = ../../.config/ags;
         recursive = true;
         executable = true;
-      };
-      gammastep = {
-        source = ../../.config/gammastep;
-        recursive = true;
       };
     };
   };
