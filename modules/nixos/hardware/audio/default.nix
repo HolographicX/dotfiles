@@ -16,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       orca
-      piper-tts
     ];
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;

@@ -11,26 +11,26 @@ writeShellScriptBin "sys" ''
         pushd /home/soham/.dots
 
         # Early return if no changes were detected
-        if git diff --quiet '*.nix'; then
+        if git diff --quiet '*'; then
             echo "No changes detected, exiting."
             popd
             exit 0
         fi
-
-        # Autoformat your nix files
-        alejandra . &>/dev/null \
-        || ( alejandra . ; echo "formatting failed!" && exit 1)
-
-        # Shows your changes
-        git diff -U0 '*.nix'
+        
+        git diff -U0 | bat
 
         echo "🔨 Building system configuration with $REBUILD_COMMAND"
+        
+        git add .
 
         # Rebuild, output simplified errors, log trackebacks
-        sudo $REBUILD_COMMAND switch --flake .# &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+        trap 'cat nixos-switch.log | grep --color error; exit 1' ERR
+        sudo $REBUILD_COMMAND switch --flake .# &>nixos-switch.log &
+        tail -f nixos-switch.log
+        wait        
 
         # Get current generation metadata
-        current=$(nixos-rebuild list-generations | grep current)
+        current=$(nix-env --list-generations | grep current)
 
         # Commit all changes witih the generation metadata
         git commit -am "$current"
@@ -39,7 +39,7 @@ writeShellScriptBin "sys" ''
         popd
 
         # Notify all OK!
-        notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
+        notify-send "NixOS Rebuilt OK!" --icon=software-update-available-symbolic
   }
 
   cmd_test() {

@@ -18,7 +18,6 @@ in {
     environment.systemPackages = with pkgs; [
       ddcutil
       ollama
-      pywal
       dart-sass
       gradience
       gammastep
@@ -28,7 +27,6 @@ in {
       glib
       (python312.withPackages (p: [
         p.pillow
-        p.material-color-utilities
         p.libsass
         p.setproctitle # for keep system awake
         p.pywayland # for keep system awake
