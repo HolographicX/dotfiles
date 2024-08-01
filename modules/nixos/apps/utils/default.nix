@@ -32,6 +32,7 @@ in {
       python3
       neofetch
       pciutils
+      gparted
     ];
   };
 }
