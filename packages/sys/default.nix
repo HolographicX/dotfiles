@@ -3,13 +3,13 @@ writeShellScriptBin "sys" ''
 
   cmd_rebuild() {
       echo "🔨 Building system configuration with $REBUILD_COMMAND"
-      cd ~/.dots
+      cd /home/soham/.dots
       $REBUILD_COMMAND switch --flake .#
   }
 
   cmd_test() {
       echo "🏗️ Building ephemeral system configuration with $REBUILD_COMMAND"
-      cd ~/.dots
+      cd /home/soham/.dots
       $REBUILD_COMMAND test --fast --flake .#
   }
 

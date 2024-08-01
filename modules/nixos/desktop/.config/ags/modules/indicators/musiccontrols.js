@@ -205,19 +205,19 @@ const CoverArt = ({ player, ...rest }) => {
                 }
 
                 // Generate colors
-                execAsync(['bash', '-c',
-                    `${App.configDir}/scripts/color_generation/generate_colors_material.py --path '${coverPath}' --mode ${darkMode.value ? 'dark' : 'light'} > ${GLib.get_user_state_dir()}/ags/scss/_musicmaterial.scss`])
-                    .then(() => {
-                        exec(`wal -i "${player.coverPath}" -n -t -s -e -q ${darkMode.value ? '' : '-l'}`)
-                        exec(`cp ${GLib.get_user_cache_dir()}/wal/colors.scss ${GLib.get_user_state_dir()}/ags/scss/_musicwal.scss`);
-                        exec(`sass -I "${GLib.get_user_state_dir()}/ags/scss" -I "${App.configDir}/scss/fallback" "${App.configDir}/scss/_music.scss" "${stylePath}"`);
-                        Utils.timeout(200, () => {
-                            // self.attribute.showImage(self, coverPath)
-                            self.css = `background-image: url('${coverPath}');`; // CSS image
-                        });
-                        App.applyCss(`${stylePath}`);
-                    })
-                    .catch(print);
+                // execAsync(['bash', '-c',
+                //     `${App.configDir}/scripts/color_generation/generate_colors_material.py --path '${coverPath}' --mode ${darkMode.value ? 'dark' : 'light'} > ${GLib.get_user_state_dir()}/ags/scss/_musicmaterial.scss`])
+                //     .then(() => {
+                //         exec(`wal -i "${player.coverPath}" -n -t -s -e -q ${darkMode.value ? '' : '-l'}`)
+                //         exec(`cp ${GLib.get_user_cache_dir()}/wal/colors.scss ${GLib.get_user_state_dir()}/ags/scss/_musicwal.scss`);
+                //         exec(`sass -I "${GLib.get_user_state_dir()}/ags/scss" -I "${App.configDir}/scss/fallback" "${App.configDir}/scss/_music.scss" "${stylePath}"`);
+                //         Utils.timeout(200, () => {
+                //             // self.attribute.showImage(self, coverPath)
+                //             self.css = `background-image: url('${coverPath}');`; // CSS image
+                //         });
+                //         App.applyCss(`${stylePath}`);
+                //     })
+                //     .catch(print);
             },
         },
         setup: (self) => self

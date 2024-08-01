@@ -221,6 +221,10 @@ let configOptions = {
             'cycleTab': "Ctrl+Tab",
         }
     },
+    'nightlight': {
+        'brightness': 5,
+        'temperature': 4000,
+    }
 }
 
 // Override defaults with user's options

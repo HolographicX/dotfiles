@@ -10,6 +10,7 @@ import { BluetoothIndicator, NetworkIndicator } from '../.commonwidgets/statusic
 import { setupCursorHover } from '../.widgetutils/cursorhover.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { sidebarOptionsStack } from './sideright.js';
+import { gammaBrightness, gammaTemperature } from './centermodules/configure.js';
 
 export const ToggleIconWifi = (props = {}) => Widget.Button({
     className: 'txt-small sidebar-iconbutton',
@@ -80,36 +81,55 @@ export const HyprToggleIcon = async (icon, name, hyprlandConfigValue, props = {}
 }
 
 export const ModuleNightLight = async (props = {}) => {
-    if (!exec(`bash -c 'command -v gammastep -O 4000'`)) return null;
+    if (!exec(`bash -c 'command -v gammastep'`)) return null;
+    function gammastepProfile() {
+        Utils.execAsync(`gammastep -O ${gammaTemperature.value} -b ${gammaBrightness.value/10}`).catch(print)
+    };
+    async function killgammastep() {
+        return new Promise((resolve) => {
+            Utils.execAsync('pkill gammastep')
+                .then(() => {
+                    const source = setInterval(() => {
+                        Utils.execAsync('pkill -0 gammastep')
+                            .catch(() => {
+                                clearInterval(source);
+                                resolve(true);
+                            });
+                    }, 500);
+                })
+                .catch(err => {
+                    print(err);
+                    resolve(true);
+                });
+        });
+    } 
     return Widget.Button({
         attribute: {
             enabled: false,
         },
         className: 'txt-small sidebar-iconbutton',
         tooltipText: 'Night Light',
-        onClicked: (self) => {
+        onClicked: async (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) Utils.execAsync('gammastep -O 4000').catch(print)
-            else Utils.execAsync('pkill gammastep')
-                .then(() => {
-                    // disable the button until fully terminated to avoid race
-                    self.sensitive = false;
-                    const source = setInterval(() => {
-                        Utils.execAsync('pkill -0 gammastep')
-                            .catch(() => {
-                                self.sensitive = true;
-                                source.destroy();
-                            });
-                    }, 500);
-                })
-                .catch(print);
+            if (self.attribute.enabled) gammastepProfile()
+            else {
+                // disable the button until fully terminated to avoid race
+                self.sensitive = false;
+                self.sensitive = await killgammastep();
+            }
         },
         child: MaterialIcon('nightlight', 'norm'),
         setup: (self) => {
             setupCursorHover(self);
             self.attribute.enabled = !!exec('pidof gammastep');
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+            gammaBrightness.connect('changed', async () => {
+                if (await killgammastep()) gammastepProfile()
+            });
+            gammaTemperature.connect('changed', async () => {
+                if (await killgammastep()) gammastepProfile()
+            });
         },
         ...props,
     });

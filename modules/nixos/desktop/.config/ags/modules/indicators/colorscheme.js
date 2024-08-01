@@ -148,12 +148,6 @@ const ColorSchemeSettings = () => Widget.Box({
                             ],
                             initIndex: [-1, -1],
                             onChange: (value, name) => {
-                                const ADWAITA_BLUE = "#3584E4";
-                                if (value) execAsync([`bash`, `-c`, `${App.configDir}/scripts/color_generation/switchcolor.sh - --yes-gradience`, `&`])
-                                    .catch(print);
-                                else execAsync([`bash`, `-c`, `${App.configDir}/scripts/color_generation/switchcolor.sh "${ADWAITA_BLUE}" --no-gradience`, `&`])
-                                    .catch(print);
-
                             },
                         }),
                     ]

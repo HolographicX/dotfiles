@@ -39,21 +39,30 @@ in {
     };
 
     # --- apps and stuff -----
-    apps.misc.enable = true;
-    apps.firefox.enable = true;
-    apps.alacritty.enable = true;
-    apps.steam.enable = true;
-    apps.discord.enable = true;
-    apps.vscodium.enable = true;
-    apps.lutris.enable = true;
-    apps.cemu.enable = true;
-    apps.cartridges.enable = true;
-    services.easyeffects.enable = true;
-    apps.ludusavi.enable = true;
-    apps.feishin.enable = true;
-    apps.tailscale.enable = true;
-    apps.libreoffice.enable = true;
-    apps.minecraft.enable = true;
-    apps.obsidian.enable = true;
+    # TODO: Split apps according to suites
+    apps = {
+      misc.enable = true;
+      firefox.enable = true;
+      alacritty.enable = true;
+      steam.enable = true;
+      discord.enable = true;
+      vscodium.enable = true;
+      lutris.enable = true;
+      cemu.enable = true;
+      cartridges.enable = true;
+      ludusavi.enable = true;
+      feishin.enable = true;
+      libreoffice.enable = true;
+      minecraft.enable = true;
+      obsidian.enable = true;
+      tools = {
+        tailscale.enable = true;
+        warp.enable = true;
+      };
+    };
+    
+    services = {
+      easyeffects.enable = true;
+    };
   };
 }

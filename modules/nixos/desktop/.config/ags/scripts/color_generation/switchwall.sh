@@ -35,6 +35,3 @@ else
     cd "$(xdg-user-dir PICTURES)" || return 1
 	switch "$(yad --width 1200 --height 800 --file --add-preview --large-preview --title='Choose wallpaper')"
 fi
-
-# Generate colors for ags n stuff
-# "$CONFIG_DIR"/scripts/color_generation/colorgen.sh "${imgpath}" --apply --smart

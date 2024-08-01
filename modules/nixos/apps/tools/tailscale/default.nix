@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.tailscale;
+  cfg = config.apps.tools.tailscale;
 in
 {
-  options.apps.tailscale = with types; {
+  options.apps.tools.tailscale = with types; {
     enable = mkBoolOpt false "Tailscale.";
   };
 

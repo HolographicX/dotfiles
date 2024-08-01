@@ -7,6 +7,11 @@ const { execAsync, exec } = Utils;
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 import { setupCursorHover } from '../../.widgetutils/cursorhover.js';
 import { ConfigGap, ConfigSpinButton, ConfigToggle } from '../../.commonwidgets/configwidgets.js';
+import { ModuleNightLight } from '../quicktoggles.js';
+import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+
+export const gammaTemperature = Variable(4000) // set gammastep's default color temperature to 4000K  
+export const gammaBrightness = Variable(10) // set gammastep's default screen dim to 1.0 
 
 const HyprlandToggle = ({ icon, name, desc = null, option, enableValue = 1, disableValue = 0, extraOnChange = () => { } }) => ConfigToggle({
     icon: icon,
@@ -61,25 +66,26 @@ export default (props) => {
             children: [
                 ConfigSection({
                     name: 'Effects', children: [
-                        ConfigToggle({
-                            icon: 'border_clear',
-                            name: 'Transparency',
-                            desc: '[AGS]\nMake shell elements transparent\nBlur is also recommended if you enable this',
-                            initValue: exec(`bash -c "sed -n \'2p\' ${GLib.get_user_state_dir()}/ags/user/colormode.txt"`) == "transparent",
+                        ConfigSpinButton({
+                            icon: 'sunny_snowing',
+                            name: 'Gammastep Temperature',
+                            desc: 'In Kelvin, the Color Temperature of the display.',
+                            initValue: gammaTemperature.value,
+                            step: 500, minValue: 1000, maxValue: 25000,
                             onChange: (self, newValue) => {
-                                const transparency = newValue == 0 ? "opaque" : "transparent";
-                                console.log(transparency);
-                                execAsync([`bash`, `-c`, `mkdir -p ${GLib.get_user_state_dir()}/ags/user && sed -i "2s/.*/${transparency}/"  ${GLib.get_user_state_dir()}/ags/user/colormode.txt`])
-                                    .then(execAsync(['bash', '-c', `${App.configDir}/scripts/color_generation/switchcolor.sh`]))
-                                    .catch(print);
+                                gammaTemperature.value = newValue;
                             },
                         }),
-                        HyprlandToggle({ icon: 'blur_on', name: 'Blur', desc: "[Hyprland]\nEnable blur on transparent elements\nDoesn't affect performance/power consumption unless you have transparent windows.", option: "decoration:blur:enabled" }),
-                        Subcategory([
-                            HyprlandToggle({ icon: 'stack_off', name: 'X-ray', desc: "[Hyprland]\nMake everything behind a window/layer except the wallpaper not rendered on its blurred surface\nRecommended to improve performance (if you don't abuse transparency/blur) ", option: "decoration:blur:xray" }),
-                            HyprlandSpinButton({ icon: 'target', name: 'Size', desc: '[Hyprland]\nAdjust the blur radius. Generally doesn\'t affect performance\nHigher = more color spread', option: 'decoration:blur:size', minValue: 1, maxValue: 1000 }),
-                            HyprlandSpinButton({ icon: 'repeat', name: 'Passes', desc: '[Hyprland] Adjust the number of runs of the blur algorithm\nMore passes = more spread and power consumption\n4 is recommended\n2- would look weird and 6+ would look lame.', option: 'decoration:blur:passes', minValue: 1, maxValue: 10 }),
-                        ]),
+                        ConfigSpinButton({
+                            icon: 'sunny_snowing',
+                            name: 'Gammastep Brightness',
+                            desc: 'The screen dim, controlled be gammastep.',
+                            initValue: gammaBrightness.value,
+                            step: 1, minValue: 1, maxValue: 10,
+                            onChange: (self, newValue) => {
+                                gammaBrightness.value = newValue;
+                            },
+                        }),
                         ConfigGap({}),
                         HyprlandToggle({
                             icon: 'animation', name: 'Animations', desc: '[Hyprland] [GTK]\nEnable animations', option: 'animations:enabled',
@@ -93,7 +99,7 @@ export default (props) => {
                                 initValue: userOptions.animations.choreographyDelay,
                                 step: 10, minValue: 0, maxValue: 1000,
                                 onChange: (self, newValue) => {
-                                    userOptions.animations.choreographyDelay = newValue
+                                    userOptions.animations.choreographyDelay = newValue;
                                 },
                             })
                         ]),
