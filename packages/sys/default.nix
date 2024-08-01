@@ -3,12 +3,14 @@
 }:
 writeShellScriptBin "sys" ''
 
+  DOTS_DIR="/home/soham/.dots"
+
   cmd_rebuild() {
         # A rebuild script that commits on a successful build
         set -e
 
         # cd to your config dir
-        pushd /home/soham/.dots
+        pushd "$DOTS_DIR"
 
         # Early return if no changes were detected
         if git diff --quiet '*'; then
@@ -21,16 +23,13 @@ writeShellScriptBin "sys" ''
 
         echo "🔨 Building system configuration with $REBUILD_COMMAND"
         
-        git add .
-
         # Rebuild, output simplified errors, log trackebacks
         trap 'cat nixos-switch.log | grep --color error; exit 1' ERR
-        sudo $REBUILD_COMMAND switch --flake .# &>nixos-switch.log &
-        tail -f nixos-switch.log
-        wait        
+        stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1 | tee nixos-switch.log &
+        wait
 
         # Get current generation metadata
-        current=$(nix-env --list-generations | grep current)
+        current=$(sudo nix-env --list-generations | grep current)
 
         # Commit all changes witih the generation metadata
         git commit -am "$current"
@@ -44,14 +43,14 @@ writeShellScriptBin "sys" ''
 
   cmd_test() {
       echo "🏗️ Building ephemeral system configuration with $REBUILD_COMMAND"
-      cd /home/soham/.dots
+      cd "$DOTS_DIR"
       $REBUILD_COMMAND test --fast --flake .#
   }
 
   # TODO: Make it update a single input
   cmd_update() {
       echo "🔒Updating flake.lock"
-      cd ~/.dots
+      cd "$DOTS_DIR"
       nix flake update
   }
 
