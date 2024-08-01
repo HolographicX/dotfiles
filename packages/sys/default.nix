@@ -38,7 +38,7 @@ writeShellScriptBin "sys" ''
         fi
 
         # Get current generation metadata
-        current=$(sudo nix-env --list-generations | grep current)
+        current=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
 
         # Commit all changes witih the generation metadata
         git commit -am "$current"

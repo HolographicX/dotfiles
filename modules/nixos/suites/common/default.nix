@@ -49,7 +49,6 @@ in {
       vscodium.enable = true;
       lutris.enable = true;
       cemu.enable = true;
-      cartridges.enable = true;
       ludusavi.enable = true;
       feishin.enable = true;
       libreoffice.enable = true;
