@@ -15,6 +15,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.cloudflare-warp.enable = true;
+    services.cloudflare-warp = {
+      enable = true;
+    };
   };
 }
