@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.misc;
+  cfg = config.apps.utils;
 in {
-  options.apps.misc = with types; {
-    enable = mkBoolOpt false "Enable or disable misc apps";
+  options.apps.utils = with types; {
+    enable = mkBoolOpt false "Enable or disable utils apps";
   };
 
   config = mkIf cfg.enable {
@@ -24,6 +24,7 @@ in {
       fd
 
       # Util
+      alejandra
       unzip
       sshfs
       htop

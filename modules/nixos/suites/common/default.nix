@@ -41,7 +41,7 @@ in {
     # --- apps and stuff -----
     # TODO: Split apps according to suites
     apps = {
-      misc.enable = true;
+      utils.enable = true;
       firefox.enable = true;
       alacritty.enable = true;
       steam.enable = true;

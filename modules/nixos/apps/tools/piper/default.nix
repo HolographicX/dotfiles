@@ -7,11 +7,11 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.libreoffice;
+  cfg = config.apps.tools.piper;
 in
 {
-  options.apps.libreoffice = with types; {
-    enable = mkBoolOpt false "libreoffice.";
+  options.apps.tools.piper = with types; {
+    enable = mkBoolOpt false "Piper gtk mouse.";
   };
 
   config = mkIf cfg.enable {
