@@ -95,7 +95,7 @@ export const ModuleNightLight = async (props = {}) => {
                                 clearInterval(source);
                                 resolve(true);
                             });
-                    }, 500);
+                    }, 200);
                 })
                 .catch(err => {
                     print(err);

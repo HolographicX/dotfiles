@@ -58,6 +58,7 @@ in {
       tools = {
         tailscale.enable = true;
         warp.enable = true;
+        piper.enable = true;
       };
     };
     
