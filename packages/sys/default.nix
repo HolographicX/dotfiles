@@ -20,12 +20,15 @@ writeShellScriptBin "sys" ''
         fi
         
         git diff -U0 | bat
+        git add .
 
         echo "🔨 Building system configuration with $REBUILD_COMMAND"
         
         # Rebuild, output simplified errors, log trackebacks
         trap 'cat nixos-switch.log | grep --color error; exit 1' ERR
-        stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1 | tee nixos-switch.log &
+        # stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1 | tee nixos-switch.log &
+        script -q -c "stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1" nixos-switch.log &
+        tail -f nixos-switch.log
         wait
 
         # Get current generation metadata
