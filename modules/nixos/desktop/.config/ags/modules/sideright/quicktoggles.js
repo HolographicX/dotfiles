@@ -167,14 +167,12 @@ export const passwordWindow = Widget.Window({
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
-    layer: 'top',
+    // layer: 'top',
     child: Widget.Box({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
         className: 'entry',
-        hexpand: true,
-        vexpand: true,
         children: [
             EventBox({
                 onPrimaryClick: () => App.closeWindow('passwordWindow'),
