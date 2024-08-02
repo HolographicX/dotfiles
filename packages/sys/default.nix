@@ -12,13 +12,6 @@ writeShellScriptBin "sys" ''
         # cd to your config dir
         pushd "$DOTS_DIR"
 
-        # Early return if no changes were detected
-        if git diff --quiet; then
-            echo "No changes detected, exiting."
-            popd
-            exit 0
-        fi
-
         git diff -U0 | bat
         git add .
 
