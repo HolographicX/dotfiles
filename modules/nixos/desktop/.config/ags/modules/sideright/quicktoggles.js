@@ -172,15 +172,24 @@ export const passwordWindow = Widget.Window({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
+        hexpand: true,
+        vexpand: true,
         className: 'entry',
         children: [
+            EventBox({
+                onPrimaryClick: () => App.closeWindow('sideright'),
+                onSecondaryClick: () => App.closeWindow('sideright'),
+                onMiddleClick: () => App.closeWindow('sideright'),
+            }),
             Widget.Entry({
                 placeholder_text: 'Password',
                 className: 'entry-input',
                 hpack: 'center',
                 visibility: false,
                 on_accept: ({ pass }) => {
-                    Utils.execAsync(`echo '${pass}'' | sudo -S tailscale up`).catch(print)
+                    Utils.execAsync(`echo '${pass}'' | sudo -S tailscale up`).catch(print).then(() => {
+                        App.closeWindow('passwordWindow')
+                    })
                 },
             }),
             Widget.Label()

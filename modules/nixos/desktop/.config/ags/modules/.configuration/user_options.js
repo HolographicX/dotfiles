@@ -7,8 +7,8 @@ import userOverrides from '../../user_options.js';
 let configOptions = {
     // General stuff
     'ai': {
-        'defaultGPTProvider': "openai",
-        'defaultTemperature': 0.9,
+        'defaultGPTProvider': "ollama",
+        'defaultTemperature': 0.5,
         'enhancements': true,
         'useHistory': true,
         'safety': true,
@@ -29,7 +29,7 @@ let configOptions = {
         'keyboardUseFlag': false, // Use flag emoji instead of abbreviation letters
         'layerSmoke': false,
         'layerSmokeStrength': 0.2,
-        'fakeScreenRounding': 1, // 0: None | 1: Always | 2: When not fullscreen
+        'fakeScreenRounding': 0, // 0: None | 1: Always | 2: When not fullscreen
     },
     'apps': {
         'bluetooth': "blueberry",
@@ -106,7 +106,7 @@ let configOptions = {
         'pages': {
             'order': ["apis", "tools"],
             'apis': {
-                'order': ["gemini", "gpt", "waifu", "booru"],
+                'order': ["gpt","gemini" , "waifu", "booru"],
             }
         },
     },
@@ -116,7 +116,7 @@ let configOptions = {
             'commands': true,
             'mathResults': true,
             'directorySearch': true,
-            'aiSearch': true,
+            'aiSearch': false,
             'webSearch': true,
         },
         'engineBaseUrl': "https://www.google.com/search?q=",
