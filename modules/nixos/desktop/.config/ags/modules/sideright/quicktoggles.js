@@ -11,7 +11,7 @@ import { setupCursorHover } from '../.widgetutils/cursorhover.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { sidebarOptionsStack } from './sideright.js';
 import { gammaBrightness, gammaTemperature } from './centermodules/configure.js';
-import { popupwindow } from '../.widgethacks/popupwindow.js'
+import { PopupWindow } from '../.widgethacks/popupwindow.js'
 export const ToggleIconWifi = (props = {}) => Widget.Button({
     className: 'txt-small sidebar-iconbutton',
     tooltipText: 'Wifi | Right-click to configure',
@@ -162,16 +162,17 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
-export const passwordWindow = Widget.Window({
+export const passwordWindow = PopupWindow({
     css: 'background-color: transparent;',
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
-    layer: 'top',
+    layer: 'overlay',
     child: Widget.Box ({
         children: [
+            clickCloseRegion({ name: 'cheatsheet' }),
             Widget.Entry({
-                placeholder_text: 'Password',
+                placeholder_text: 'passwordWindow',
                 className: 'entry-input',
                 hpack: 'center',
                 visibility: false,
@@ -181,11 +182,9 @@ export const passwordWindow = Widget.Window({
                     })
                 },
             }),
-            Widget.Label()
+            clickCloseRegion({ name: 'passwordWindow' }),
         ],
     }),
-    setup: popupwindow,
-
 }) 
     
 export const ModuleTailscale = async (props = {}) => {
