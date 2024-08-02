@@ -162,6 +162,26 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
+const passwordWindow = Widget.Window({
+    anchor: ['top', 'left', 'right', 'bottom'],
+    keymode: 'exclusive',
+    child: Widget.Box({
+        vertical: true,
+        hpack: 'center',
+        vpack: 'center',
+        hexpand: true,
+        vexpand: true,
+        children: [
+            Widget.Entry({
+                hpack: 'center',
+                visibility: false,
+                on_accept: ({ pass }) => {
+                    Utils.execAsync(`echo '${pass}' | sudo -S tailscale up`).catch(print)
+                },
+            })
+        ],
+    }),
+}) 
 export const ModuleTailscale = async (props = {}) => {
     if (!exec(`bash -c 'command -v tailscale'`)) return null;
     return Widget.Button({
@@ -173,8 +193,8 @@ export const ModuleTailscale = async (props = {}) => {
         onClicked: (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) Utils.execAsync('zenity --password | sudo -S tailscale up').catch(print)
-            else Utils.execAsync('zenity --password | sudo -S tailscale down').catch(print);
+            if (self.attribute.enabled) App.openWindowOnAllMonitors(passwordWindow)
+            else App.openWindowOnAllMonitors(passwordWindow)
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',

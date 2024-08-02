@@ -46,7 +46,6 @@ in
       ydotool
 
       ### Gnome
-      zenity
       gnome-keyring
       gnome.gnome-control-center
 
