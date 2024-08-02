@@ -172,8 +172,6 @@ export const passwordWindow = Widget.Window({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
-        hexpand: true,
-        vexpand: true,
         className: 'entry',
         children: [
             EventBox({
@@ -218,6 +216,7 @@ export const ModuleTailscale = async (props = {}) => {
         }),
         setup: (self) => {
             setupCursorHover(self);
+            App.closeWindow('passwordWindow');
             self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
         },
