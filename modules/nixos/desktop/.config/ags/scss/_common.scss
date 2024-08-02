@@ -317,26 +317,3 @@ widget {
         padding: 0.136rem;
     }
 }
-
-.entry {
-    @include small-rounding;
-    border: 1px solid mix($surfaceContainer, $onBackground, 80%);
-    padding: 0.681rem;
-    background: opacify($surfaceContainer, 1);
-    color: $onSurface;
-    -gtk-outline-radius: 1.159rem;
-    animation-name: appear;
-    animation-duration: 40ms;
-    animation-timing-function: ease-out;
-    animation-iteration-count: 1;
-}
-
-.entry-input {
-    border-radius: 0.545rem;
-    -gtk-outline-radius: 0.545rem;
-    padding: 0.4em 1.5rem;
-    border: 1px solid $outline;
-    background-color: transparent;
-    color: $onSurface;
-    caret-color: $onLayer2;
-}
