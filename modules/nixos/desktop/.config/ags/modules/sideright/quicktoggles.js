@@ -172,19 +172,20 @@ export const ModuleTailscale = async (props = {}) => {
         className: 'txt-small sidebar-iconbutton',
         tooltipText: 'Tailscale',
         onClicked: (self) => {
-            self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+            self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
             if (self.attribute.enabled) { 
                 App.closeWindow('sideright');
                 Utils.execAsync(['bash', '-c', 'yad --title="Enter Password" --entry --entry-label=Password --hide-text | sudo -S tailscale down']).then(() => {
-                    self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+                    self.attribute.enabled = exec(`bash -c 'tailscale status | grep stopped'`);
                 }).catch(print)
             }
             else {
                 App.closeWindow('sideright');
                 Utils.execAsync(['bash', '-c', 'yad --title="Enter Password" --entry --entry-label=Password --hide-text | sudo -S tailscale up --accept-routes']).then(() => {
-                    self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+                    self.attribute.enabled = exec(`bash -c 'tailscale status | grep stopped'`);
                 }).catch(print)
             }
+            self.toggleClassName('sidebar-button-active', self.attribute.enabled);
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',
