@@ -162,6 +162,33 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
+export const ModuleTailscale = async (props = {}) => {
+    if (!exec(`bash -c 'command -v tailscale'`)) return null;
+    return Widget.Button({
+        attribute: {
+            enabled: false,
+        },
+        className: 'txt-small sidebar-iconbutton',
+        tooltipText: 'Tailscale',
+        onClicked: (self) => {
+            self.attribute.enabled = !self.attribute.enabled;
+            self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+            if (self.attribute.enabled) Utils.execAsync('sudo tailscale up').catch(print)
+            else Utils.execAsync('sudo tailscale down').catch(print);
+        },
+        child: Widget.Icon({
+            icon: 'tailscale-symbolic',
+            className: 'txt-norm',
+        }),
+        setup: (self) => {
+            setupCursorHover(self);
+            self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+            self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+        },
+        ...props,
+    });
+}
+
 export const ModuleInvertColors = async (props = {}) => {
     try {
         const Hyprland = (await import('resource:///com/github/Aylur/ags/service/hyprland.js')).default;
