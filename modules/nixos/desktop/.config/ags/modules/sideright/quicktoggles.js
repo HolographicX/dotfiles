@@ -173,14 +173,14 @@ export const passwordWindow = Widget.Window({
         hpack: 'center',
         vpack: 'center',
         className: 'entry',
-        // hexpand: true,
-        // vexpand: true,
+        hexpand: true,
+        vexpand: true,
         children: [
-            // EventBox({
-            //     onPrimaryClick: () => App.closeWindow('sideright'),
-            //     onSecondaryClick: () => App.closeWindow('sideright'),
-            //     onMiddleClick: () => App.closeWindow('sideright'),
-            // }),
+            EventBox({
+                onPrimaryClick: () => App.closeWindow('passwordWindow'),
+                onSecondaryClick: () => App.closeWindow('passwordWindow'),
+                onMiddleClick: () => App.closeWindow('passwordWindow'),
+            }),
             Widget.Entry({
                 placeholder_text: 'Password',
                 className: 'entry-input',
