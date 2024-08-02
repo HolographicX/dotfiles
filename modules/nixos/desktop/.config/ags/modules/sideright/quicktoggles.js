@@ -175,7 +175,7 @@ export const ModuleTailscale = async (props = {}) => {
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
             if (self.attribute.enabled) { 
                 // App.closeWindow('sideright');
-                Utils.execAsync(`zenity --password | sudo -S tailscale up --accept-routes`).then(() => {
+                Utils.execAsync('zenity --password | sudo -S tailscale up --accept-routes').then(() => {
                     self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
                 }).catch(print);
             } else {
