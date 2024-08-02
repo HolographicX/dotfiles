@@ -11,7 +11,7 @@ import { setupCursorHover } from '../.widgetutils/cursorhover.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { sidebarOptionsStack } from './sideright.js';
 import { gammaBrightness, gammaTemperature } from './centermodules/configure.js';
-
+import { popupwindow } from '../.widgethacks/popupwindow.js'
 export const ToggleIconWifi = (props = {}) => Widget.Button({
     className: 'txt-small sidebar-iconbutton',
     tooltipText: 'Wifi | Right-click to configure',
@@ -169,19 +169,7 @@ export const passwordWindow = Widget.Window({
     keymode: 'exclusive',
     layer: 'top',
     child: Widget.Box ({
-        hexpand: true,
-        vexpand: true,
-        children: Widget.Box({
-        vertical: true,
-        hpack: 'center',
-        vpack: 'center',
-        className: 'entry',
         children: [
-            // EventBox({
-            //     onPrimaryClick: () => App.closeWindow('passwordWindow'),
-            //     onSecondaryClick: () => App.closeWindow('passwordWindow'),
-            //     onMiddleClick: () => App.closeWindow('passwordWindow'),
-            // }),
             Widget.Entry({
                 placeholder_text: 'Password',
                 className: 'entry-input',
@@ -195,9 +183,11 @@ export const passwordWindow = Widget.Window({
             }),
             Widget.Label()
         ],
-    })}) 
-    
+    }),
+    setup: popupwindow,
+
 }) 
+    
 export const ModuleTailscale = async (props = {}) => {
     if (!exec(`bash -c 'command -v tailscale'`)) return null;
     return Widget.Button({
