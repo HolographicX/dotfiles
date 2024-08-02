@@ -11,7 +11,7 @@ import { setupCursorHover } from '../.widgetutils/cursorhover.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { sidebarOptionsStack } from './sideright.js';
 import { gammaBrightness, gammaTemperature } from './centermodules/configure.js';
-import { PopupWindow } from '../.widgethacks/popupwindow.js'
+import PopupWindow from '../.widgethacks/popupwindow.js'
 export const ToggleIconWifi = (props = {}) => Widget.Button({
     className: 'txt-small sidebar-iconbutton',
     tooltipText: 'Wifi | Right-click to configure',
@@ -170,7 +170,7 @@ export const passwordWindow = PopupWindow({
     layer: 'overlay',
     child: Widget.Box ({
         children: [
-            clickCloseRegion({ name: 'cheatsheet' }),
+            // clickCloseRegion({ name: 'passwordWindow' }),
             Widget.Entry({
                 placeholder_text: 'passwordWindow',
                 className: 'entry-input',
@@ -182,7 +182,7 @@ export const passwordWindow = PopupWindow({
                     })
                 },
             }),
-            clickCloseRegion({ name: 'passwordWindow' }),
+            // clickCloseRegion({ name: 'passwordWindow' }),
         ],
     }),
 }) 
