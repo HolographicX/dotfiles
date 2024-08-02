@@ -18,10 +18,15 @@ in {
     hardware.audio.enable = true;
     hardware.networking.enable = true;
     hardware.nvidia.enable = true;
-    
-    services.ssh.enable = true;
-    services.printing.enable = true;
-    services.flatpak.enable = true;
+    services = {
+      easyeffects.enable = true;
+      ssh.enable = true;
+      polkit.enable = true;
+      printing.enable = true;
+      flatpak.enable = true;
+
+    };
+
     
     environment.systemPackages = [ pkgs.custom.sys ];
 
@@ -61,8 +66,5 @@ in {
       };
     };
     
-    services = {
-      easyeffects.enable = true;
-    };
   };
 }

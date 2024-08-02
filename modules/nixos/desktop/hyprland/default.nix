@@ -45,7 +45,6 @@ in
       ydotool
 
       ### Gnome
-      polkit_gnome
       gnome-keyring
       gnome.gnome-control-center
 
