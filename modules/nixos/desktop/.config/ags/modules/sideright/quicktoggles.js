@@ -163,8 +163,8 @@ export const ModuleCloudflareWarp = async (props = {}) => {
 }
 
 const passwordWindow = Widget.Window({
+    className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
-    keymode: 'exclusive',
     child: Widget.Box({
         vertical: true,
         hpack: 'center',
@@ -178,7 +178,8 @@ const passwordWindow = Widget.Window({
                 on_accept: ({ pass }) => {
                     Utils.execAsync(`echo '${pass}' | sudo -S tailscale up`).catch(print)
                 },
-            })
+            }),
+            Widget.Label()
         ],
     }),
 }) 
