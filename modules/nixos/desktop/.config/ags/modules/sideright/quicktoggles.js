@@ -167,18 +167,18 @@ export const passwordWindow = Widget.Window({
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
-    // layer: 'top',
+    layer: 'top',
     child: Widget.Box({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
         className: 'entry',
         children: [
-            EventBox({
-                onPrimaryClick: () => App.closeWindow('passwordWindow'),
-                onSecondaryClick: () => App.closeWindow('passwordWindow'),
-                onMiddleClick: () => App.closeWindow('passwordWindow'),
-            }),
+            // EventBox({
+            //     onPrimaryClick: () => App.closeWindow('passwordWindow'),
+            //     onSecondaryClick: () => App.closeWindow('passwordWindow'),
+            //     onMiddleClick: () => App.closeWindow('passwordWindow'),
+            // }),
             Widget.Entry({
                 placeholder_text: 'Password',
                 className: 'entry-input',
