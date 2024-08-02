@@ -17,6 +17,7 @@ in
   };
   config = mkIf cfg.enable {
     desktop.addons = {
+      mimelist.enable = true;
       anyrun.enable = true;
       ags.enable = true;
       fuzzel.enable = true;
@@ -45,6 +46,7 @@ in
       ydotool
 
       ### Gnome
+      zenity
       gnome-keyring
       gnome.gnome-control-center
 

@@ -13,7 +13,7 @@ writeShellScriptBin "sys" ''
         pushd "$DOTS_DIR"
 
         # Early return if no changes were detected
-        if git diff --quiet '*'; then
+        if git diff --quiet; then
             echo "No changes detected, exiting."
             popd
             exit 0
