@@ -35,7 +35,7 @@ writeShellScriptBin "sys" ''
   cmd_test() {
       echo "🏗️ Building ephemeral system configuration with $REBUILD_COMMAND"
       cd "$DOTS_DIR"
-      $REBUILD_COMMAND test --fast --flake .#
+      sudo $REBUILD_COMMAND test --fast --flake .#
   }
 
   # TODO: Make it update a single input

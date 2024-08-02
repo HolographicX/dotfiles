@@ -175,7 +175,7 @@ export const ModuleTailscale = async (props = {}) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
             if (self.attribute.enabled) Utils.execAsync(`zenity --help`).catch(print)
-            else Utils.exec(`zenity --help`).catch(print)
+            else Utils.execAsync('zenity --password | sudo tailscale down').catch(print)
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',
