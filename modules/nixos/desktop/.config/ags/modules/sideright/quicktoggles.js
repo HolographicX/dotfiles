@@ -167,7 +167,7 @@ export const passwordWindow = PopupWindow({
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
-    layer: 'overlay',
+    layer: 'top',
     child: Widget.Box ({
         children: [
             // clickCloseRegion({ name: 'passwordWindow' }),
