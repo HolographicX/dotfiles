@@ -329,14 +329,6 @@ widget {
     animation-duration: 40ms;
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .entry-input {

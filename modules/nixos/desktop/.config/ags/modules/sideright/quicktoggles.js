@@ -166,13 +166,11 @@ const passwordWindow = Widget.Window({
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     layer: 'top',
-    className: 'entry',
     child: Widget.Box({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
-        hexpand: true,
-        vexpand: true,
+        className: 'entry',
         children: [
             Widget.Entry({
                 className: 'entry-input',
