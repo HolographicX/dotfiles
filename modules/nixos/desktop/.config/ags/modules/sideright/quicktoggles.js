@@ -163,7 +163,7 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
-export const passwordWindow = () => PopupWindow({
+export default () => PopupWindow({
     monitor,
     name: `passwordWindow${monitor}`,
     className: 'menu',
