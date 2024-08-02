@@ -4,7 +4,7 @@ import clickCloseRegion from './clickcloseregion';
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
-export const passwordEntry = () => PopupWindow({
+export default () => PopupWindow({
     monitor,
     name: `passwordEntry${monitor}`,
     className: 'menu',
@@ -28,4 +28,3 @@ export const passwordEntry = () => PopupWindow({
     }),
 });
 
-export default passwordEntry;
