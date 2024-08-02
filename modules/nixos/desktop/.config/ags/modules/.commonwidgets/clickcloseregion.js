@@ -20,4 +20,3 @@ export const clickCloseRegion = ({ name, multimonitor = true, monitor = 0, expan
 }
 
 export default clickCloseRegion;
-
