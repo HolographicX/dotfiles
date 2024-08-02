@@ -126,10 +126,10 @@ export const ModuleNightLight = async (props = {}) => {
             self.attribute.enabled = !!exec('pidof gammastep');
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
             gammaBrightness.connect('changed', async () => {
-                if (self.attribute.enabled) await gammastepProfile()
+                if (self.attribute.enabled) await gammastepProfile().then(() => {setInterval(() => {}, 200);});
             });
             gammaTemperature.connect('changed', async () => {
-                if (self.attribute.enabled) await gammastepProfile()
+                if (self.attribute.enabled) await gammastepProfile().then(() => {setInterval(() => {}, 200);});
             });
         },
         ...props,
