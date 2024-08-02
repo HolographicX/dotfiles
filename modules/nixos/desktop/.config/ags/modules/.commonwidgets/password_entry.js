@@ -3,9 +3,9 @@ import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import PopupWindow from "../.widgethacks/popupwindow"
 
 export const passwordWindow = () => PopupWindow({
-    css: 'background-color: transparent;',
+    monitor,
+    name: `passwordWindow${monitor}`,
     className: 'menu',
-    anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
     layer: 'overlay',
     child: Widget.Box ({
@@ -25,3 +25,5 @@ export const passwordWindow = () => PopupWindow({
         ],
     }),
 }) 
+
+export default passwordWindow;
