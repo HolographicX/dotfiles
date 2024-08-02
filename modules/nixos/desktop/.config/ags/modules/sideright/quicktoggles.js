@@ -162,31 +162,6 @@ export const ModuleCloudflareWarp = async (props = {}) => {
         ...props,
     });
 }
-
-export const passwordWindow = (monitor = 0) => PopupWindow({
-    monitor,
-    name: `passwordWindow${monitor}`,
-    className: 'menu',
-    keymode: 'exclusive',
-    layer: 'overlay',
-    child: Widget.Box ({
-        children: [
-            clickCloseRegion({ name: 'passwordWindow' }),
-            Widget.Entry({
-                className: 'entry-input',
-                hpack: 'center',
-                visibility: false,
-                on_accept: ({ pass }) => {
-                    Utils.execAsync(`echo '${pass}'' | sudo -S tailscale up`).catch(print).then(() => {
-                        App.closeWindow('passwordWindow')
-                    })
-                },
-            }),
-            clickCloseRegion({ name: 'passwordWindow' }),
-        ],
-    }),
-}) 
-
     
 export const ModuleTailscale = async (props = {}) => {
     if (!exec(`bash -c 'command -v tailscale'`)) return null;
