@@ -82,8 +82,8 @@ export const HyprToggleIcon = async (icon, name, hyprlandConfigValue, props = {}
 
 export const ModuleNightLight = async (props = {}) => {
     if (!exec(`bash -c 'command -v gammastep'`)) return null;
-    function gammastepProfile() {
-        Utils.execAsync(`gammastep -O ${gammaTemperature.value} -b ${gammaBrightness.value/10}`).catch(print)
+    async function gammastepProfile() {
+        if (await killgammastep()) Utils.execAsync(`gammastep -O ${gammaTemperature.value} -b ${gammaBrightness.value/10}`).catch(print)
     };
     async function killgammastep() {
         return new Promise((resolve) => {
@@ -124,11 +124,11 @@ export const ModuleNightLight = async (props = {}) => {
             setupCursorHover(self);
             self.attribute.enabled = !!exec('pidof gammastep');
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            gammaBrightness.connect('changed', async () => {
-                if (await killgammastep()) gammastepProfile()
+            gammaBrightness.connect('changed', () => {
+                if (self.attribute.enabled) gammastepProfile()
             });
-            gammaTemperature.connect('changed', async () => {
-                if (await killgammastep()) gammastepProfile()
+            gammaTemperature.connect('changed', () => {
+                if (self.attribute.enabled) gammastepProfile()
             });
         },
         ...props,
