@@ -174,8 +174,8 @@ export const ModuleTailscale = async (props = {}) => {
         onClicked: (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) openWindowOnAllMonitors('passwordWindow')
-            else openWindowOnAllMonitors('passwordWindow')
+            if (self.attribute.enabled) openWindowOnAllMonitors('passwordEntry')
+            else openWindowOnAllMonitors('passwordEntry')
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',

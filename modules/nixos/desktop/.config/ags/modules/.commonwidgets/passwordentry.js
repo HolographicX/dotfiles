@@ -6,26 +6,26 @@ import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 export const passwordEntry = () => PopupWindow({
     monitor,
-    name: `passwordWindow${monitor}`,
+    name: `passwordEntry${monitor}`,
     className: 'menu',
     keymode: 'exclusive',
     layer: 'overlay',
     child: Widget.Box ({
         children: [
-            clickCloseRegion({ name: 'passwordWindow' }),
+            clickCloseRegion({ name: 'passwordEntry' }),
             Widget.Entry({
                 className: 'entry-input',
                 hpack: 'center',
                 visibility: false,
                 on_accept: ({ pass }) => {
                     Utils.execAsync(`echo '${pass}'' | sudo -S tailscale up`).catch(print).then(() => {
-                        App.closeWindow('passwordWindow')
+                        closeWindowOnAllMonitors('passwordEntry')
                     })
                 },
             }),
-            clickCloseRegion({ name: 'passwordWindow' }),
+            clickCloseRegion({ name: 'passwordEntry' }),
         ],
     }),
-}) 
+});
 
 export default passwordEntry;
