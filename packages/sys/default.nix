@@ -24,18 +24,7 @@ writeShellScriptBin "sys" ''
 
         echo "🔨 Building system configuration with $REBUILD_COMMAND"
         
-        # Rebuild, output simplified errors, log trackebacks
-        # trap 'cat nixos-switch.log | grep --color error; exit 1' ERR
-        # stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1 | tee nixos-switch.log &
-        # tail -f nixos-switch.log
-        # wait
-        stdbuf -oL -eL sudo $REBUILD_COMMAND switch --flake .# 2>&1 | tee nixos-switch.log &
-        wait $!
-
-        if [ $? -ne 0 ]; then
-            cat nixos-switch.log | grep --color error
-            exit 1
-        fi
+        sudo $REBUILD_COMMAND switch --flake .#
 
         # Get current generation metadata
         current=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
