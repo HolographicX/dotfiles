@@ -22,7 +22,7 @@ import Session from './modules/session/main.js';
 import SideLeft from './modules/sideleft/main.js';
 import SideRight from './modules/sideright/main.js';
 import { COMPILED_STYLE_DIR } from './init.js';
-import PasswordEntry from './modules/.commonwidgets/passwordentry.js';
+// import PasswordEntry from './modules/.commonwidgets/passwordentry.js';
 
 const range = (length, start = 1) => Array.from({ length }, (_, i) => i + start);
 function forMonitors(widget) {
@@ -41,7 +41,7 @@ firstRunWelcome().catch(print);
 startBatteryWarningService().catch(print)
 
 const Windows = () => [
-    forMonitors(PasswordEntry),
+    // forMonitors(PasswordEntry),
     forMonitors(Crosshair),
     Overview(),
     forMonitors(Indicator),
