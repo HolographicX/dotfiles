@@ -340,8 +340,3 @@ widget {
     color: $onSurface;
     caret-color: $onLayer2;
 }
-
-.entry-input::selection {
-    background-color: $secondary;
-    color: $onSecondary;
-}
