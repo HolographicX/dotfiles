@@ -162,9 +162,11 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
-const passwordWindow = Widget.Window({
+export const passwordWindow = Widget.Window({
+    css: 'background-color: transparent;',
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
+    keymode: 'exclusive',
     layer: 'top',
     child: Widget.Box({
         vertical: true,
@@ -173,6 +175,7 @@ const passwordWindow = Widget.Window({
         className: 'entry',
         children: [
             Widget.Entry({
+                placeholder_text: 'Password',
                 className: 'entry-input',
                 hpack: 'center',
                 visibility: false,
@@ -195,8 +198,10 @@ export const ModuleTailscale = async (props = {}) => {
         onClicked: (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) App.config({ windows: [passwordWindow] })
-            else App.config({ windows: [passwordWindow] })
+            if (self.attribute.enabled)  {
+                App.addWindow('passwordWindow')
+            }
+            else App.addWindow('passwordWindow')
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',
