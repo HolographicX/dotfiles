@@ -168,7 +168,10 @@ export const passwordWindow = Widget.Window({
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
     layer: 'top',
-    child: Widget.Box({
+    child: Widget.Box ({
+        hexpand: true,
+        vexpand: true,
+        children: Widget.Box({
         vertical: true,
         hpack: 'center',
         vpack: 'center',
@@ -192,7 +195,8 @@ export const passwordWindow = Widget.Window({
             }),
             Widget.Label()
         ],
-    }),
+    })}) 
+    
 }) 
 export const ModuleTailscale = async (props = {}) => {
     if (!exec(`bash -c 'command -v tailscale'`)) return null;
@@ -206,9 +210,9 @@ export const ModuleTailscale = async (props = {}) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
             if (self.attribute.enabled)  {
-                App.addWindow('passwordWindow')
+                openWindowOnAllMonitors('passwordWindow')
             }
-            else App.addWindow('passwordWindow')
+            else openWindowOnAllMonitors('passwordWindow')
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',
