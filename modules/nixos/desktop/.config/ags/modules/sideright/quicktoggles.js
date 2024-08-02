@@ -162,15 +162,15 @@ export const ModuleCloudflareWarp = async (props = {}) => {
     });
 }
 
-export const passwordWindow = PopupWindow({
+export var passwordWindow = PopupWindow({
     css: 'background-color: transparent;',
     className: 'menu',
     anchor: ['top', 'left', 'right', 'bottom'],
     keymode: 'exclusive',
-    layer: 'top',
+    layer: 'overlay',
     child: Widget.Box ({
         children: [
-            // clickCloseRegion({ name: 'passwordWindow' }),
+            clickCloseRegion({ name: 'cheatsheet' }),
             Widget.Entry({
                 placeholder_text: 'passwordWindow',
                 className: 'entry-input',
@@ -182,7 +182,7 @@ export const passwordWindow = PopupWindow({
                     })
                 },
             }),
-            // clickCloseRegion({ name: 'passwordWindow' }),
+            clickCloseRegion({ name: 'passwordWindow' }),
         ],
     }),
 }) 
@@ -198,9 +198,7 @@ export const ModuleTailscale = async (props = {}) => {
         onClicked: (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled)  {
-                openWindowOnAllMonitors('passwordWindow')
-            }
+            if (self.attribute.enabled) openWindowOnAllMonitors('passwordWindow')
             else openWindowOnAllMonitors('passwordWindow')
         },
         child: Widget.Icon({
