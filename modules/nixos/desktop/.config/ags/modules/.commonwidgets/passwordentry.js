@@ -1,10 +1,10 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import PopupWindow from '../.widgethacks/popupwindow';
-import clickCloseRegion from '../.commonwidgets/clickcloseregion';
+import clickCloseRegion from './clickcloseregion';
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
-export default () => PopupWindow({
+export const passwordEntry = () => PopupWindow({
     monitor,
     name: `passwordWindow${monitor}`,
     className: 'menu',
@@ -27,3 +27,5 @@ export default () => PopupWindow({
         ],
     }),
 }) 
+
+export default passwordEntry;

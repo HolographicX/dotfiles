@@ -171,8 +171,8 @@ let configOptions = {
             "light": "Adwaita",
         },
         substitutions: {
-            'code-url-handler': "visual-studio-code",
-            'Code': "visual-studio-code",
+            'codium-url-handler': "visual-studio-code",
+            'Codium': "visual-studio-code",
             'GitHub Desktop': "github-desktop",
             'Minecraft* 1.20.1': "minecraft",
             'gnome-tweaks': "org.gnome.tweaks",
