@@ -37,7 +37,7 @@ let configOptions = {
         'network': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center wifi",
         'settings': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
         'taskManager': "gnome-usage",
-        'terminal': "foot", // This is only for shell actions
+        'terminal': "alacritty", // This is only for shell actions
     },
     'battery': {
         'low': 20,
@@ -106,7 +106,7 @@ let configOptions = {
         'pages': {
             'order': ["apis", "tools"],
             'apis': {
-                'order': ["gpt","gemini" , "waifu", "booru"],
+                'order': ["gpt","gemini"],
             }
         },
     },
@@ -116,8 +116,8 @@ let configOptions = {
             'commands': true,
             'mathResults': true,
             'directorySearch': true,
-            'aiSearch': false,
             'webSearch': true,
+            'aiSearch': true,
         },
         'engineBaseUrl': "https://www.google.com/search?q=",
         'excludedSites': ["quora.com"],
