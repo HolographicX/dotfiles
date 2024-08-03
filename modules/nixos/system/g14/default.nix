@@ -68,5 +68,8 @@ in {
           enableUserService = true;
         };
     };
+
+    # some suspend wake-up patch
+    boot.loader.grub.extraConfig = "GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep\"";
   };
 }
