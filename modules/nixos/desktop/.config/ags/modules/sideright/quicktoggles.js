@@ -113,7 +113,7 @@ export const ModuleNightLight = async (props = {}) => {
         onClicked: async (self) => {
             self.attribute.enabled = !self.attribute.enabled;
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) gammastepProfile()
+            if (self.attribute.enabled) await gammastepProfile()
             else {
                 // disable the button until fully terminated to avoid race
                 self.sensitive = false;
@@ -125,11 +125,11 @@ export const ModuleNightLight = async (props = {}) => {
             setupCursorHover(self);
             self.attribute.enabled = !!exec('pidof gammastep');
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            gammaBrightness.connect('changed', () => {
-                if (self.attribute.enabled) gammastepProfile()
+            gammaBrightness.connect('changed', async () => {
+                if (self.attribute.enabled) await gammastepProfile().then(() => {setInterval(() => {}, 200);});
             });
-            gammaTemperature.connect('changed', () => {
-                if (self.attribute.enabled) gammastepProfile()
+            gammaTemperature.connect('changed', async () => {
+                if (self.attribute.enabled) await gammastepProfile().then(() => {setInterval(() => {}, 200);});
             });
         },
         ...props,
@@ -172,10 +172,22 @@ export const ModuleTailscale = async (props = {}) => {
         className: 'txt-small sidebar-iconbutton',
         tooltipText: 'Tailscale',
         onClicked: (self) => {
-            self.attribute.enabled = !self.attribute.enabled;
+            self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+            if (self.attribute.enabled) { 
+                App.closeWindow('sideright');
+                Utils.execAsync(['bash', '-c', 'yad --title="Enter Password" --entry --entry-label=Password --hide-text | sudo -S tailscale down']).then(() => {
+                    self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+                    self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+                }).catch(print)
+            }
+            else {
+                App.closeWindow('sideright');
+                Utils.execAsync(['bash', '-c', 'yad --title="Enter Password" --entry --entry-label=Password --hide-text | sudo -S tailscale up --accept-routes']).then(() => {
+                    self.attribute.enabled = !exec(`bash -c 'tailscale status | grep stopped'`);
+                    self.toggleClassName('sidebar-button-active', self.attribute.enabled);
+                }).catch(print)
+            }
             self.toggleClassName('sidebar-button-active', self.attribute.enabled);
-            if (self.attribute.enabled) Utils.execAsync(`zenity --help`).catch(print)
-            else Utils.exec(`zenity --help`).catch(print)
         },
         child: Widget.Icon({
             icon: 'tailscale-symbolic',
