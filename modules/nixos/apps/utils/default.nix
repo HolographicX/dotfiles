@@ -25,6 +25,7 @@ in {
       bat
       eza
       fzf
+      gnumake
       fd
 
       # Util
