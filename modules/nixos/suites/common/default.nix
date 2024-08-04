@@ -59,6 +59,7 @@ in {
       libreoffice.enable = true;
       minecraft.enable = true;
       obsidian.enable = true;
+      qbittorrent.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
