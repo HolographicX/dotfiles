@@ -60,6 +60,7 @@ in {
       minecraft.enable = true;
       obsidian.enable = true;
       qbittorrent.enable = true;
+      chromium.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
