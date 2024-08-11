@@ -54,6 +54,7 @@ in
       hypridle
       wlogout
       wl-clipboard
+      fcitx5
 
       ### Fonts and Themes
       adw-gtk3
