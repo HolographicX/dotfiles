@@ -79,11 +79,16 @@ in
       wlsunset
     ];
 
+    # for on screen kb support
+    i18n.inputMethod.enabled = "fcitx5";
+    i18n.inputMethod.fcitx5.waylandFrontend = true;
+
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     };
+
     programs.hyprland.enable = true;
     programs.hyprland.xwayland.enable = true;
     
