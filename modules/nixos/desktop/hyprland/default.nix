@@ -18,7 +18,6 @@ in
   config = mkIf cfg.enable {
     desktop.addons = {
       mimelist.enable = true;
-      anyrun.enable = true;
       ags.enable = true;
       fuzzel.enable = true;
       dconf.enable = true;
