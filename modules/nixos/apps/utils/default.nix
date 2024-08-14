@@ -30,6 +30,8 @@ in {
 
       # Util
       alejandra
+      vim
+      wget
       unzip
       sshfs
       htop
