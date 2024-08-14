@@ -59,7 +59,7 @@ in {
       libreoffice.enable = true;
       minecraft.enable = true;
       obsidian.enable = true;
-      qbittorrent.enable = true;
+      transmission.enable = true;
       chromium.enable = true;
       tools = {
         tailscale.enable = true;
