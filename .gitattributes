@@ -1,1 +1,1 @@
-*.nix linguist-detectable=false
+modules/nixos/desktop/.config/* linguist-vendored
