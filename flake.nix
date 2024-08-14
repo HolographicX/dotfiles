@@ -20,10 +20,6 @@
       flake = false;
     };
     ags.url = "github:Aylur/ags";
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 

@@ -14,17 +14,24 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+      package = pkgs.gitFull;
+      config.credential.helper = "libsecret";
+    };
     environment.systemPackages = with pkgs; [
       # Development
-      git
       git-remote-gcrypt
       bat
       eza
       fzf
+      gnumake
       fd
 
       # Util
       alejandra
+      vim
+      wget
       unzip
       sshfs
       htop

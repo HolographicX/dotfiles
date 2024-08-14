@@ -3,16 +3,12 @@
       ./hardware-configuration.nix
     ];
 
-  # Enable Bootloader
-  system.boot.bios.enable = true;
-  system.g14.enable = true;
-  
+  system.boot.bios.enable = true; # Enable Bootloader
+  system.g14.enable = true; # Kernel patches for asus laptops
   system.battery.enable = true; # Only for laptops, they will still work without it, just improves battery life
 
   environment.systemPackages = with pkgs; [
     # Any particular packages only for this host
-    vim
-    wget
   ];
   
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.

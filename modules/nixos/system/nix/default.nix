@@ -45,7 +45,7 @@ in {
         dates = "weekly";
         options = "--delete-older-than 7d";
       };
-
+      
       # flake-utils-plus
       generateRegistryFromInputs = true;
       generateNixPathFromInputs = true;

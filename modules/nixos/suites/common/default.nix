@@ -59,6 +59,8 @@ in {
       libreoffice.enable = true;
       minecraft.enable = true;
       obsidian.enable = true;
+      transmission.enable = true;
+      chromium.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
