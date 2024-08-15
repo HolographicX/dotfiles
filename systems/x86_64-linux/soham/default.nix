@@ -11,8 +11,6 @@
 
   environment.systemPackages = with pkgs; [
     # Any particular packages only for this host
-    vim
-    wget
   ];
   
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
