@@ -19,6 +19,7 @@ in {
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
     };
+    
     environment.systemPackages = with pkgs; [
       # Development
       git-remote-gcrypt
