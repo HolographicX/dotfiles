@@ -4,7 +4,8 @@
     ];
 
   system.boot.bios.enable = true; # Enable Bootloader
-  system.g14.enable = true; # Kernel patches for asus laptops
+  # system.g14.enable = true; # Kernel patches for asus laptops
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
   system.battery.enable = true; # Only for laptops, they will still work without it, just improves battery life
 
   environment.systemPackages = with pkgs; [
