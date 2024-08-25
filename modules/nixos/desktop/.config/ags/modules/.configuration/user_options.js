@@ -126,7 +126,7 @@ let configOptions = {
         // See https://docs.gtk.org/glib/method.DateTime.format.html
         // Here's the 12h format: "%I:%M%P"
         // For seconds, add "%S" and set interval to 1000
-        'format': "%I:%M%P",
+        'format': "%I:%M %P",
         'interval': 5000,
         'dateFormatLong': "%A, %d/%m", // On bar
         'dateInterval': 5000,
