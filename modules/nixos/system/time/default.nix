@@ -13,7 +13,5 @@ in {
       mkBoolOpt false "Whether or not to configure timezone information.";
   };
 
-  config = mkIf cfg.enable {
-    services.automatic-timezoned.enable = true;
-    };
+  config = mkIf cfg.enable {services.automatic-timezoned.enable = true;};
 }
