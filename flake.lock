@@ -187,6 +187,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1724575805,
+        "narHash": "sha256-OB/kEL3GAhUZmUfkbPfsPhKs0pRqJKs0EEBiLfyKZw8=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "9fc19be21f0807d6be092d70bf0b1de0c00ac895",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718714799,
@@ -243,6 +259,7 @@
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
         "nix-stable": "nix-stable",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "snowfall-lib": "snowfall-lib"
       }

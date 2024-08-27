@@ -21,6 +21,7 @@
     };
     ags.url = "github:Aylur/ags";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs: let
@@ -45,7 +46,9 @@
       channels-config = {
         allowUnfree = true;
       };
-      systems.hosts.soham.modules = with inputs; [];
+      systems.hosts.soham.modules = with inputs; [
+        nixos-hardware.nixosModules.asus-zephyrus-gu603h
+      ];
 
       overlays = with inputs; [];
 

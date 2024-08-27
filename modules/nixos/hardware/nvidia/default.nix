@@ -21,7 +21,13 @@ in {
       enable = true;
       # finegrained = true;
     };
-    boot.initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" ];
+    # hardware.nvidia.prime = {
+    #   # Make sure to use the correct Bus ID values for your system!
+    #   intelBusId = "PCI:0:2:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    # };
+
+    # boot.initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" ];
     # OpenGL support
     hardware.graphics = {
       enable = true;
