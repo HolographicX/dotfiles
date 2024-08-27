@@ -16,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     home.programs.firefox = {
       enable = true;
-      package = pkgs.firefox;
+      package = pkgs.firefox-bin;
     };
   };
 }
