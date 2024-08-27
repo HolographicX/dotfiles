@@ -78,11 +78,6 @@ in
       wlsunset
     ];
 
-    # for on screen kb support
-    i18n.inputMethod.enable = true;
-    i18n.inputMethod.type = "fcitx5";
-    i18n.inputMethod.fcitx5.waylandFrontend = true;
-
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
