@@ -19,6 +19,8 @@ in {
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
     };
+
+    programs.appimage.binfmt = true; # for appimages
     
     environment.systemPackages = with pkgs; [
       # Development

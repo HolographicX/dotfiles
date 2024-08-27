@@ -19,9 +19,10 @@ in {
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.powerManagement = {
       enable = true;
-      # finegrained = true;
+      finegrained = true;
     };
 
+    boot.initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" ];
     # OpenGL support
     hardware.graphics = {
       enable = true;

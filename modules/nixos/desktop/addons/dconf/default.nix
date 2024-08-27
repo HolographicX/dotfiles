@@ -43,6 +43,9 @@ in {
         click-method = "areas";
       };
 
+      "org/gnome/desktop/datetime" = { automatic-timezone = true; };
+      "org/gnome/system/location" = { enabled = true; };
+
       "org/gnome/desktop/search-providers" = {
         disabled = [ "org.gnome.Boxes.desktop" ];
         enabled = [ "org.gnome.Weather.desktop" ];
