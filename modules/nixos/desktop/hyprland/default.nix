@@ -79,7 +79,8 @@ in
     ];
 
     # for on screen kb support
-    i18n.inputMethod.enabled = "fcitx5";
+    i18n.inputMethod.enable = true;
+    i18n.inputMethod.type = "fcitx5";
     i18n.inputMethod.fcitx5.waylandFrontend = true;
 
     environment.sessionVariables = {
