@@ -19,7 +19,7 @@ in {
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.powerManagement = {
       enable = true;
-      # finegrained = true;
+      finegrained = true;
     };
     hardware.nvidia.prime = {
       # Make sure to use the correct Bus ID values for your system!
