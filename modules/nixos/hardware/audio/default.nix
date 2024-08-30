@@ -26,6 +26,19 @@ in {
       wireplumber.enable = true;
       jack.enable = true;
       pulse.enable = true;
+      extraConfig.pipewire = {
+        "60-echo-cancel.conf" = {
+          name = "libpipewire-module-echo-cancel";
+         args = {
+             monitor.mode = true;
+             aec.args = {
+                 # Settings for the WebRTC echo cancellation engine
+                 webrtc.gain_control = true;
+                 webrtc.extended_filter = false;
+             };
+         };
+        };
+      };
     };
   };
 }
