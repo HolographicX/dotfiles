@@ -14,6 +14,7 @@ in {
   };
   
   config = mkIf cfg.enable {
+    # boot.kernelPackages = lib.mkForce pkgs;
     environment.systemPackages = with pkgs; [
       supergfxctl
       asusctl
