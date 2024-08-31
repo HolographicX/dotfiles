@@ -14,7 +14,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ glibcLocales ];
     i18n.inputMethod = {
       type = "fcitx5";
       enable = true;
@@ -23,6 +22,7 @@ in {
         fcitx5-gtk
       ];
     };
+
     console = {keyMap = mkForce "us";};
   };
 }
