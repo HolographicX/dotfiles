@@ -67,7 +67,8 @@ in {
         warp.enable = true;
         piper.enable = true;
       };
+      # design
+      blender.enable = true;
     };
-    
   };
 }
