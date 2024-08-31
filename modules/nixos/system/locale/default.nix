@@ -2,6 +2,7 @@
   options,
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -13,8 +14,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    i18n.defaultLocale = "en_US.UTF-8";
-
+    i18n.inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
+    };
     console = {keyMap = mkForce "us";};
   };
 }
