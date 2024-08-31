@@ -14,6 +14,7 @@ in {
   };
   
   config = mkIf cfg.enable {
+    # boot.kernelPackages = lib.mkForce pkgs;
     environment.systemPackages = with pkgs; [
       supergfxctl
       asusctl
@@ -37,5 +38,7 @@ in {
         enableUserService = true;
       };
     };
+    
+    boot.loader.grub.extraConfig = "GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep\"";
   };
 }
