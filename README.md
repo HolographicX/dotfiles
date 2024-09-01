@@ -27,7 +27,7 @@ NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen an
     - Yes. Believe it or not, it's organized too - thanks to snowfall lib.
 </details>
 
- <h1>Special, Special Thanks</h1>
+ # Special, Special Thanks
  - [end4](https://github.com/end-4/dots-hyprland) - for the hyprland rice. A true ags god.
  - [jake hamilton](https://github.com/jakehamilton) - for snowfall lib and his videos.
  - [Catppuccin](https://catppuccin.com) - my oxygen.
