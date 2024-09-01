@@ -29,7 +29,7 @@ writeShellScriptBin "sys" ''
         popd
 
         # Notify all OK!
-        notify-send "NixOS Rebuilt OK!" --icon=software-update-available-symbolic
+        notify-send "NixOS Rebuild complete!" --icon=software-update-available-symbolic
   }
 
   cmd_test() {

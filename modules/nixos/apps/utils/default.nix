@@ -41,6 +41,7 @@ in {
       ffmpeg
       python3
       neofetch
+      pfetch
       pciutils
     ];
   };

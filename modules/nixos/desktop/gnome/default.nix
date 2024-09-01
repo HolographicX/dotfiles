@@ -34,17 +34,13 @@ in {
       geary
       yelp
       gnome-font-viewer
-    ]) ++ (with pkgs.gnome; [
       gnome-music
       gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
       gnome-contacts
       gnome-initial-setup
       gnome-maps
     ]);
+    
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 }

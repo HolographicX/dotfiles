@@ -16,19 +16,23 @@ in {
     # Better scheduling for CPU cycles - thanks System76!!!
     services.system76-scheduler.settings.cfsProfiles.enable = true;
 
-    # Enable TLP (better than gnomes internal power manager)
-    # services.tlp = {
-    #   enable = true;
-    #   settings = {
-    #     CPU_BOOST_ON_AC = 1;
-    #     CPU_BOOST_ON_BAT = 0;
-    #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
-    #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    #   };
-    # };
+    # Enable AutoCPUfreq
+    services.auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
 
     # Disable GNOMEs power management
-    services.power-profiles-daemon.enable = true; # testing
+    services.power-profiles-daemon.enable = false;
 
     # Enable powertop
     powerManagement.powertop.enable = true;

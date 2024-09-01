@@ -16,7 +16,8 @@ in {
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia.modesetting.enable = true;
-    # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    hardware.nvidia.open = false;
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.powerManagement = {
       enable = true;
       # finegrained = true;

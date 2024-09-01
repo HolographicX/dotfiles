@@ -66,7 +66,7 @@ in
       tesseract
 
       ### Other Packages
-      adoptopenjdk-jre-bin
+      temurin-jre-bin
       bc
       brightnessctl
       hyprpicker
