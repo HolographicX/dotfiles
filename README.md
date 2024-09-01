@@ -9,8 +9,7 @@
 NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen and ported from [end-4/dots-hyprland](https://github.com/end-4/dots-hyprland/blob/main/README.md?plain=1). 
 </div>
 <details> 
-  <summary><b>Features</b></summary>
-     
+  <summary><b>Features</b></summary> 
   - Catppuccin everything, because it is objectively the best color scheme.
   - `.config` linked at `modules/nixos/desktop/.config`.
   - Hyprland and Gnome.
@@ -21,9 +20,10 @@ NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen an
 
 <details> 
   <summary><b>FAQ</b></summary>
-  - **Do you know what you're doing?**
+  
+  - <b>Do you know what you're doing?</b>
     - No.
-  - **Does this even work?**
+  - <b>Does this even work?</b>
     - Yes. Believe it or not, it's organized too - thanks to snowfall lib.
 </details>
 
