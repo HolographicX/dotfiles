@@ -22,7 +22,7 @@ NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen an
 <details> 
   <summary><b>FAQ</b></summary>
   
-  - <b>Do you know what you're doing?</b>
+  - <b>Do I know what I'm doing?</b>
     - No.
   - <b>Does this even work?</b>
     - Yes. Believe it or not, it's organized too - thanks to snowfall lib.
