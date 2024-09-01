@@ -32,4 +32,3 @@ NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen an
  - [jake hamilton](https://github.com/jakehamilton) - for snowfall lib and his videos.
  - [Catppuccin](https://catppuccin.com) - my oxygen.
  - [IogaMaster](https://github.com/IogaMaster/snowfall-starter/tree/main) - for the starter template and videos.
- - 
