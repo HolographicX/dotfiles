@@ -6,7 +6,7 @@
     <img alt="caffeine" src="https://custom-icon-badges.demolab.com/badge/caffeine-overdose-%23f2cdcd?style=for-the-badge&logo=coffee&logoSource=feather&labelColor=%23313244">
   </p>
 
-NixOS configuration using flakes, snowfall lib, and home manager. Rice stolen and ported from [end-4/dots-hyprland](https://github.com/end-4/dots-hyprland). 
+NixOS configuration using flakes, snowfall lib, and home manager. Rice ported from [end-4/dots-hyprland](https://github.com/end-4/dots-hyprland). 
 </div>
 <details> 
   <summary><b>Features</b></summary>
