@@ -62,6 +62,7 @@ in {
       transmission.enable = true;
       chromium.enable = true;
       livecaptions.enable = true;
+      foliate.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;

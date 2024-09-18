@@ -32,6 +32,8 @@ in {
       fd
 
       # Util
+      jdk
+      lm_sensors
       alejandra
       vim
       wget
@@ -43,6 +45,7 @@ in {
       neofetch
       pfetch
       pciutils
+      appimage-run
     ];
   };
 }
