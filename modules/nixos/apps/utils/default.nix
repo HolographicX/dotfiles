@@ -30,9 +30,10 @@ in {
       fzf
       gnumake
       fd
-
-      # Util
       jdk
+      gradle
+      
+      # Util
       lm_sensors
       alejandra
       vim
