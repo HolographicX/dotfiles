@@ -70,6 +70,7 @@ in {
       };
       # design
       blender.enable = true;
+      siril.enable = true;
     };
   };
 }
