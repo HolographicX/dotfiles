@@ -68,6 +68,7 @@ in {
         warp.enable = true;
         piper.enable = true;
       };
+      thunderbird.enable = true;
       # design
       blender.enable = true;
       siril.enable = true;
