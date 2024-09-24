@@ -34,6 +34,7 @@ in {
       gradle
       
       # Util
+      keychain
       lm_sensors
       alejandra
       vim
