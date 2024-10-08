@@ -15,6 +15,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ vscodium ];
+    environment.systemPackages = with pkgs; [ vscodium-fhs ];
   };
 }

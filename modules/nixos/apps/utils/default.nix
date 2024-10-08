@@ -30,8 +30,12 @@ in {
       fzf
       gnumake
       fd
-
+      jdk
+      gradle
+      
       # Util
+      keychain
+      lm_sensors
       alejandra
       vim
       wget
@@ -43,6 +47,7 @@ in {
       neofetch
       pfetch
       pciutils
+      appimage-run
     ];
   };
 }

@@ -23,7 +23,7 @@ in {
       # finegrained = true;
     };
     hardware.nvidia.nvidiaSettings = true;
-    boot.initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" ];
+
     # OpenGL support
     hardware.graphics = {
       enable = true;

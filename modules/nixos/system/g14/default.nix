@@ -24,7 +24,7 @@ in {
       supergfxd = {
         enable = true;
         settings = {
-          mode = "Hybrid";
+          mode = "Integrated";
           vfio_enable = true;
           vfio_save = true;
           always_reboot = false;

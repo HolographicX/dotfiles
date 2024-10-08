@@ -49,6 +49,9 @@ in {
       shellInit = ''
         zoxide init fish | source
         set -g fish_greeting
+        if status --is-interactive
+          keychain --eval --quiet -Q id_rsa | source
+        end
 
         function , --description 'add software to shell session'
               nix shell nixpkgs#$argv[1..-1]

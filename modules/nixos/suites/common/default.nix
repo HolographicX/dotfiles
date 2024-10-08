@@ -18,6 +18,9 @@ in {
     hardware.audio.enable = true;
     hardware.networking.enable = true;
     hardware.nvidia.enable = true;
+
+    hardware.vfio.enable = true; # only for gpu passthrough in KVMs
+
     services = {
       easyeffects.enable = true;
       ssh.enable = true;
@@ -62,13 +65,17 @@ in {
       transmission.enable = true;
       chromium.enable = true;
       livecaptions.enable = true;
+      foliate.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
         piper.enable = true;
       };
+
       # design
       blender.enable = true;
+      siril.enable = true;
+      qemu.enable = true;
     };
   };
 }
