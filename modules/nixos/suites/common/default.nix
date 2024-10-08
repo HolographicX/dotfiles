@@ -50,6 +50,7 @@ in {
     # TODO: Split apps according to suites
     apps = {
       utils.enable = true;
+      utils.nix-ld.enable = true;
       firefox.enable = true;
       alacritty.enable = true;
       steam.enable = true;
