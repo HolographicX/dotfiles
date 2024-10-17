@@ -67,6 +67,7 @@ in {
       chromium.enable = true;
       livecaptions.enable = true;
       foliate.enable = true;
+      zoom.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
