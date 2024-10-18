@@ -78,6 +78,7 @@ in {
       blender.enable = true;
       siril.enable = true;
       qemu.enable = true;
+      freecad.enable = true;
     };
   };
 }
