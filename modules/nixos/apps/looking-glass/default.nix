@@ -16,7 +16,7 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 soham qemu-libvirtd -"
+      "f /dev/shm/looking-glass 0660 soham libvirtd -"
     ];
     environment.systemPackages = with pkgs; [ looking-glass-client ];
   };
