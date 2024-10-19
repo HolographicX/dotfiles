@@ -33,6 +33,8 @@ in
           }).fd];
         };
       };
+      onBoot = "ignore";
+      onShutdown = "shutdown";
     };
   
     boot = {
@@ -46,10 +48,11 @@ in
         "nvidia_uvm"
         "nvidia_drm"
       ];
-
+      
+      kernelModules = [ "kvm-intel" ];
       kernelParams = [
         # enable IOMMU
-        "amd_iommu=on"
+        "intel_iommu=on"
       ] ++ lib.optional cfg.enable
         # isolate the GPU
         ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
