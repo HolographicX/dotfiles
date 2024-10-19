@@ -44,7 +44,7 @@ in
         "vfio_pci"
         "vfio"
         "vfio_iommu_type1"
-
+        
         "nvidia"
         "nvidia_modeset"
         "nvidia_uvm"
@@ -55,9 +55,7 @@ in
       kernelParams = [
         # enable IOMMU
         "intel_iommu=on"
-      ] ++ lib.optional cfg.enable
-        # isolate the GPU
-        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
+      ]  ++ [("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)];
     };
 
     virtualisation.spiceUSBRedirection.enable = true;
