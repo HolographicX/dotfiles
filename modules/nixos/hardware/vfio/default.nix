@@ -20,7 +20,7 @@ in
 
   config = mkIf cfg.enable {
     programs.virt-manager.enable = true;
-    users.users.soham.extraGroups = [ "libvirtd" ];
+    users.users.soham.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
     virtualisation.libvirtd = {
       enable = true;
       qemu = {
