@@ -18,12 +18,6 @@ in {
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = false;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    boot.initrd.kernelModules = [
-        "nvidia"
-      "nvidia_modeset"
-      "nvidia_uvm"
-      "nvidia_drm"
-    ];
     hardware.nvidia.powerManagement = {
       enable = true;
       # finegrained = true;
