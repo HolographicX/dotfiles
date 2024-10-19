@@ -22,6 +22,7 @@ in {
     specialisation."VFIO".configuration = {
       system.nixos.tags = [ "with-vfio" ];
       hardware.vfio.enable = true; # for gpu passthrough in KVMs
+      apps.looking-glass.enable = true;
     };
 
     services = {
