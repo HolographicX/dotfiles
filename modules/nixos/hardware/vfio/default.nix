@@ -25,7 +25,7 @@ in
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
-        runAsRoot = true;
+        runAsRoot = false;
         swtpm.enable = true;
         ovmf = {
           enable = true;
@@ -38,6 +38,7 @@ in
       onBoot = "ignore";
       onShutdown = "shutdown";
     };
+    
   
     boot = {
       initrd.kernelModules = [
@@ -57,7 +58,7 @@ in
         "intel_iommu=on"
       ]  ++ [("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)];
     };
-
+    # USB redirection in virtual machine
     virtualisation.spiceUSBRedirection.enable = true;
   };
 }

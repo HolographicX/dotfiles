@@ -16,10 +16,9 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 alex qemu-libvirtd -"
+      "f /dev/shm/looking-glass 0660 soham qemu-libvirtd -"
     ];
     environment.systemPackages = with pkgs; [ looking-glass-client ];
-
     # add this to the vm config:
     # <shmem name='looking-glass'>
     #   <model type='ivshmem-plain'/>

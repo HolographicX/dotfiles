@@ -19,7 +19,10 @@ in {
     hardware.networking.enable = true;
     hardware.nvidia.enable = true;
 
-    hardware.vfio.enable = true; # only for gpu passthrough in KVMs
+    specialisation."VFIO".configuration = {
+      system.nixos.tags = [ "with-vfio" ];
+      hardware.vfio.enable = true; # for gpu passthrough in KVMs
+    };
 
     services = {
       easyeffects.enable = true;
