@@ -83,6 +83,11 @@ in {
       siril.enable = true;
       qemu.enable = true;
       freecad.enable = true;
+
+      # dev
+      development = {
+          nodejs.enable = true;
+      };
     };
   };
 }
