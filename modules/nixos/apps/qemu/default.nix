@@ -15,6 +15,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ quickemu ];
+    environment.systemPackages = with pkgs; [ quickemu samba ]; # samba for windows file sharing
   };
 }

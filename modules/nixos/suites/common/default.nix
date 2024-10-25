@@ -19,7 +19,11 @@ in {
     hardware.networking.enable = true;
     hardware.nvidia.enable = true;
 
-    hardware.vfio.enable = true; # only for gpu passthrough in KVMs
+    specialisation."VFIO".configuration = {
+      system.nixos.tags = [ "with-vfio" ];
+      hardware.vfio.enable = true; # for gpu passthrough in KVMs
+      apps.looking-glass.enable = true;
+    };
 
     services = {
       easyeffects.enable = true;
@@ -50,6 +54,7 @@ in {
     # TODO: Split apps according to suites
     apps = {
       utils.enable = true;
+      utils.nix-ld.enable = true;
       firefox.enable = true;
       alacritty.enable = true;
       steam.enable = true;
@@ -66,6 +71,7 @@ in {
       chromium.enable = true;
       livecaptions.enable = true;
       foliate.enable = true;
+      zoom.enable = true;
       tools = {
         tailscale.enable = true;
         warp.enable = true;
@@ -76,6 +82,12 @@ in {
       blender.enable = true;
       siril.enable = true;
       qemu.enable = true;
+      freecad.enable = true;
+
+      # dev
+      development = {
+          nodejs.enable = true;
+      };
     };
   };
 }
