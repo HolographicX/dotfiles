@@ -44,6 +44,7 @@
 
       channels-config = {
         allowUnfree = true;
+        android_sdk.accept_license = true;
       };
       systems.hosts.soham.modules = with inputs; [
         nixos-hardware.nixosModules.asus-zephyrus-gu603h

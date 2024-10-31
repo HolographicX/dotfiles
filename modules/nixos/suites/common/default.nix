@@ -87,6 +87,7 @@ in {
       # dev
       development = {
           nodejs.enable = true;
+          android.enable = true;
       };
     };
   };
