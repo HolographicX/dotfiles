@@ -82,7 +82,7 @@ in {
       blender.enable = true;
       siril.enable = true;
       qemu.enable = true;
-      cura.enable = true;
+      # cura.enable = true;
 
       # dev
       development = {
