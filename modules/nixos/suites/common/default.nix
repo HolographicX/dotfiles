@@ -82,8 +82,7 @@ in {
       blender.enable = true;
       siril.enable = true;
       qemu.enable = true;
-      # cura.enable = true;
-
+      super-slicer.enable = true;
       # dev
       development = {
           nodejs.enable = true;
