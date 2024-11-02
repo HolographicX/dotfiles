@@ -5,16 +5,26 @@
   lib,
   inputs,
   ...
-}:
+}: 
 with lib;
 with lib.custom; let
   cfg = config.apps.kicad;
+
+  kicadWrapped = pkgs.symlinkJoin {
+    name = "kicad";
+    paths = [ pkgs.kicad ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/kicad --set GTK_THEME Arc-Dark
+    '';
+  };
 in {
   options.apps.kicad = with types; {
     enable = mkBoolOpt false "Enable or disable kicad";
   };
 
   config = mkIf cfg.enable {
-  environment.systemPackages = with pkgs; [ kicad ];
+    environment.systemPackages = [ kicadWrapped ];
+    
   };
 }
