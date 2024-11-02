@@ -28,7 +28,11 @@ in {
       flatpak.enable = true;
 
     };
-
+    specialisation."vfio".configuration = {
+      system.nixos.tags = [ "with-vfio" ];
+      environment.etc."specialisation".text = "vfio";
+      apps.virt-manager.enable = true; # for vfio gpu passthrouggh
+    };
     
     environment.systemPackages = [ pkgs.custom.sys ];
 
@@ -84,7 +88,6 @@ in {
           nodejs.enable = true;
           android.enable = true;
       };
-      virt-manager.enable = true;
 
     };
   };

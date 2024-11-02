@@ -41,16 +41,16 @@ in
     };
   
     boot = {
-      # initrd.kernelModules = [
-      #   "vfio_pci"
-      #   "vfio"
-      #   "vfio_iommu_type1"
+      initrd.kernelModules = [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
         
-      #   "nvidia"
-      #   "nvidia_modeset"
-      #   "nvidia_uvm"
-      #   "nvidia_drm"
-      # ];
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
+      ];
       
       kernelModules = [ "kvm-intel" ];
       kernelParams = [
