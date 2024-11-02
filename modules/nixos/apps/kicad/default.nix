@@ -15,7 +15,7 @@ with lib.custom; let
     paths = [ pkgs.kicad ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/kicad --set GTK_THEME Arc-Dark
+      wrapProgram $out/bin/kicad --set GTK_THEME kvantum-dark
     '';
   };
 in {
