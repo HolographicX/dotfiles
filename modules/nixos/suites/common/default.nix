@@ -83,6 +83,8 @@ in {
       siril.enable = true;
       qemu.enable = true;
       super-slicer.enable = true;
+      kicad.enable = true;
+
       # dev
       development = {
           nodejs.enable = true;
