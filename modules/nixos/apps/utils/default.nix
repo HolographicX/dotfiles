@@ -15,7 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.nh = {
-      enable = true;  # use for `nh os switch --ask`
+      enable = true;  # `nh os switch --help`
     };
 
     programs.git = {
