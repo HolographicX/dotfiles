@@ -16,5 +16,9 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ orca-slicer ];
+    networking.firewall = {
+      enable = false;
+    };
+
   };
 }
