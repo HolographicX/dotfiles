@@ -17,8 +17,10 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ orca-slicer ];
     networking.firewall = {
-      enable = false;
+      allowedTCPPorts = [ 8883 990 322 6000 123 ];
+      allowedTCPPortRanges = [
+        { from = 50000; to = 50100; }
+      ];
     };
-
   };
 }
