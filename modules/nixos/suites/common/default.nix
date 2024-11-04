@@ -81,6 +81,7 @@ in {
       blender.enable = true;
       siril.enable = true;
       super-slicer.enable = true;
+      orca-slicer.enable = true;
       kicad.enable = true;
 
       # dev
