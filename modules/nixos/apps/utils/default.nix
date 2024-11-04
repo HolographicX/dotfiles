@@ -14,6 +14,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.nh = {
+      enable = true;  # `nh os switch --help`
+    };
+
     programs.git = {
       enable = true;
       package = pkgs.gitFull;

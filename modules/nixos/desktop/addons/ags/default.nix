@@ -43,17 +43,11 @@ in {
 
       programs.ags = {
         enable = true;
+        configDir = ../../.config/ags;
         extraPackages = with pkgs; [
           gtksourceview
           material-symbols
         ];
-      };
-    };
-    home.configFile = {
-      "ags" = {
-        source = ../../.config/ags;
-        recursive = true;
-        executable = true;
       };
     };
   };

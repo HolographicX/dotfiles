@@ -23,7 +23,6 @@ in {
       # finegrained = true;
     };
     hardware.nvidia.nvidiaSettings = true;
-
     # OpenGL support
     hardware.graphics = {
       enable = true;

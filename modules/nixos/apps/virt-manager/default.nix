@@ -7,15 +7,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.hardware.vfio;
+  cfg = config.apps.virt-manager;
   gpuIDs = [
     "10de:2520" # Graphics
     "10de:228e" # Audio
   ];
 in
 {
-  options.hardware.vfio = with types; {
-    enable = mkBoolOpt false "GPU passthrough support for vfio.";
+  options.apps.virt-manager = with types; {
+    enable = mkBoolOpt false "Virt-manager with Looking glass and GPU passthrough support.";
   };
 
   config = mkIf cfg.enable {
@@ -27,6 +27,7 @@ in
         package = pkgs.qemu_kvm;
         runAsRoot = true;
         swtpm.enable = true;
+        vhostUserPackages = with pkgs; [ virtiofsd ];
         ovmf = {
           enable = true;
           packages = [(pkgs.OVMF.override {
@@ -38,7 +39,6 @@ in
       onBoot = "ignore";
       onShutdown = "shutdown";
     };
-    
   
     boot = {
       initrd.kernelModules = [
@@ -60,5 +60,13 @@ in
     };
     # USB redirection in virtual machine
     virtualisation.spiceUSBRedirection.enable = true;
+  
+    # looking glaass
+    systemd.tmpfiles.rules = [
+      "f /dev/shm/looking-glass 0660 soham qemu-libvirtd -"
+    ];
+    
+      environment.systemPackages = with pkgs; [ looking-glass-client ];
+
   };
 }

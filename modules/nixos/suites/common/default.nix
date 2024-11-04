@@ -19,11 +19,6 @@ in {
     hardware.networking.enable = true;
     hardware.nvidia.enable = true;
 
-    specialisation."VFIO".configuration = {
-      system.nixos.tags = [ "with-vfio" ];
-      hardware.vfio.enable = true; # for gpu passthrough in KVMs
-      apps.looking-glass.enable = true;
-    };
 
     services = {
       easyeffects.enable = true;
@@ -33,7 +28,11 @@ in {
       flatpak.enable = true;
 
     };
-
+    specialisation."vfio".configuration = {
+      system.nixos.tags = [ "with-vfio" ];
+      environment.etc."specialisation".text = "vfio";
+      apps.virt-manager.enable = true; # for vfio gpu passthrouggh
+    };
     
     environment.systemPackages = [ pkgs.custom.sys ];
 
@@ -81,13 +80,15 @@ in {
       # design
       blender.enable = true;
       siril.enable = true;
-      qemu.enable = true;
-      freecad.enable = true;
+      super-slicer.enable = true;
+      kicad.enable = true;
 
       # dev
       development = {
           nodejs.enable = true;
+          android.enable = true;
       };
+
     };
   };
 }
