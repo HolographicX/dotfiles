@@ -8,10 +8,6 @@
 with lib;
 with lib.custom; let
   cfg = config.apps.virt-manager;
-  gpuIDs = [
-    "10de:2520" # Graphics
-    "10de:228e" # Audio
-  ];
 in
 {
   options.apps.virt-manager = with types; {
@@ -45,18 +41,21 @@ in
         "vfio_pci"
         "vfio"
         "vfio_iommu_type1"
-        
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
       ];
       
       kernelModules = [ "kvm-intel" ];
       kernelParams = [
         # enable IOMMU
-        "intel_iommu=on"
-      ]  ++ [("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)];
+        "intel_iommu=on" 
+      ]; # ++ [("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)];
+      initrd.preDeviceCommands = ''
+        DEVS="0000:01:00.0 0000:01:00.1"
+        for DEV in $DEVS; do
+          echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+        done
+        modprobe -i vfio-pci
+      '';
+
     };
     # USB redirection in virtual machine
     virtualisation.spiceUSBRedirection.enable = true;
