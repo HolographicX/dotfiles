@@ -46,7 +46,7 @@ in
 
       ### Gnome
       gnome-keyring
-      gnome.gnome-control-center
+      gnome-control-center
 
       ### Widgets
       hyprlock
