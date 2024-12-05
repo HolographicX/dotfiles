@@ -90,6 +90,7 @@ in {
           nodejs.enable = true;
           android.enable = true;
       };
+      arduino.enable = true;
 
     };
   };
