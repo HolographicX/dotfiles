@@ -18,6 +18,7 @@ in {
     environment.systemPackages = with pkgs; [
       arduino-ide
       esptool
+      python312Packages.pyserial
     ];
   };
 }
