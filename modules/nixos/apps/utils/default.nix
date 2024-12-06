@@ -47,7 +47,7 @@ in {
       sshfs
       htop
       ffmpeg
-      python3
+      python3Full
       neofetch
       pfetch
       pciutils
