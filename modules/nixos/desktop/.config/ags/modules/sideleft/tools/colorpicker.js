@@ -1,17 +1,15 @@
 // TODO: Make selection update when entry changes
 const { Gtk } = imports.gi;
-import App from 'resource:///com/github/Aylur/ags/app.js';
-import Variable from 'resource:///com/github/Aylur/ags/variable.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
-const { execAsync, exec } = Utils;
-const { Box, Button, Entry, EventBox, Icon, Label, Overlay, Scrollable } = Widget;
-import SidebarModule from './module.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 import { setupCursorHover } from '../../.widgetutils/cursorhover.js';
+import SidebarModule from './module.js';
+const { execAsync, exec } = Utils;
+const { Box, Button, Entry, EventBox, Icon, Label, Overlay, Scrollable } = Widget;
 
-import { ColorPickerSelection, hslToHex, hslToRgbValues, hexToHSL } from './color.js';
 import { clamp } from '../../.miscutils/mathfuncs.js';
+import { ColorPickerSelection, hslToHex, hslToRgbValues } from './color.js';
 
 export default () => {
     const selectedColor = new ColorPickerSelection();
@@ -174,7 +172,7 @@ export default () => {
         css: `background-color: ${hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100))};`,
         children: [Label({
             className: 'txt txt-small',
-            label: 'Result',
+            label: getString('Result'),
         }),],
         attribute: {
             update: (self) => {
@@ -269,7 +267,7 @@ export default () => {
     })
     return SidebarModule({
         icon: MaterialIcon('colorize', 'norm'),
-        name: '<span strikethrough="true">Inaccurate</span> Color picker',
+        name: getString('<span strikethrough="true">Inaccurate</span> Color picker'),
         revealChild: false,
         child: Box({
             className: 'spacing-h-5',

@@ -19,18 +19,6 @@ with lib.custom; let
     '';
   };
 
-  nerdfonts = (pkgs.nerdfonts.override {
-    fonts = [
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "JetBrainsMono"
-      "FiraCode"
-      "Mononoki"
-      "SpaceMono"
-    ];
-  });
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
       # Sans
@@ -57,10 +45,18 @@ in {
         adwaita-qt6
         adw-gtk3
         material-symbols
-        nerdfonts
         noto-fonts
         noto-fonts-cjk-sans
         google-fonts
+
+        nerd-fonts.ubuntu
+        nerd-fonts.ubuntu-mono
+        cascadia-code
+        nerd-fonts.fantasque-sans-mono
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.fira-code
+        nerd-fonts.mononoki
+        nerd-fonts.space-mono
       ];
 
       home.pointerCursor = {
@@ -105,14 +101,6 @@ in {
         };
       };
       home.file = {
-        ".local/share/fonts" = {
-          recursive = true;
-          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
-        };
-        ".fonts" = {
-          recursive = true;
-          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
-        };
         ".local/share/icons/MoreWaita" = {
           source = "${moreWaita}/share/icons";
         };

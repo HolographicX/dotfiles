@@ -1,14 +1,14 @@
 const { Gtk } = imports.gi;
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
+import { currentShellMode } from '../../variables.js';
+import { RoundedCorner } from "../.commonwidgets/cairo_roundedcorner.js";
+import { enableClickthrough } from "../.widgetutils/clickthrough.js";
+import Music from "./normal/music.js";
 import WindowTitle from "./normal/spaceleft.js";
 import Indicators from "./normal/spaceright.js";
-import Music from "./normal/music.js";
 import System from "./normal/system.js";
-import { enableClickthrough } from "../.widgetutils/clickthrough.js";
-import { RoundedCorner } from "../.commonwidgets/cairo_roundedcorner.js";
-import { currentShellMode } from '../../variables.js';
 
 const NormalOptionalWorkspaces = async () => {
     try {
@@ -58,7 +58,7 @@ export const Bar = async (monitor = 0) => {
                 SideModule([System()]),
             ]
         }),
-        endWidget: Indicators(),
+        endWidget: Indicators(monitor),
     });
     const focusedBarContent = Widget.CenterBox({
         className: 'bar-bg-focus',
@@ -101,8 +101,7 @@ export const Bar = async (monitor = 0) => {
                 'nothing': nothingContent,
             },
             setup: (self) => self.hook(currentShellMode, (self) => {
-                self.shown = currentShellMode.value;
-
+                self.shown = currentShellMode.value[monitor];
             })
         }),
     });

@@ -1,7 +1,7 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { SearchAndWindows } from "./windowcontent.js";
-import PopupWindow from '../.widgethacks/popupwindow.js';
 import { clickCloseRegion } from '../.commonwidgets/clickcloseregion.js';
+import PopupWindow from '../.widgethacks/popupwindow.js';
+import { SearchAndWindows } from "./windowcontent.js";
 
 export default (id = '') => PopupWindow({
     name: `overview${id}`,
@@ -9,7 +9,7 @@ export default (id = '') => PopupWindow({
     keymode: 'on-demand',
     visible: false,
     anchor: ['top', 'bottom', 'left', 'right'],
-    layer: 'overlay',
+    layer: 'top',
     child: Widget.Box({
         vertical: true,
         children: [

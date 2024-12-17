@@ -1,6 +1,6 @@
 const { GLib } = imports.gi;
-import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 const { execAsync, exec } = Utils;
 
 export const distroID = exec(`bash -c 'cat /etc/os-release | grep "^ID=" | cut -d "=" -f 2 | sed "s/\\"//g"'`).trim();
@@ -13,7 +13,8 @@ export const darkMode = Variable(!(Utils.readFile(LIGHTDARK_FILE_LOCATION).split
 darkMode.connect('changed', ({ value }) => {
     let lightdark = value ? "dark" : "light";
     execAsync([`bash`, `-c`, `mkdir -p ${GLib.get_user_state_dir()}/ags/user && sed -i "1s/.*/${lightdark}/"  ${GLib.get_user_state_dir()}/ags/user/colormode.txt`])
-       .then(execAsync(['bash', '-c', `command -v darkman && darkman set ${lightdark}`])) // Optional darkman integration
+        .then(execAsync(['bash', '-c', `${App.configDir}/scripts/color_generation/switchcolor.sh`]))
+        .then(execAsync(['bash', '-c', `command -v darkman && darkman set ${lightdark}`])) // Optional darkman integration
         .catch(print);
 });
 globalThis['darkMode'] = darkMode;

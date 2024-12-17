@@ -1,13 +1,13 @@
 const { Gtk } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { MaterialIcon } from '../.commonwidgets/materialicon.js';
+import { setupCursorHoverGrab } from '../.widgetutils/cursorhover.js';
+import { DEFAULT_OSK_LAYOUT, oskLayouts } from './data_keyboardlayouts.js';
 
 const { Box, EventBox, Button, Revealer } = Widget;
 const { execAsync } = Utils;
-import { MaterialIcon } from '../.commonwidgets/materialicon.js';
-import { DEFAULT_OSK_LAYOUT, oskLayouts } from './data_keyboardlayouts.js';
-import { setupCursorHoverGrab } from '../.widgetutils/cursorhover.js';
 
 const keyboardLayout = oskLayouts[userOptions.onScreenKeyboard.layout] ? userOptions.onScreenKeyboard.layout : DEFAULT_OSK_LAYOUT;
 const keyboardJson = oskLayouts[keyboardLayout];
@@ -83,7 +83,7 @@ const KeyboardControls = () => Box({
         Button({
             className: 'osk-control-button txt-norm icon-material',
             onClicked: () => { // TODO: Proper clipboard widget, since fuzzel doesn't receive mouse inputs
-                execAsync([`bash`, `-c`, "pkill fuzzel || cliphist list | fuzzel --no-fuzzy --dmenu | cliphist decode | wl-copy"]).catch(print);
+                execAsync([`bash`, `-c`, "pkill fuzzel || cliphist list | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"]).catch(print);
             },
             label: 'assignment',
         }),

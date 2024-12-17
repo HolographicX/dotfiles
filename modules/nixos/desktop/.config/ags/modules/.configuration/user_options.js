@@ -1,5 +1,4 @@
-import GLib from 'gi://GLib';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import userOverrides from '../../user_options.js';
 
 // Default options.
@@ -68,6 +67,10 @@ let configOptions = {
             'color': 'rgba(113,227,32,0.9)',
         },
     },
+    'i18n': {
+        'langCode': "",//Customize the locale, such as zh_CN,Optional value references "~/.config/ags/i18n/locales/"
+        'extraLogs': false
+    },
     'monitors': {
         'scaleMethod': "division", // Either "division" [default] or "gdk"
     },
@@ -102,6 +105,7 @@ let configOptions = {
             'columns': 2,
             'batchCount': 20,
             'allowNsfw': false,
+            'saveInFolderByTags': false,
         },
         'pages': {
             'order': ["apis", "tools"],
@@ -224,13 +228,23 @@ let configOptions = {
     'nightlight': {
         'brightness': 5,
         'temperature': 4000,
-    }
+    },
+    'bar': {
+        // Array of bar modes for each monitor. Hit Ctrl+Alt+Slash to cycle.
+        // Modes: "normal", "focus" (workspace indicator only), "nothing"
+        // Example for four monitors: ["normal", "focus", "normal", "nothing"]
+        'modes': ["normal"]
+    },
 }
 
 // Override defaults with user's options
 let optionsOkay = true;
 function overrideConfigRecursive(userOverrides, configOptions = {}, check = true) {
     for (const [key, value] of Object.entries(userOverrides)) {
+        if (!check) {
+            configOptions[key] = value;
+            continue;
+        }
         if (configOptions[key] === undefined && check) {
             optionsOkay = false;
         }
@@ -238,8 +252,6 @@ function overrideConfigRecursive(userOverrides, configOptions = {}, check = true
             if (key === "substitutions" || key === "regexSubstitutions" || key === "extraGptModels") {
                 overrideConfigRecursive(value, configOptions[key], false);
             } else overrideConfigRecursive(value, configOptions[key]);
-        } else {
-            configOptions[key] = value;
         }
     }
 }

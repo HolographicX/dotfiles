@@ -1,17 +1,21 @@
 const { Gdk, Gtk } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
 import Applications from 'resource:///com/github/Aylur/ags/service/applications.js';
-const { execAsync, exec } = Utils;
-import { execAndClose, expandTilde, hasUnterminatedBackslash, couldBeMath, launchCustomCommand, ls } from './miscfunctions.js';
-import {
-    CalculationResultButton, CustomCommandButton, DirectoryButton,
-    DesktopEntryButton, ExecuteCommandButton, SearchButton, AiButton, NoResultButton,
-} from './searchbuttons.js';
 import { checkKeybind } from '../.widgetutils/keybind.js';
-import GeminiService from '../../services/gemini.js';
+import { couldBeMath, hasUnterminatedBackslash, ls } from './miscfunctions.js';
+import {
+    AiButton,
+    CalculationResultButton, CustomCommandButton,
+    DesktopEntryButton,
+    DirectoryButton,
+    ExecuteCommandButton,
+    NoResultButton,
+    SearchButton,
+} from './searchbuttons.js';
+const { execAsync, exec } = Utils;
 
 // Add math funcs
 const { abs, sin, cos, tan, cot, asin, acos, atan, acot } = Math;
@@ -70,7 +74,7 @@ export const SearchAndWindows = () => {
         hpack: 'center',
         child: Widget.Label({
             className: 'overview-search-prompt txt-small txt',
-            label: 'Type to search'
+            label: getString('Type to search')
         }),
     });
 
