@@ -1,13 +1,13 @@
 const { Gio, GLib } = imports.gi;
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { ConfigToggle, ConfigMulipleSelection } from '../.commonwidgets/configwidgets.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+const { execAsync } = Utils;
+import { setupCursorHover } from '../.widgetutils/cursorhover.js';
 import { showColorScheme } from '../../variables.js';
-import { ConfigMulipleSelection, ConfigToggle } from '../.commonwidgets/configwidgets.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { darkMode } from '../.miscutils/system.js';
-import { setupCursorHover } from '../.widgetutils/cursorhover.js';
-const { execAsync } = Utils;
 
 const ColorBox = ({
     name = 'Color',
@@ -78,22 +78,22 @@ function calculateSchemeInitIndex(optionsArr, searchValue = 'vibrant') {
 
 const schemeOptionsArr = [
     [
-        { name: getString('Tonal Spot'), value: 'tonalspot' },
-        { name: getString('Fruit Salad'), value: 'fruitsalad' },
-        { name: getString('Fidelity'), value: 'fidelity' },
-        { name: getString('Rainbow'), value: 'rainbow' },
+        { name: 'Tonal Spot', value: 'tonalspot' },
+        { name: 'Fruit Salad', value: 'fruitsalad' },
+        { name: 'Fidelity', value: 'fidelity' },
+        { name: 'Rainbow', value: 'rainbow' },
     ],
     [
-        { name: getString('Neutral'), value: 'neutral' },
-        { name: getString('Monochrome'), value: 'monochrome' },
-        { name: getString('Expressive'), value: 'expressive' },
-        { name: getString('Vibrant'), value: 'vibrant' },
+        { name: 'Neutral', value: 'neutral' },
+        { name: 'Monochrome', value: 'monochrome' },
+        { name: 'Expressive', value: 'expressive' },
+        { name: 'Vibrant', value: 'vibrant' },
     ],
     [
-        { name: getString('Vibrant+'), value: 'morevibrant' },
+        { name: 'Vibrant+', value: 'morevibrant' },
     ],
     //[
-    //  { name: getString('Content'), value: 'content' },
+    //  { name: 'Content', value: 'content' },
     //]
 ];
 
@@ -114,14 +114,14 @@ const ColorSchemeSettings = () => Widget.Box({
                 Widget.Label({
                     xalign: 0,
                     className: 'txt-norm titlefont txt',
-                    label: getString('Options'),
+                    label: 'Options',
                     hpack: 'center',
                 }),
                 //////////////////
                 ConfigToggle({
                     icon: 'dark_mode',
-                    name: getString('Dark Mode'),
-                    desc: getString('Ya should go to sleep!'),
+                    name: 'Dark Mode',
+                    desc: 'Ya should go to sleep!',
                     initValue: darkMode.value,
                     onChange: (_, newValue) => {
                         darkMode.value = !!newValue;
@@ -130,26 +130,14 @@ const ColorSchemeSettings = () => Widget.Box({
                         self.enabled.value = darkMode.value;
                     }),
                 }),
-                ConfigToggle({
-                    icon: 'border_clear',
-                    name: getString('Transparency'),
-                    desc: getString('Make shell elements transparent'),
-                    initValue: initTransparencyVal,
-                    onChange: (self, newValue) => {
-                        let transparency = newValue == 0 ? "opaque" : "transparent";
-                        execAsync([`bash`, `-c`, `mkdir -p ${GLib.get_user_state_dir()}/ags/user && sed -i "2s/.*/${transparency}/"  ${GLib.get_user_state_dir()}/ags/user/colormode.txt`])
-                            .then(execAsync(['bash', '-c', `${App.configDir}/scripts/color_generation/switchcolor.sh`]))
-                            .catch(print);
-                    },
-                }),
                 Widget.Box({
-                    tooltipText: getString('Theme GTK apps using accent color\n(drawback: dark/light mode switching requires restart)'),
+                    tooltipText: 'Theme GTK apps using accent color\n(drawback: dark/light mode switching requires restart)',
                     className: 'txt spacing-h-5 configtoggle-box',
                     children: [
                         MaterialIcon('imagesearch_roller', 'norm'),
                         Widget.Label({
                             className: 'txt txt-small',
-                            label: getString('Use Gradience'),
+                            label: 'Use Gradience',
                         }),
                         Widget.Box({ hexpand: true }),
                         ConfigMulipleSelection({
@@ -160,12 +148,6 @@ const ColorSchemeSettings = () => Widget.Box({
                             ],
                             initIndex: [-1, -1],
                             onChange: (value, name) => {
-                                const ADWAITA_BLUE = "#3584E4";
-                                if (value) execAsync([`bash`, `-c`, `${App.configDir}/scripts/color_generation/switchcolor.sh - --yes-gradience`, `&`])
-                                    .catch(print);
-                                else execAsync([`bash`, `-c`, `${App.configDir}/scripts/color_generation/switchcolor.sh "${ADWAITA_BLUE}" --no-gradience`, `&`])
-                                    .catch(print);
-
                             },
                         }),
                     ]
@@ -179,7 +161,7 @@ const ColorSchemeSettings = () => Widget.Box({
                 Widget.Label({
                     xalign: 0,
                     className: 'txt-norm titlefont txt margin-top-5',
-                    label: getString('Scheme styles'),
+                    label: 'Scheme styles',
                     hpack: 'center',
                 }),
                 //////////////////
@@ -207,7 +189,7 @@ const ColorschemeContent = () => Widget.Box({
         Widget.Label({
             xalign: 0,
             className: 'txt-norm titlefont txt',
-            label: getString('Color scheme'),
+            label: 'Color scheme',
             hpack: 'center',
         }),
         Widget.Box({

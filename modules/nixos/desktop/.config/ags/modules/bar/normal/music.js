@@ -1,12 +1,12 @@
 const { GLib } = imports.gi;
-import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { showMusicControls } from '../../../variables.js';
-import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
-import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
 const { Box, Button, EventBox, Label, Overlay, Revealer, Scrollable } = Widget;
 const { execAsync, exec } = Utils;
+import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
+import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
+import { showMusicControls } from '../../../variables.js';
 
 const CUSTOM_MODULE_CONTENT_INTERVAL_FILE = `${GLib.get_user_cache_dir()}/ags/user/scripts/custom-module-interval.txt`;
 const CUSTOM_MODULE_CONTENT_SCRIPT = `${GLib.get_user_cache_dir()}/ags/user/scripts/custom-module-poll.sh`;
@@ -145,7 +145,7 @@ export default () => {
             if (mpris)
                 label.label = `${trimTrackTitle(mpris.trackTitle)} • ${mpris.trackArtists.join(', ')}`;
             else
-                label.label = getString('No media');
+                label.label = 'No media';
         }),
     })
     const musicStuff = Box({
@@ -183,7 +183,7 @@ export default () => {
         } else return BarGroup({
             child: Box({
                 children: [
-                    BarResource(getString('RAM Usage'), 'memory', `LANG=C free | awk '/^Mem/ {printf("%.2f\\n", ($3/$2) * 100)}'`,
+                    BarResource('RAM Usage', 'memory', `LANG=C free | awk '/^Mem/ {printf("%.2f\\n", ($3/$2) * 100)}'`,
                         'bar-ram-circprog', 'bar-ram-txt', 'bar-ram-icon'),
                     Revealer({
                         revealChild: true,
@@ -192,9 +192,9 @@ export default () => {
                         child: Box({
                             className: 'spacing-h-10 margin-left-10',
                             children: [
-                                BarResource(getString('Swap Usage'), 'swap_horiz', `LANG=C free | awk '/^Swap/ {if ($2 > 0) printf("%.2f\\n", ($3/$2) * 100); else print "0";}'`,
-                                    'bar-swap-circprog', 'bar-swap-txt', 'bar-swap-icon'),
-                                BarResource(getString('CPU Usage'), 'settings_motion_mode', `LANG=C top -bn1 | grep Cpu | sed 's/\\,/\\./g' | awk '{print $2}'`,
+                                BarResource('GPU Usage', 'mode_fan', `nvidia-smi --format=csv --query-gpu=utilization.gpu | awk -F" " 'NR==2 {print int($1)}'`,
+                                    'bar-cpu-circprog', 'bar-cpu-txt', 'bar-cpu-icon'),
+                                BarResource('CPU Usage', 'settings_motion_mode', `LANG=C top -bn1 | grep Cpu | sed 's/\\,/\\./g' | awk '{print $2}'`,
                                     'bar-cpu-circprog', 'bar-cpu-txt', 'bar-cpu-icon'),
                             ]
                         }),

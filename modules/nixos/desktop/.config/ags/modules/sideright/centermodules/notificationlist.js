@@ -1,12 +1,13 @@
 // This file is for the notification list on the sidebar
 // For the popup notifications, see onscreendisplay.js
 // The actual widget for each single notification is in ags/modules/.commonwidgets/notification.js
-import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
-import Notification from '../../.commonwidgets/notification.js';
-import { setupCursorHover } from '../../.widgetutils/cursorhover.js';
+import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 const { Box, Button, Label, Revealer, Scrollable, Stack } = Widget;
+import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
+import { setupCursorHover } from '../../.widgetutils/cursorhover.js';
+import Notification from '../../.commonwidgets/notification.js';
+import { ConfigToggle } from '../../.commonwidgets/configwidgets.js';
 
 export default (props) => {
     const notifEmptyContent = Box({
@@ -21,7 +22,7 @@ export default (props) => {
                     className: 'spacing-v-5 txt-subtext',
                     children: [
                         MaterialIcon('notifications_active', 'gigantic'),
-                        Label({ label: getString('No notifications'), className: 'txt-small' }),
+                        Label({ label: 'No notifications', className: 'txt-small' }),
                     ]
                 }),
             ]
@@ -81,7 +82,7 @@ export default (props) => {
         }),
         setup: setupCursorHover,
     });
-    const silenceButton = ListActionButton('notifications_paused', getString('Silence'), (self) => {
+    const silenceButton = ListActionButton('notifications_paused', 'Silence', (self) => {
         Notifications.dnd = !Notifications.dnd;
         self.toggleClassName('notif-listaction-btn-enabled', Notifications.dnd);
     });
@@ -100,7 +101,7 @@ export default (props) => {
         setup: (self) => self.hook(Notifications, (self) => {
             self.revealChild = Notifications.notifications.length > 0;
         }),
-        child: ListActionButton('clear_all', getString('Clear'), () => {
+        child: ListActionButton('clear_all', 'Clear', () => {
             Notifications.clear();
             const kids = notificationList.get_children();
             for (let i = 0; i < kids.length; i++) {
@@ -113,7 +114,7 @@ export default (props) => {
         attribute: {
             updateCount: (self) => {
                 const count = Notifications.notifications.length;
-                if (count > 0) self.label = `${count} ${getString("notifications")}`;
+                if (count > 0) self.label = `${count} notifications`;
                 else self.label = '';
             },
         },

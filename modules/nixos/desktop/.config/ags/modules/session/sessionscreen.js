@@ -2,8 +2,8 @@
 // For the right pill of the bar, see system.js
 const { Gdk, Gtk } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import { monitors } from '../.commondata/hyprlanddata.js';
 
 const { exec, execAsync } = Utils;
@@ -61,14 +61,14 @@ const SessionButton = (name, icon, command, props = {}, colorid = 0) => {
 
 export default ({ id = 0 }) => {
     // lock, logout, sleep
-    const lockButton = SessionButton(getString('Lock'), 'lock', () => { closeWindowOnAllMonitors('session'); execAsync(['loginctl', 'lock-session']).catch(print) }, {}, 1);
-    const logoutButton = SessionButton(getString('Logout'), 'logout', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER']).catch(print) }, {}, 2);
-    const sleepButton = SessionButton(getString('Sleep'), 'sleep', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl suspend || loginctl suspend']).catch(print) }, {}, 3);
+    const lockButton = SessionButton('Lock', 'lock', () => { closeWindowOnAllMonitors('session'); execAsync(['loginctl', 'lock-session']).catch(print) }, {}, 1);
+    const logoutButton = SessionButton('Logout', 'logout', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER']).catch(print) }, {}, 2);
+    const sleepButton = SessionButton('Sleep', 'sleep', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl suspend || loginctl suspend']).catch(print) }, {}, 3);
     // hibernate, shutdown, reboot
-    const hibernateButton = SessionButton(getString('Hibernate'), 'downloading', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl hibernate || loginctl hibernate']).catch(print) }, {}, 4);
-    const shutdownButton = SessionButton(getString('Shutdown'), 'power_settings_new', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl poweroff || loginctl poweroff']).catch(print) }, {}, 5);
-    const rebootButton = SessionButton(getString('Reboot'), 'restart_alt', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl reboot || loginctl reboot']).catch(print) }, {}, 6);
-    const cancelButton = SessionButton(getString('Cancel'), 'close', () => closeWindowOnAllMonitors('session'), { className: 'session-button-cancel' }, 7);
+    const hibernateButton = SessionButton('Hibernate', 'downloading', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl hibernate || loginctl hibernate']).catch(print) }, {}, 4);
+    const shutdownButton = SessionButton('Shutdown', 'power_settings_new', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl poweroff || loginctl poweroff']).catch(print) }, {}, 5);
+    const rebootButton = SessionButton('Reboot', 'restart_alt', () => { closeWindowOnAllMonitors('session'); execAsync(['bash', '-c', 'systemctl reboot || loginctl reboot']).catch(print) }, {}, 6);
+    const cancelButton = SessionButton('Cancel', 'close', () => closeWindowOnAllMonitors('session'), { className: 'session-button-cancel' }, 7);
 
     const sessionDescription = Widget.Box({
         vertical: true,
@@ -76,12 +76,12 @@ export default ({ id = 0 }) => {
         children: [
             Widget.Label({
                 className: 'txt-title txt',
-                label: getString('Session'),
+                label: 'Session',
             }),
             Widget.Label({
                 justify: Gtk.Justification.CENTER,
                 className: 'txt-small txt',
-                label: getString('Use arrow keys to navigate.\nEnter to select, Esc to cancel.')
+                label: 'Use arrow keys to navigate.\nEnter to select, Esc to cancel.'
             }),
         ]
     });

@@ -1,13 +1,13 @@
 // This is for the right pills of the bar.
-import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { WEATHER_SYMBOL, WWO_CODE } from '../../.commondata/weather.js';
-import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
-import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 const { Box, Label, Button, Overlay, Revealer, Scrollable, Stack, EventBox } = Widget;
 const { exec, execAsync } = Utils;
 const { GLib } = imports.gi;
+import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
+import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
+import { AnimatedCircProg } from "../../.commonwidgets/cairo_circularprogress.js";
+import { WWO_CODE, WEATHER_SYMBOL, NIGHT_WEATHER_SYMBOL } from '../../.commondata/weather.js';
 
 const WEATHER_CACHE_FOLDER = `${GLib.get_user_cache_dir()}/ags/weather`;
 Utils.exec(`mkdir -p ${WEATHER_CACHE_FOLDER}`);
@@ -28,27 +28,16 @@ const BarBatteryProgress = () => {
     })
 }
 
-const time = Variable('', {
-    poll: [
-        userOptions.time.interval,
-        () => GLib.DateTime.new_now_local().format(userOptions.time.format),
-    ],
-})
-
-const date = Variable('', {
-    poll: [
-        userOptions.time.dateInterval,
-        () => GLib.DateTime.new_now_local().format(userOptions.time.dateFormatLong),
-    ],
-})
-
 const BarClock = () => Widget.Box({
     vpack: 'center',
     className: 'spacing-h-4 bar-clock-box',
     children: [
         Widget.Label({
             className: 'bar-time',
-            label: time.bind(),
+            label: GLib.DateTime.new_now_local().format(userOptions.time.format),
+            setup: (self) => self.poll(userOptions.time.interval, label => {
+                label.label = GLib.DateTime.new_now_local().format(userOptions.time.format);
+            }),
         }),
         Widget.Label({
             className: 'txt-norm txt-onLayer1',
@@ -56,7 +45,10 @@ const BarClock = () => Widget.Box({
         }),
         Widget.Label({
             className: 'txt-smallie bar-date',
-            label: date.bind(),
+            label: GLib.DateTime.new_now_local().format(userOptions.time.dateFormatLong),
+            setup: (self) => self.poll(userOptions.time.dateInterval, (label) => {
+                label.label = GLib.DateTime.new_now_local().format(userOptions.time.dateFormatLong);
+            }),
         }),
     ],
 });
@@ -74,18 +66,18 @@ const Utilities = () => Box({
     className: 'spacing-h-4',
     children: [
         UtilButton({
-            name: getString('Screen snip'), icon: 'screenshot_region', onClicked: () => {
+            name: 'Screen snip', icon: 'screenshot_region', onClicked: () => {
                 Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`)
                     .catch(print)
             }
         }),
         UtilButton({
-            name: getString('Color picker'), icon: 'colorize', onClicked: () => {
+            name: 'Color picker', icon: 'colorize', onClicked: () => {
                 Utils.execAsync(['hyprpicker', '-a']).catch(print)
             }
         }),
         UtilButton({
-            name: getString('Toggle on-screen keyboard'), icon: 'keyboard', onClicked: () => {
+            name: 'Toggle on-screen keyboard', icon: 'keyboard', onClicked: () => {
                 toggleWindowOnAllMonitors('osk');
             }
         }),

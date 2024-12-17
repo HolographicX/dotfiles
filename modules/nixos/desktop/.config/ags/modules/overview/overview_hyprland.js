@@ -5,17 +5,17 @@
 const { Gdk, Gtk } = imports.gi;
 const { Gravity } = imports.gi.Gdk;
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
-import { monitors } from '../.commondata/hyprlanddata.js';
-import { MaterialIcon } from '../.commonwidgets/materialicon.js';
-import { iconExists, substitute } from "../.miscutils/icons.js";
+const { execAsync, exec } = Utils;
 import { setupCursorHoverGrab } from '../.widgetutils/cursorhover.js';
 import { dumpToWorkspace, swapWorkspace } from "./actions.js";
-const { execAsync, exec } = Utils;
+import { iconExists, substitute } from "../.miscutils/icons.js";
+import { monitors } from '../.commondata/hyprlanddata.js';
+import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 
 const NUM_OF_WORKSPACES_SHOWN = userOptions.overview.numOfCols * userOptions.overview.numOfRows;
 const TARGET = [Gtk.TargetEntry.new('text/plain', Gtk.TargetFlags.SAME_APP, 0)];
@@ -230,10 +230,9 @@ export default (overviewMonitor = 0) => {
         const widget = Widget.Box({
             className: 'overview-tasks-workspace',
             vpack: 'center',
-            // Rounding and adding 1px to minimum width/height to work around scaling inaccuracy:
             css: `
-                min-width: ${1 + Math.round(monitors[overviewMonitor].width * userOptions.overview.scale)}px;
-                min-height: ${1 + Math.round(monitors[overviewMonitor].height * userOptions.overview.scale)}px;
+                min-width: ${monitors[overviewMonitor].width * userOptions.overview.scale}px;
+                min-height: ${monitors[overviewMonitor].height * userOptions.overview.scale}px;
             `,
             children: [Widget.EventBox({
                 hexpand: true,
@@ -413,8 +412,6 @@ export default (overviewMonitor = 0) => {
 
     return Widget.Revealer({
         revealChild: true,
-        // hpack to prevent unneeded expansion in overview-tasks-workspace:
-        hpack: 'center',
         transition: 'slide_down',
         transitionDuration: userOptions.animations.durationLarge,
         child: Widget.Box({

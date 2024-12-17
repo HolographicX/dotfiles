@@ -1,11 +1,11 @@
 // This file is for the actual widget for each single notification
 const { GLib, Gdk, Gtk } = imports.gi;
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js'
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+const { Box, EventBox, Icon, Overlay, Label, Button, Revealer } = Widget;
+import { MaterialIcon } from './materialicon.js';
 import { setupCursorHover } from "../.widgetutils/cursorhover.js";
 import { AnimatedCircProg } from "./cairo_circularprogress.js";
-import { MaterialIcon } from './materialicon.js';
-const { Box, EventBox, Icon, Overlay, Label, Button, Revealer } = Widget;
 
 function guessMessageType(summary) {
     const str = summary.toLowerCase();
@@ -29,11 +29,11 @@ const getFriendlyNotifTimeString = (timeObject) => {
     const messageTime = GLib.DateTime.new_from_unix_local(timeObject);
     const oneMinuteAgo = GLib.DateTime.new_now_local().add_seconds(-60);
     if (messageTime.compare(oneMinuteAgo) > 0)
-        return getString('Now');
+        return 'Now';
     else if (messageTime.get_day_of_year() == GLib.DateTime.new_now_local().get_day_of_year())
         return messageTime.format(userOptions.time.format);
     else if (messageTime.get_day_of_year() == GLib.DateTime.new_now_local().get_day_of_year() - 1)
-        return getString('Yesterday');
+        return 'Yesterday';
     else
         return messageTime.format(userOptions.time.dateFormat);
 }
@@ -198,7 +198,7 @@ export default ({
                             onClicked: () => destroyWithAnims(),
                             setup: setupCursorHover,
                             child: Label({
-                                label: getString('Close'),
+                                label: 'Close',
                             }),
                         }),
                         ...notifObject.actions.map(action => Widget.Button({
@@ -250,12 +250,8 @@ export default ({
         className: 'txt-smaller txt-semibold',
         label: initTimeString,
         setup: initTimeString == 'Now' ? (self) => {
-            let id = Utils.timeout(60000, () => {
-                self.label = getFriendlyNotifTimeString(notifObject.time);
-                id = null;
-            });
-            self.connect('destroy', () => { if (id) GLib.source_remove(id) });
-        } : () => { },
+            Utils.timeout(60000, () => self.label = getFriendlyNotifTimeString(notifObject.time))
+        } : () => {},
     });
     const notifText = Box({
         valign: Gtk.Align.CENTER,

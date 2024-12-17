@@ -1,10 +1,10 @@
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import Todo from "../../services/todo.js";
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
+const { Box, Button, Label, Revealer } = Widget;
 import { MaterialIcon } from '../.commonwidgets/materialicon.js';
 import { TabContainer } from '../.commonwidgets/tabcontainer.js';
+import Todo from "../../services/todo.js";
 import { setupCursorHover } from '../.widgetutils/cursorhover.js';
-const { Box, Button, Label, Revealer } = Widget;
 
 const TodoListItem = (task, id, isDone, isEven = false) => {
     const taskName = Widget.Label({

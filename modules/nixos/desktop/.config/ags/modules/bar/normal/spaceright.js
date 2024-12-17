@@ -1,13 +1,13 @@
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
+const { execAsync } = Utils;
 import Indicator from '../../../services/indicator.js';
 import { StatusIcons } from '../../.commonwidgets/statusicons.js';
 import { Tray } from "./tray.js";
-const { execAsync } = Utils;
 
 const SeparatorDot = () => Widget.Revealer({
     transition: 'slide_left',
@@ -29,7 +29,7 @@ const SeparatorDot = () => Widget.Revealer({
     ,
 });
 
-export default (monitor = 0) => {
+export default () => {
     const barTray = Tray();
     const barStatusIcons = StatusIcons({
         className: 'bar-statusicons',
@@ -38,7 +38,7 @@ export default (monitor = 0) => {
                 self.toggleClassName('bar-statusicons-active', visible);
             }
         }),
-    }, monitor);
+    });
     const SpaceRightDefaultClicks = (child) => Widget.EventBox({
         onHover: () => { barStatusIcons.toggleClassName('bar-statusicons-hover', true) },
         onHoverLost: () => { barStatusIcons.toggleClassName('bar-statusicons-hover', false) },
