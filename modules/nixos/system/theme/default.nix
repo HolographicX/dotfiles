@@ -18,6 +18,11 @@ with lib.custom; let
       mv * $out/share/icons
     '';
   };
+  moreWaitaIcons = {
+    ".local/share/icons/MoreWaita" = {
+      source = "${moreWaita}/share/icons";
+    };
+  };
 
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
@@ -29,7 +34,29 @@ with lib.custom; let
   });
   cursor-package = pkgs.capitaine-cursors;
   cursor-theme = "capitaine-cursors";
-in {
+  nerdfonts = [
+    pkgs.nerd-fonts.ubuntu
+    pkgs.nerd-fonts.ubuntu-mono
+    pkgs.cascadia-code
+    pkgs.nerd-fonts.fantasque-sans-mono
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.mononoki
+    pkgs.nerd-fonts.space-mono
+  ];
+
+  generateFontMappings = font: {
+    "local/share/fonts/${font.name}" = {
+      recursive = true;
+      source = "${font}/share/fonts/truetype";
+    };
+    "fonts/${font.name}" = {
+      recursive = true;
+      source = "${font}/share/fonts/truetype";
+    };
+  };
+
+in {  
   options.system.theme = with types; {
     enable = mkBoolOpt false "Enable theme";
   };
@@ -100,10 +127,10 @@ in {
           style.name = "kvantum";
         };
       };
-      home.file = {
-        ".local/share/icons/MoreWaita" = {
-          source = "${moreWaita}/share/icons";
-        };
-      };
+
+  home.file =
+    builtins.foldl' (acc: font: acc // generateFontMappings font) {} nerdfonts
+    // moreWaitaIcons;
+
     };
 }
