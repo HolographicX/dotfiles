@@ -79,7 +79,7 @@ in {
 
       # design
       blender.enable = true;
-      # siril.enable = true;
+      siril.enable = true;
       shotwell.enable = true;
       super-slicer.enable = true;
       orca-slicer.enable = true;
