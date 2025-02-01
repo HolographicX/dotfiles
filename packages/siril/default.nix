@@ -14,7 +14,7 @@ siril.overrideAttrs (oldAttrs: {
     owner = "free-astro";
     repo = "siril";
     rev = version;
-    hash = "sha256-4sexb0Ylfda7kz3EJBESXzhL3eiDZcLhtxKgO/G3z2o=";
+    hash = "sha256-2kFNUN8zY1Ll/gzmWdosrtVwVoiZtQYIELjT4n3gJmM=";
   };
 
 
@@ -43,6 +43,8 @@ siril.overrideAttrs (oldAttrs: {
     libjxl
     libxisf
     libgit2
+    yyjson
+    gtksourceview4
   ];
 
   configureScript = ''

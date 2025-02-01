@@ -45,17 +45,6 @@ with lib.custom; let
     pkgs.nerd-fonts.space-mono
   ];
 
-  generateFontMappings = font: {
-    "local/share/fonts/${font.name}" = {
-      recursive = true;
-      source = "${font}/share/fonts/truetype";
-    };
-    "fonts/${font.name}" = {
-      recursive = true;
-      source = "${font}/share/fonts/truetype";
-    };
-  };
-
 in {  
   options.system.theme = with types; {
     enable = mkBoolOpt false "Enable theme";
@@ -128,9 +117,10 @@ in {
         };
       };
 
-  home.file =
-    builtins.foldl' (acc: font: acc // generateFontMappings font) {} nerdfonts
-    // moreWaitaIcons;
-
+      home.file = {
+        ".local/share/icons/MoreWaita" = {
+          source = "${moreWaita}/share/icons";
+        };
+      };
     };
 }
