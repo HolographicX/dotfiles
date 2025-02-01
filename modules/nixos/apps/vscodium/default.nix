@@ -17,6 +17,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ 
       vscodium-fhs 
+      vscode-with-extensions
       vscode-extensions.ms-vsliveshare.vsliveshare 
     ];
   };
