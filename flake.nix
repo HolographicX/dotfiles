@@ -45,9 +45,6 @@
       channels-config = {
         allowUnfree = true;
         android_sdk.accept_license = true;
-        permittedInsecurePackages = [
-                "electron-31.7.7"
-        ];
       };
       systems.hosts.soham.modules = with inputs; [
         nixos-hardware.nixosModules.asus-zephyrus-gu603h

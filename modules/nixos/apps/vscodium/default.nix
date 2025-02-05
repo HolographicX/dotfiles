@@ -8,6 +8,7 @@
 with lib;
 with lib.custom; let
   cfg = config.apps.vscodium;
+  R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 ]; };
 in
 {
   options.apps.vscodium = with types; {
@@ -19,7 +20,7 @@ in
       vscodium-fhs 
       vscode
       vscode-extensions.ms-vsliveshare.vsliveshare 
-      R
+      R-with-my-packages
       vscode-extensions.reditorsupport.r
     ];
   };
