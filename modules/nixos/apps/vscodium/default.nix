@@ -19,6 +19,8 @@ in
       vscodium-fhs 
       vscode
       vscode-extensions.ms-vsliveshare.vsliveshare 
+      R
+      vscode-extensions.reditorsupport.r
     ];
   };
 }
