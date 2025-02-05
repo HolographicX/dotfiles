@@ -8,15 +8,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.darktable;
+  cfg = config.apps.rawtherapee;
 in {
-  options.apps.darktable = with types; {
-    enable = mkBoolOpt false "Enable or disable darktable";
+  options.apps.rawtherapee = with types; {
+    enable = mkBoolOpt false "Enable or disable rawtherapee";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      darktable
+      rawtherapee
     ];
   };
 }

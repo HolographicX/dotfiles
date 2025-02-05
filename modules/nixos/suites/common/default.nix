@@ -75,7 +75,6 @@ in {
       cemu.enable = true;
       dolphin.enable = true;
       ludusavi.enable = true;
-      # feishin.enable = true;
       libreoffice.enable = true;
       minecraft.enable = true;
       obsidian.enable = true;
@@ -94,10 +93,10 @@ in {
       blender.enable = true;
       siril.enable = true;
       shotwell.enable = true;
-      # super-slicer.enable = true;
-      # orca-slicer.enable = true;
-      # kicad.enable = true;
-      # darktable.enable = true;
+      orca-slicer.enable = true;
+      kicad.enable = true;
+      rawtherapee.enable = true;
+      
       # dev
       development = {
           nodejs.enable = true;
