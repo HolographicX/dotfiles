@@ -96,6 +96,7 @@ in {
       orca-slicer.enable = true;
       kicad.enable = true;
       rawtherapee.enable = true;
+      super-slicer.enable = true;
       
       # dev
       development = {
