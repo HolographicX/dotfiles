@@ -18,19 +18,12 @@ with lib.custom; let
       mv * $out/share/icons
     '';
   };
+  moreWaitaIcons = {
+    ".local/share/icons/MoreWaita" = {
+      source = "${moreWaita}/share/icons";
+    };
+  };
 
-  nerdfonts = (pkgs.nerdfonts.override {
-    fonts = [
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "JetBrainsMono"
-      "FiraCode"
-      "Mononoki"
-      "SpaceMono"
-    ];
-  });
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
       # Sans
@@ -41,7 +34,18 @@ with lib.custom; let
   });
   cursor-package = pkgs.capitaine-cursors;
   cursor-theme = "capitaine-cursors";
-in {
+  nerdfonts = [
+    pkgs.nerd-fonts.ubuntu
+    pkgs.nerd-fonts.ubuntu-mono
+    pkgs.cascadia-code
+    pkgs.nerd-fonts.fantasque-sans-mono
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.mononoki
+    pkgs.nerd-fonts.space-mono
+  ];
+
+in {  
   options.system.theme = with types; {
     enable = mkBoolOpt false "Enable theme";
   };
@@ -57,10 +61,18 @@ in {
         adwaita-qt6
         adw-gtk3
         material-symbols
-        nerdfonts
         noto-fonts
         noto-fonts-cjk-sans
         google-fonts
+
+        nerd-fonts.ubuntu
+        nerd-fonts.ubuntu-mono
+        cascadia-code
+        nerd-fonts.fantasque-sans-mono
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.fira-code
+        nerd-fonts.mononoki
+        nerd-fonts.space-mono
       ];
 
       home.pointerCursor = {
@@ -104,15 +116,8 @@ in {
           style.name = "kvantum";
         };
       };
+
       home.file = {
-        ".local/share/fonts" = {
-          recursive = true;
-          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
-        };
-        ".fonts" = {
-          recursive = true;
-          source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
-        };
         ".local/share/icons/MoreWaita" = {
           source = "${moreWaita}/share/icons";
         };

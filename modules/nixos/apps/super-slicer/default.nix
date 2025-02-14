@@ -1,20 +1,20 @@
 {
   options,
   config,
-  pkgs,
   lib,
-  inputs,
+  pkgs,
   ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.apps.super-slicer;
-in {
+in
+{
   options.apps.super-slicer = with types; {
-    enable = mkBoolOpt false "Enable or disable super-slicer";
+    enable = mkBoolOpt false "Super Slicer";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ super-slicer-latest ];
+    environment.systemPackages = with pkgs; [ super-slicer ];
   };
 }

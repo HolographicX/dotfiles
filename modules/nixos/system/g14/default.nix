@@ -14,7 +14,7 @@ in {
   };
   
   config = mkIf cfg.enable {
-    # boot.kernelPackages = lib.mkForce pkgs.linuxKernel.kernels.linux_6_10;
+    # boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_11;
     environment.systemPackages = with pkgs; [
       supergfxctl
       asusctl
@@ -24,7 +24,7 @@ in {
       supergfxd = {
         enable = true;
         settings = {
-          mode = "Integrated";
+          mode = "Hybrid";
           vfio_enable = true;
           vfio_save = true;
           always_reboot = false;

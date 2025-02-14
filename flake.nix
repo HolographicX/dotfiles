@@ -18,7 +18,7 @@
       url = "github:somepaulo/MoreWaita";
       flake = false;
     };
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:aylur/ags/v1";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };

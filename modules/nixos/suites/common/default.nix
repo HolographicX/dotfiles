@@ -17,7 +17,6 @@ in {
 
     hardware.audio.enable = true;
     hardware.networking.enable = true;
-    hardware.nvidia.enable = true;
 
 
     services = {
@@ -33,6 +32,19 @@ in {
       environment.etc."specialisation".text = "vfio";
       apps.virt-manager.enable = true; # for vfio gpu passthrouggh
     };
+    specialisation."integrated".configuration = {
+      system.nixos.tags = [ "integrated" ];
+      environment.etc."specialisation".text = "Integrated GPU";
+      services = {
+        supergfxd = {
+          enable = lib.mkForce true;
+          settings = {
+            mode = lib.mkForce "Integrated";
+          };
+        };
+      };
+    };
+
     
     environment.systemPackages = [ pkgs.custom.sys ];
 
@@ -61,8 +73,8 @@ in {
       vscodium.enable = true;
       lutris.enable = true;
       cemu.enable = true;
+      dolphin.enable = true;
       ludusavi.enable = true;
-      feishin.enable = true;
       libreoffice.enable = true;
       minecraft.enable = true;
       obsidian.enable = true;
@@ -81,15 +93,17 @@ in {
       blender.enable = true;
       siril.enable = true;
       shotwell.enable = true;
-      super-slicer.enable = true;
       orca-slicer.enable = true;
       kicad.enable = true;
-      darktable.enable = true;
+      rawtherapee.enable = true;
+      super-slicer.enable = true;
+      
       # dev
       development = {
           nodejs.enable = true;
           android.enable = true;
       };
+      arduino.enable = true;
 
     };
   };
