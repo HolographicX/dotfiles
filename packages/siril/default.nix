@@ -5,20 +5,16 @@
   fetchFromGitLab,
   ...
 }:
-let
-  version = "master";
-in
+
 siril.overrideAttrs (oldAttrs: {
-  version = version;
+  version = "1.3.6";
   src = fetchFromGitLab {
     owner = "free-astro";
     repo = "siril";
-    rev = version;
-    hash = "sha256-2kFNUN8zY1Ll/gzmWdosrtVwVoiZtQYIELjT4n3gJmM=";
+    rev = "master";
+    hash = "sha256-DYF0zoYQ/MZeTNN0GPri/GouGMmFdFliP9yekX1cBdY=";
   };
 
-
-  # src = "${inputs.bibata-cursors}";
 
   buildInputs = with pkgs; [
     gtk3
