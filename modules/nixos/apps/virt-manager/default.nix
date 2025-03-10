@@ -16,7 +16,7 @@ in
 
   config = mkIf cfg.enable {
     programs.virt-manager.enable = true;
-    users.users.soham.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
+    users.users.${config.user.name}.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
     virtualisation.libvirtd = {
       enable = true;
       qemu = {
@@ -62,7 +62,7 @@ in
   
     # looking glaass
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 soham qemu-libvirtd -"
+      "f /dev/shm/looking-glass 0660 ${config.user.name} qemu-libvirtd -"
     ];
     
       environment.systemPackages = with pkgs; [ looking-glass-client ];
