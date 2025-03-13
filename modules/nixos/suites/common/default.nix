@@ -104,6 +104,7 @@ in {
           android.enable = true;
       };
       platformio.enable = true;
+      arduino.enable = true;
       docker.enable = true;
 
     };
