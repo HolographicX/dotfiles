@@ -97,7 +97,8 @@ in {
       kicad.enable = true;
       rawtherapee.enable = true;
       super-slicer.enable = true;
-      
+      luminanceHDR.enable = true;
+
       # dev
       development = {
           nodejs.enable = true;
