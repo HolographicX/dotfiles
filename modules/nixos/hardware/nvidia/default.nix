@@ -18,10 +18,11 @@ in {
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = false;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    hardware.nvidia.powerManagement = {
-      enable = true;
-      # finegrained = true;
-    };
+
+    # hardware.nvidia.powerManagement = {
+    #   enable = true;
+    #   finegrained = true;
+    # };
     hardware.nvidia.nvidiaSettings = true;
     # OpenGL support
     hardware.graphics = {
