@@ -37,9 +37,9 @@ in {
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     };
 
-    boot = {
-      initrd.kernelModules = [ "nvidia" "i915" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-      kernelParams = [ "nvidia-drm.fbdev=1" ];
-    };
+    # boot = {
+    #   initrd.kernelModules = [ "nvidia" "i915" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+    #   kernelParams = [ "nvidia-drm.fbdev=1" ];
+    # };
   };
 }

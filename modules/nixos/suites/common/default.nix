@@ -32,18 +32,18 @@ in {
       environment.etc."specialisation".text = "vfio";
       apps.virt-manager.enable = true; # for vfio gpu passthrouggh
     };
-    # specialisation."integrated".configuration = {
-    #   system.nixos.tags = [ "integrated" ];
-    #   environment.etc."specialisation".text = "Integrated GPU";
-    #   services = {
-    #     supergfxd = {
-    #       enable = lib.mkForce true;
-    #       settings = {
-    #         mode = lib.mkForce "Integrated";
-    #       };
-    #     };
-    #   };
-    # };
+    specialisation."integrated".configuration = {
+      system.nixos.tags = [ "integrated" ];
+      environment.etc."specialisation".text = "Integrated GPU";
+      services = {
+        supergfxd = {
+          enable = lib.mkForce true;
+          settings = {
+            mode = lib.mkForce "Integrated";
+          };
+        };
+      };
+    };
 
     
     environment.systemPackages = [ pkgs.custom.sys ];

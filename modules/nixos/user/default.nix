@@ -50,7 +50,7 @@ in {
       propagatedIcon
     ];
 
-    environment.sessionVariables.FLAKE = "/home/soham/.dots";
+    environment.sessionVariables.FLAKE = "/home/${cfg.name}/.dots";
 
     home = {
       file = {

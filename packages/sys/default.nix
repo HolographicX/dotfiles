@@ -1,4 +1,4 @@
-{writeShellScriptBin, pkgs,
+{writeShellScriptBin, pkgs, lib,
   ...
 }:
 writeShellScriptBin "sys" ''
