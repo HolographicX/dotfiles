@@ -17,10 +17,12 @@ in {
     home.programs.alacritty = {
       enable = true;
       settings = {
-        font.size = 12;
-        font.normal = {
-          family = "SpaceMono Nerd Font";
-          style = "Regular";
+        font = {
+          size = 12;
+          normal = {
+            family = "SpaceMono Nerd Font";
+            style = "Regular";
+          };
         };
       };
     };
