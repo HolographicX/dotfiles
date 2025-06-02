@@ -3,12 +3,16 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.apps.alacritty;
-in {
+mkLiteral = str: {
+    __hm_toml_literal = true;
+    __toString = _: str;
+  };in {
   options.apps.alacritty = with types; {
     enable = mkBoolOpt false "Enable or disable alacritty";
   };
@@ -19,9 +23,7 @@ in {
       settings = {
         font = {
           size = 12;
-          normal = (builtins.fromTOML ''
-            normal = { family = "SpaceMono Nerd Font", style = "Regular" }
-          '').normal;
+          normal = ''{ family = "SpaceMono Nerd Font", style = "Regular" }'';
         };
       };
     };
