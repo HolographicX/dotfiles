@@ -19,10 +19,12 @@ in {
       settings = {
         font = {
           size = 12;
-          normal = {
-            family = "SpaceMono Nerd Font";
-            style = "Regular";
-          };
+          normal = [ 
+            {
+              family = "SpaceMono Nerd Font";
+              style = "Regular";
+            } 
+          ];
         };
       };
     };
