@@ -9,10 +9,7 @@
 with lib;
 with lib.custom; let
   cfg = config.apps.alacritty;
-mkLiteral = str: {
-    __hm_toml_literal = true;
-    __toString = _: str;
-  };in {
+in {
   options.apps.alacritty = with types; {
     enable = mkBoolOpt false "Enable or disable alacritty";
   };
@@ -23,7 +20,6 @@ mkLiteral = str: {
       settings = {
         font = {
           size = 12;
-          normal = ''{ family = "SpaceMono Nerd Font", style = "Regular" }'';
         };
       };
     };
