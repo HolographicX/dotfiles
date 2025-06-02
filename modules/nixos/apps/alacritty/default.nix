@@ -18,6 +18,10 @@ in {
       enable = true;
       settings = {
         font.size = 12;
+        font.family = {
+          family = "SpaceMono Nerd Font";
+          style = "Regular";
+        };
       };
     };
   };
