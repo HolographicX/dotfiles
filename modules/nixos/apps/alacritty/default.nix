@@ -19,12 +19,9 @@ in {
       settings = {
         font = {
           size = 12;
-          normal = [ 
-            {
-              family = "SpaceMono Nerd Font";
-              style = "Regular";
-            } 
-          ];
+          normal = (builtins.fromTOML ''
+            normal = { family = "SpaceMono Nerd Font", style = "Regular" }
+          '').normal;
         };
       };
     };
