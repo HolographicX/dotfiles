@@ -18,7 +18,7 @@ in {
       enable = true;
       settings = {
         font.size = 12;
-        font.family = {
+        font.normal = {
           family = "SpaceMono Nerd Font";
           style = "Regular";
         };
