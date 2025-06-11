@@ -1,0 +1,1 @@
+{ channels, ... }: final: prev: { inherit (channels.nix-stable) dolphin; }
