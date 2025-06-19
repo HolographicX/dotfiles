@@ -30,7 +30,7 @@ in {
     specialisation."vfio".configuration = {
       system.nixos.tags = [ "with-vfio" ];
       environment.etc."specialisation".text = "vfio";
-      apps.virt-manager.enable = true; # for vfio gpu passthrouggh
+      hardware.virtualisation.enable = true; # for vfio gpu passthrouggh
     };
     specialisation."integrated".configuration = {
       system.nixos.tags = [ "integrated" ];

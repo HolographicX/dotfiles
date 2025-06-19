@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.virt-manager;
+  cfg = config.hardware.virtualisation;
 in
 {
-  options.apps.virt-manager = with types; {
+  options.hardware.virtualisation = with types; {
     enable = mkBoolOpt false "Virt-manager with Looking glass and GPU passthrough support.";
   };
 
@@ -60,12 +60,12 @@ in
     # USB redirection in virtual machine
     virtualisation.spiceUSBRedirection.enable = true;
   
-    # looking glaass
+    # looking glass
     systemd.tmpfiles.rules = [
       "f /dev/shm/looking-glass 0660 ${config.user.name} qemu-libvirtd -"
     ];
     
-      environment.systemPackages = with pkgs; [ looking-glass-client ];
+    environment.systemPackages = with pkgs; [ looking-glass-client ];
 
   };
 }
