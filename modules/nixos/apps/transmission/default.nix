@@ -15,6 +15,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ transmission_4 ];
+    environment.systemPackages = with pkgs; [ transmission_4-qt6 ];
   };
 }
