@@ -96,8 +96,8 @@ in {
       orca-slicer.enable = true;
       kicad.enable = true;
       rawtherapee.enable = true;
+      darktable.enable = true;
       super-slicer.enable = true;
-      luminanceHDR.enable = true;
 
       # dev
       development = {
