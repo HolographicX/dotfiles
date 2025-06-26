@@ -8,7 +8,7 @@
   system.g14.enable = true; # Asus laptop controls
   system.battery.enable = true; # Only for laptops, they will still work without it, just improves battery life
   hardware.nvidia.enable = true; # NVIDIA GPU
-
+  hardware.swap.enable = true;
   environment.systemPackages = with pkgs; [
     # Any particular packages only for this host
   ];
