@@ -107,6 +107,7 @@ in {
       platformio.enable = true;
       arduino.enable = true;
       docker.enable = true;
+      cuda.enable = true;
 
     };
   };
