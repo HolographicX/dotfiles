@@ -91,6 +91,7 @@ in {
 
       # design
       blender.enable = true;
+      gimp.enable = true;
       siril.enable = true;
       shotwell.enable = true;
       orca-slicer.enable = true;
