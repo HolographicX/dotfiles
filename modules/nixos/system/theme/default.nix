@@ -85,7 +85,7 @@ in {
 
       home.extraOptions = with inputs; {
         imports = [
-          catppuccin.homeManagerModules.catppuccin 
+          catppuccin.homeModules.catppuccin 
         ];
         catppuccin = {
           accent = "lavender";

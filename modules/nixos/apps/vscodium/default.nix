@@ -8,7 +8,7 @@
 with lib;
 with lib.custom; let
   cfg = config.apps.vscodium;
-  R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 languageserver httpgd]; };
+  R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 languageserver]; };
 in
 {
   options.apps.vscodium = with types; {

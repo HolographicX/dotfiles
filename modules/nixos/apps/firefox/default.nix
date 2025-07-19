@@ -17,6 +17,7 @@ in {
     home.programs.firefox = {
       enable = true;
       package = pkgs.firefox-bin;
+      profiles.default.extensions.force = true;
     };
   };
 }

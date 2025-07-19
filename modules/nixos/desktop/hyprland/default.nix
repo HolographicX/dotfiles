@@ -27,7 +27,6 @@ in
 
     environment.systemPackages = with pkgs; [
       ### Utils
-      axel
       cliphist
 
       ### Player and Audio

@@ -91,14 +91,15 @@ in {
 
       # design
       blender.enable = true;
-      gimp.enable = true;
+      # gimp.enable = true;
       siril.enable = true;
       shotwell.enable = true;
       orca-slicer.enable = true;
       kicad.enable = true;
       rawtherapee.enable = true;
-      darktable.enable = true;
+      # darktable.enable = true;
       super-slicer.enable = true;
+      freecad.enable = true;
 
       # dev
       development = {
