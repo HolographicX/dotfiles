@@ -1,20 +1,21 @@
 {
   options,
   config,
-  lib,
   pkgs,
+  lib,
   ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.apps.zoom;
-in
-{
+in {
   options.apps.zoom = with types; {
-    enable = mkBoolOpt false "Zoom.";
+    enable = mkBoolOpt false "Enable or disable zoom";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ zoom-us ];
+    services.flatpak.packages = [
+      "us.zoom.Zoom"
+    ];
   };
 }
