@@ -38,15 +38,15 @@ with lib.custom; {
       home.pointerCursor = mkAliasDefinitions options.home.pointerCursor;
       programs = mkAliasDefinitions options.home.programs;
     };
-    # home-manager = with inputs; {
-    #   useGlobalPkgs = true;
-    #   useUserPackages = true;
-    #   extraSpecialArgs = {inherit nix-colors;};
-    #   users.${config.user.name} =
-    #     mkAliasDefinitions options.home.extraOptions;
-    # };
-    snowfallorg.users.${config.user.name}.home.config =
+    home-manager = with inputs; {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs = {inherit nix-colors;};
+      users.${config.user.name} =
         mkAliasDefinitions options.home.extraOptions;
+    };
+    # snowfallorg.users.${config.user.name}.home.config =
+    #     mkAliasDefinitions options.home.extraOptions;
 
   };
 }
