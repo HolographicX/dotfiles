@@ -21,6 +21,10 @@
     ags.url = "github:aylur/ags/v1";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    blender-bin = {
+      url = "github:edolstra/nix-warez";
+      flake = false;
+    };
   };
 
   outputs = inputs: let
@@ -50,7 +54,10 @@
         nixos-hardware.nixosModules.asus-zephyrus-gu603h
       ];
 
-      overlays = with inputs; [];
+      overlays = with inputs; [
+        # (import blender-bin + "/blender")
+      ];
+
 
       systems.modules.nixos = with inputs; [
         catppuccin.nixosModules.catppuccin

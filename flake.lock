@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "blender-bin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752701743,
+        "narHash": "sha256-cQeX9PP5F7fgsuv0CrL16GtlU6MS0i9LLnkkITu8jA8=",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "rev": "69acfebb3740542936f71775bcdf322dc328a655",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -275,6 +291,7 @@
     "root": {
       "inputs": {
         "ags": "ags",
+        "blender-bin": "blender-bin",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "more-waita": "more-waita",
