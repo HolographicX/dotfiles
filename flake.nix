@@ -21,10 +21,8 @@
     ags.url = "github:aylur/ags/v1";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    blender-bin = {
-      url = "github:edolstra/nix-warez";
-      flake = false;
-    };
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+
   };
 
   outputs = inputs: let
@@ -55,7 +53,7 @@
       ];
 
       overlays = with inputs; [
-        # (import blender-bin + "/blender")
+        blender-bin.overlays.default
       ];
 
 
