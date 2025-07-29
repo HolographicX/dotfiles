@@ -14,6 +14,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ blender_4_5 ]; # from blender-bin flake
+    environment.systemPackages = with pkgs; [ blender_4_2 ]; # from blender-bin flake
   };
 }
