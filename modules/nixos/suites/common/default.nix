@@ -100,6 +100,7 @@ in {
       # darktable.enable = true;
       super-slicer.enable = true;
       freecad.enable = true;
+      kstars.enable = true;
 
       # dev
       development = {
