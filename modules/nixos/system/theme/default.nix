@@ -95,7 +95,6 @@ in {
 
         gtk = {
           enable = true;
-          catppuccin.enable = true;
           iconTheme.name = moreWaita.name;
           gtk3.extraCss = ''
             headerbar, .titlebar,
