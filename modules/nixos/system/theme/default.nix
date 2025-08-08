@@ -95,7 +95,7 @@ in {
 
         gtk = {
           enable = true;
-          iconTheme.name = moreWaita.name;
+          iconTheme.name = lib.mkForce moreWaita.name;
           gtk3.extraCss = ''
             headerbar, .titlebar,
             .csd:not(.popup):not(tooltip):not(messagedialog) decoration{

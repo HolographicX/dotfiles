@@ -12,7 +12,7 @@ siril.overrideAttrs (oldAttrs: {
     owner = "free-astro";
     repo = "siril";
     rev = "1.4";
-    hash = "sha256-E/UjBG4Bz0gUF4sHFMW7RVZ5mQa+VV3qXwT+dJCJO7s=";
+    hash = "sha256-Obs/Ih0EjPd/N8rez5tZAD2ZoJM47MgPi3ObC/GsZ7Y=";
   };
 
 
