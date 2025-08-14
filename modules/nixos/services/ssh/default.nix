@@ -18,6 +18,9 @@ in {
       ports = [22];
       settings.PermitRootLogin = "prohibit-password";
       allowSFTP = true;
+      extraConfig = ''
+        Subsystem sftp internal-sftp
+      '';
     };
 
     users.users = let 
