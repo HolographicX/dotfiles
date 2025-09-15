@@ -19,5 +19,12 @@ in {
       platformio
       esptool
     ];
+    services.udev.packages = [ 
+      pkgs.platformio-core
+      pkgs.openocd
+    ];
+
+    programs.nix-ld.libraries = with pkgs; [avrdude];
+
   };
 }
