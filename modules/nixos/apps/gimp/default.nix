@@ -16,7 +16,8 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      gimp
+      gimp3
+      gimp3Plugins.gmic
     ];
   };
 }
