@@ -13,6 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    hardware.enableRedistributableFirmware = true;
     networking.networkmanager.enable = true;
     services.avahi = {
         nssmdns4 = true;
@@ -25,7 +26,6 @@ in {
           workstation = true;
         };
     };
-    networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
     services.resolved = {
       enable = true;
@@ -34,5 +34,7 @@ in {
       fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
       dnsovertls = "true";
     };
+    
+    networking.networkmanager.dns = "systemd-resolved";
   };
 }
