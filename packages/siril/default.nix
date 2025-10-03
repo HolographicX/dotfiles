@@ -11,8 +11,8 @@ siril.overrideAttrs (oldAttrs: {
   src = fetchFromGitLab {
     owner = "free-astro";
     repo = "siril";
-    rev = "1.4.0-beta4";
-    hash = "sha256-Uc7P+D05GmXn+V8HjfmXTegmc4BH13eLajN2+sYO8YU=";
+    rev = "master";
+    hash = "sha256-GbJAMpaEnm/f2U4H8rxzCPrhUk+Z1+tv33gNfuTeQ1o=";
   };
 
 
