@@ -96,6 +96,16 @@ in {
         gtk = {
           enable = true;
           iconTheme.name = lib.mkForce moreWaita.name;
+          theme = {
+            name = "catppuccin-${config.catppuccin.flavor}-${config.catppuccin.accent}-compact";
+            package = pkgs.catppuccin-gtk.override {
+              accents = [ config.catppuccin.accent ];
+              variant = config.catppuccin.flavor;
+              size = "compact";
+            };
+
+          };
+
           gtk3.extraCss = ''
             headerbar, .titlebar,
             .csd:not(.popup):not(tooltip):not(messagedialog) decoration{

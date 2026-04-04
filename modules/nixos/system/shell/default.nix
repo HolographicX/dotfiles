@@ -31,7 +31,6 @@ in {
 
     environment.shellAliases = {
       ".." = "cd ..";
-      neofetch = "nitch";
     };
 
     home.programs.zoxide = {
@@ -41,7 +40,6 @@ in {
 
     home.programs.fish = {
       enable = true;
-      catppuccin.enable = true;
       shellAliases = {
         ls = "eza -G --icons --no-user --no-time --git -s type";
         cat = "bat";

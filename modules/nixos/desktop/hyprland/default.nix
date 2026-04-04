@@ -21,7 +21,6 @@ in
       ags.enable = true;
       fuzzel.enable = true;
       dconf.enable = true;
-      ollama.enable = true;
     };
 
 
@@ -34,7 +33,7 @@ in
       libdbusmenu
       playerctl
       swww
-      blueberry
+      blueman
 
       ### GTK
       webp-pixbuf-loader
@@ -76,6 +75,8 @@ in
       wayshot
       wlsunset
     ];
+
+
 
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
@@ -125,6 +126,10 @@ in
           ];
         };
         extraConfig = builtins.readFile (../.config/hypr/hyprland.conf);
+        plugins = [
+          plugins.hyprexpo
+        ];
+
       };
     };
   };

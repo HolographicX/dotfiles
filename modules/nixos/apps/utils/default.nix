@@ -48,7 +48,7 @@ in {
       htop
       ffmpeg
       python3
-      neofetch
+      fastfetch
       pfetch
       pciutils
       appimage-run

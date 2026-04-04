@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       nil
-      nixfmt-classic
+      nixfmt
       nixpkgs-fmt
       nix-index
       nix-prefetch-git

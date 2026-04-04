@@ -1,5 +1,4 @@
-import GLib from 'gi://GLib';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import userOverrides from '../../user_options.js';
 
 // Default options.
@@ -32,7 +31,7 @@ let configOptions = {
         'fakeScreenRounding': 0, // 0: None | 1: Always | 2: When not fullscreen
     },
     'apps': {
-        'bluetooth': "blueberry",
+        'bluetooth': "blueman",
         'imageViewer': "loupe",
         'network': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center wifi",
         'settings': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",

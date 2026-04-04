@@ -32,10 +32,7 @@ in {
           hotplug_type = "None";
         };
       };
-      asusd = {
-        enable = true;
-        enableUserService = true;
-      };
+      asusd.enable = true;
     };
     
     boot.loader.grub.extraConfig = "GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep\"";

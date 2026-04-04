@@ -81,6 +81,7 @@ in {
       transmission.enable = true;
       chromium.enable = true;
       livecaptions.enable = true;
+      feishin.enable = true;
       foliate.enable = true;
       zoom.enable = true;
       tools = {
@@ -97,10 +98,8 @@ in {
       orca-slicer.enable = true;
       kicad.enable = true;
       rawtherapee.enable = true;
-      # darktable.enable = true;
       super-slicer.enable = true;
       freecad.enable = true;
-      kstars.enable = true;
 
       # dev
       development = {

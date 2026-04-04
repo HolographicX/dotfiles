@@ -19,13 +19,12 @@ in {
       ddcutil
       ollama
       dart-sass
-      gradience
       gammastep
       foot
       gojq
       libnotify
       glib
-      (python312.withPackages (p: [
+      (python3.withPackages (p: [
         p.pillow
         p.libsass
         p.setproctitle # for keep system awake

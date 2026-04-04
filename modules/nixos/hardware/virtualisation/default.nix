@@ -24,13 +24,6 @@ in
         runAsRoot = true;
         swtpm.enable = true;
         vhostUserPackages = with pkgs; [ virtiofsd ];
-        ovmf = {
-          enable = true;
-          packages = [(pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd];
-        };
       };
       onBoot = "ignore";
       onShutdown = "shutdown";
