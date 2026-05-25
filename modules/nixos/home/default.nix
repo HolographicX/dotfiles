@@ -35,18 +35,15 @@ with lib.custom; {
       home.file = mkAliasDefinitions options.home.file;
       xdg.enable = true;
       xdg.configFile = mkAliasDefinitions options.home.configFile;
-      home.pointerCursor = mkAliasDefinitions options.home.pointerCursor;
       programs = mkAliasDefinitions options.home.programs;
     };
     home-manager = with inputs; {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = {inherit nix-colors;};
+      extraSpecialArgs = {};
       users.${config.user.name} =
         mkAliasDefinitions options.home.extraOptions;
+      backupFileExtension = "backup";
     };
-    # snowfallorg.users.${config.user.name}.home.config =
-    #     mkAliasDefinitions options.home.extraOptions;
-
   };
 }

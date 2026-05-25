@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+    services.geoclue2.enable = true;
     services.automatic-timezoned.enable = true;
   };
 }

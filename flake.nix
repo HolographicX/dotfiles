@@ -1,72 +1,74 @@
 {
-  description = "";
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+        catppuccin.url = "github:catppuccin/nix";
+        home-manager.url = "github:nix-community/home-manager";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        snowfall-lib = {
+            url = "github:snowfallorg/lib";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-  inputs = {
-    # Core
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    catppuccin.url = "github:catppuccin/nix";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    snowfall-lib = {
-      url = "github:snowfallorg/lib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-colors.url = "github:misterio77/nix-colors";
-
-    more-waita = {
-      url = "github:somepaulo/MoreWaita";
-      flake = false;
-    };
-    ags.url = "github:aylur/ags/v1";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-  };
-
-  outputs = inputs: let
-    lib = inputs.snowfall-lib.mkLib {
-      inherit inputs;
-      src = ./.;
-
-      snowfall = {
-        meta = {
-          name = "dotfiles";
-          title = "dotfiles";
+        dotfiles = {
+          url = "git+https://github.com/holographicx/dots-hyprland?submodules=1";
+          flake = false;
         };
 
-        namespace = "custom";
-      };
+        illogical-flake = {
+          url = "github:holographicx/illogical-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+          inputs.dotfiles.follows = "dotfiles";
+        };
+
+        hyprland.url = "github:hyprwm/Hyprland";
+        hyprland-plugins = {
+          url = "github:hyprwm/hyprland-plugins";
+          inputs.hyprland.follows = "hyprland";
+        };
+
+        blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+
+        stylix = {
+          url = "github:nix-community/stylix";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
-  in
-    lib.mkFlake {
-      inherit inputs;
-      src = ./.;
 
-      channels-config = {
-        allowUnfree = true;
-        android_sdk.accept_license = true;
-      };
-      systems.hosts.soham.modules = with inputs; [
-        nixos-hardware.nixosModules.asus-zephyrus-gu603h
-      ];
+    outputs = inputs:
+    inputs.snowfall-lib.mkFlake {
+        inherit inputs;
+        src = ./.;
+        snowfall = {
+          meta = {
+            name = "dotfiles";
+            title = "dotfiles";
+          };
 
-      overlays = with inputs; [
-        blender-bin.overlays.default
-      ];
+          namespace = "custom";
+        };
 
+        channels-config = {
+          allowUnfree = true;
+        };
 
-      systems.modules.nixos = with inputs; [
-        catppuccin.nixosModules.catppuccin
-        home-manager.nixosModules.home-manager
-        nix-flatpak.nixosModules.nix-flatpak
-      ];
+        overlays = with inputs; [
+          blender-bin.overlays.default
+        ];
 
-      templates = import ./templates {};
+        homes.modules = with inputs; [
+          illogical-flake.homeManagerModules.default
+        ];
+
+        systems.modules.nixos = with inputs; [
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+        ];
+
+        systems.hosts.holographic.modules = with inputs; [
+          nixos-hardware.nixosModules.asus-zephyrus-gu603h
+        ];
     };
 }

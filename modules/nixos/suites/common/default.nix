@@ -17,100 +17,42 @@ in {
 
     hardware.audio.enable = true;
     hardware.networking.enable = true;
+    hardware.bluetooth.enable = true;
 
 
     services = {
-      easyeffects.enable = true;
       ssh.enable = true;
-      polkit.enable = true;
       printing.enable = true;
       flatpak.enable = true;
-
-    };
-    specialisation."vfio".configuration = {
-      system.nixos.tags = [ "with-vfio" ];
-      environment.etc."specialisation".text = "vfio";
-      hardware.virtualisation.enable = true; # for vfio gpu passthrouggh
-    };
-    specialisation."integrated".configuration = {
-      system.nixos.tags = [ "integrated" ];
-      environment.etc."specialisation".text = "Integrated GPU";
-      services = {
-        supergfxd = {
-          enable = lib.mkForce true;
-          settings = {
-            mode = lib.mkForce "Integrated";
-          };
-        };
-      };
+      upower.enable = true;
     };
 
+    security.polkit.enable = true;
     
-    environment.systemPackages = [ pkgs.custom.sys ];
-
     system = {
       fonts.enable = true;
-      locale.enable = true;
       time.enable = true;
-      xkb.enable = true;
       theme.enable = true;
+      shell.enable = true;
     };
 
     desktop = {
-      gnome.enable = true;
       hyprland.enable = true;
     };
 
-    # --- apps and stuff -----
-    # TODO: Split apps according to suites
     apps = {
-      utils.enable = true;
-      utils.nix-ld.enable = true;
-      firefox.enable = true;
       alacritty.enable = true;
-      steam.enable = true;
-      discord.enable = true;
       vscodium.enable = true;
-      lutris.enable = true;
-      cemu.enable = true;
-      dolphin.enable = true;
-      ludusavi.enable = true;
-      libreoffice.enable = true;
-      minecraft.enable = true;
-      obsidian.enable = true;
-      transmission.enable = true;
-      chromium.enable = true;
-      livecaptions.enable = true;
-      feishin.enable = true;
-      foliate.enable = true;
-      zoom.enable = true;
-      tools = {
-        tailscale.enable = true;
-        warp.enable = true;
-        piper.enable = true;
-      };
-
-      # design
-      blender.enable = true;
-      gimp.enable = true;
-      siril.enable = true;
-      shotwell.enable = true;
-      orca-slicer.enable = true;
-      kicad.enable = true;
-      rawtherapee.enable = true;
-      super-slicer.enable = true;
-      freecad.enable = true;
-
-      # dev
-      development = {
-          nodejs.enable = true;
-          android.enable = true;
-      };
-      platformio.enable = true;
+      firefox.enable = true;
+      nautilus.enable = true;
+      rpi-imager.enable = true;
       arduino.enable = true;
-      docker.enable = true;
-      cuda.enable = true;
-
+      utils.enable = true;
+      vesktop.enable = true;
+      kicad.enable = true;
+      another-rawtherapee.enable = true;
+      tailscale.enable = true;
     };
+
   };
 }

@@ -21,6 +21,7 @@ in {
       nixpkgs-fmt
       nix-index
       nix-prefetch-git
+      nixd
     ];
 
     nix = let

@@ -7,16 +7,16 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.kicad;
+  cfg = config.apps.vesktop;
 in
 {
-  options.apps.kicad = with types; {
-    enable = mkBoolOpt false "kicad.";
+  options.apps.vesktop = with types; {
+    enable = mkBoolOpt false "Vesktop.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ 
-      kicad
+      vesktop
     ];
   };
 }

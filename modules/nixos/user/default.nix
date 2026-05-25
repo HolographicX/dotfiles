@@ -31,11 +31,12 @@ with lib.custom; let
       cp ${cfg.icon} "$target/${cfg.icon.fileName}"
     '';
 in {
+
   options.user = with types; {
-    name = mkOpt str "soham" "The name to use for the user account.";
-    initialPassword =
-      mkOpt str "password"
-      "The initial password to use when the user is first created.";
+    name = mkOpt str "holographic" "The name to use for the user account.";
+    hashedPassword =
+      mkOpt str "$6$7MLlJuQPNHFE4nUV$wa1NqDt6LnE7I9SXzvNswoYLTtD/d8KWulYA3LQDbeV0tVWHhbDg/u0bMLUAZASn9fPjddfOmUaLTORU5bC.51" "The password for the user account as a hash.";
+
     icon =
       mkOpt (nullOr package) defaultIcon
       "The profile picture to use for the user.";
@@ -45,7 +46,12 @@ in {
       "Extra options passed to <option>users.users.<name></option>.";
   };
 
+
   config = {
+    snowfallorg.users.${cfg.name} = {
+      create = true;
+    };
+
     environment.systemPackages = with pkgs; [
       propagatedIcon
     ];
@@ -65,12 +71,12 @@ in {
     users.users.${cfg.name} =
       {
         isNormalUser = true;
-        inherit (cfg) name initialPassword;
+        inherit (cfg) name hashedPassword;
         home = "/home/${cfg.name}";
         group = "users";
 
         extraGroups =
-          ["wheel" "audio" "sound" "video" "networkmanager" "input" "tty" "docker"]
+          ["wheel" "audio" "sound" "video" "networkmanager" "input" "tty" "docker" "dialout" "uucp"]
           ++ cfg.extraGroups;
       }
       // cfg.extraOptions;

@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.system.shell;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nushell" "fish"]) "fish" "What shell to use";
+    enable = mkBoolOpt false "Enable the fish shell";
   };
 
   config = {
@@ -21,7 +21,7 @@ in {
       zoxide
       starship
     ];
-    users.defaultUserShell = pkgs.${cfg.shell};
+    users.defaultUserShell = pkgs.fish;
     users.users.root.shell = pkgs.bashInteractive;
     users.users.${config.user.name}.ignoreShellProgramCheck = true;
     home.programs.starship = {
@@ -47,10 +47,6 @@ in {
       shellInit = ''
         zoxide init fish | source
         set -g fish_greeting
-        if status --is-interactive
-          keychain --eval --quiet -Q id_rsa | source
-        end
-
         function , --description 'add software to shell session'
               nix shell nixpkgs#$argv[1..-1]
         end

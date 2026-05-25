@@ -14,10 +14,6 @@ in {
   };
   
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      supergfxctl
-      asusctl
-    ];
 
     services = {
       supergfxd = {
@@ -29,12 +25,15 @@ in {
           always_reboot = false;
           no_logind = false;
           logout_timeout_s = 180;
-          hotplug_type = "None";
+          hotplug_type = "Asus";
         };
       };
       asusd.enable = true;
+      asusd.asusdConfig.source = "/etc/asusd/asusd.ron";
     };
     
-    boot.loader.grub.extraConfig = "GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep\"";
+    boot.kernelParams = ["nvidia-drm.modeset=1" "mem_sleep_default=deep" "amdgpu.dcdebugmask=0x10"];
+    boot.blacklistedKernelModules = ["noveau"];
+  
   };
 }

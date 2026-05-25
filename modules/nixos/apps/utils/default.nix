@@ -1,57 +1,32 @@
 {
   options,
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.apps.utils;
-in {
+in
+{
   options.apps.utils = with types; {
-    enable = mkBoolOpt false "Enable or disable utils apps";
+    enable = mkBoolOpt false "rpi-imager.";
   };
 
   config = mkIf cfg.enable {
-    programs.nh = {
-      enable = true;  # `nh os switch --help`
-    };
-
-    programs.git = {
-      enable = true;
-      package = pkgs.gitFull;
-      config.credential.helper = "libsecret";
-    };
-
-    programs.appimage.binfmt = true; # for appimages
-    
-    environment.systemPackages = with pkgs; [
-      # Development
+    environment.systemPackages = with pkgs; [ 
+      git 
       git-remote-gcrypt
-      bat
-      eza
-      fzf
-      gnumake
-      fd
-      jdk
-      gradle
-      
-      # Util
-      keychain
-      lm_sensors
-      alejandra
-      vim
-      wget
-      unzip
-      sshfs
-      htop
-      ffmpeg
-      python3
-      fastfetch
-      pfetch
-      pciutils
-      appimage-run
+      gh
+    ];
+
+    programs.nix-ld.enable = true;
+
+    programs.nix-ld.libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      glibc
     ];
   };
 }

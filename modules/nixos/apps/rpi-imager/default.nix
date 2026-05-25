@@ -7,16 +7,16 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.kicad;
+  cfg = config.apps.rpi-imager;
 in
 {
-  options.apps.kicad = with types; {
-    enable = mkBoolOpt false "kicad.";
+  options.apps.rpi-imager = with types; {
+    enable = mkBoolOpt false "rpi-imager.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ 
-      kicad
+      rpi-imager 
     ];
   };
 }
