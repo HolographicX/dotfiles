@@ -60,6 +60,7 @@ in {
       steam.enable = true;
       eden.enable = true;
       dolphin.enable = true;
+      cemu.enable = true;
     };
 
   };

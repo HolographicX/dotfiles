@@ -8,15 +8,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.dolphin;
+  cfg = config.apps.cemu;
 in {
-  options.apps.dolphin = with types; {
-    enable = mkBoolOpt false "Enable or disable dolphin";
+  options.apps.cemu = with types; {
+    enable = mkBoolOpt false "Enable or disable cemu";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      dolphin-emu
+      cemu
     ];
   };
 }

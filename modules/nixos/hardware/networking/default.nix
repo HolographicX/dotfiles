@@ -15,6 +15,14 @@ in {
   config = mkIf cfg.enable {
     hardware.enableRedistributableFirmware = true;
     networking.networkmanager.enable = true;
+
+    networking.firewall = {
+      enable = true;
+      allowedUDPPortRanges = [
+        { from = 26000; to = 26999; }
+      ];
+    };
+
     services.avahi = {
         nssmdns4 = true;
         enable = true;
