@@ -43,17 +43,23 @@ in {
     apps = {
       alacritty.enable = true;
       vscodium.enable = true;
+      opencode.enable = true;
+      utils.enable = true;
+
       firefox.enable = true;
       nautilus.enable = true;
+
       rpi-imager.enable = true;
       arduino.enable = true;
-      utils.enable = true;
       vesktop.enable = true;
       kicad.enable = true;
       another-rawtherapee.enable = true;
       tailscale.enable = true;
-      opencode.enable = true;
+
+      # gaming
       steam.enable = true;
+      eden.enable = true;
+      dolphin.enable = true;
     };
 
   };
