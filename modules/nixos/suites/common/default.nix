@@ -52,6 +52,8 @@ in {
       kicad.enable = true;
       another-rawtherapee.enable = true;
       tailscale.enable = true;
+      opencode.enable = true;
+      steam.enable = true;
     };
 
   };

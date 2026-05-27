@@ -1,9 +1,8 @@
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-        catppuccin.url = "github:catppuccin/nix";
-        home-manager.url = "github:nix-community/home-manager";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+        home-manager.url = "github:nix-community/home-manager/release-25.11";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
         snowfall-lib = {
             url = "github:snowfallorg/lib";
@@ -31,7 +30,7 @@
         blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
         stylix = {
-          url = "github:nix-community/stylix";
+          url = "github:nix-community/stylix/release-25.11";
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
