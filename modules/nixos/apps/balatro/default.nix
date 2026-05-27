@@ -8,16 +8,16 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.eden;
+  cfg = config.apps.balatro;
 in {
-  options.apps.eden = with types; {
-    enable = mkBoolOpt false "Enable or disable eden";
+  options.apps.balatro = with types; {
+    enable = mkBoolOpt false "Enable or disable balatro";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      eden
-      tkmm
+      balatro
+      balatro-mod-manager
     ];
   };
 }

@@ -61,6 +61,7 @@ in {
       eden.enable = true;
       dolphin.enable = true;
       cemu.enable = true;
+      balatro.enable = true;
     };
 
   };
