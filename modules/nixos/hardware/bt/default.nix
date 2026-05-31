@@ -36,7 +36,7 @@ in {
 
       # nintendo controllers
       services.joycond.enable = true;
-      services.udev.packages = with pkgs; [ game-devices-udev ];
+      services.udev.packages = with pkgs; [ game-devices-udev-rules ];
 
   };
 }

@@ -57,6 +57,8 @@ in {
       another-rawtherapee.enable = true;
       tailscale.enable = true;
       transmission.enable = true;
+      lmstudio.enable = true;
+
 
 
       # gaming
