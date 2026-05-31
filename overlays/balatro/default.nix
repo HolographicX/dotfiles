@@ -1,0 +1,1 @@
+{ channels, ... }: final: prev: { inherit (channels.nixpkgs-unstable) balatro-mod-manager; }

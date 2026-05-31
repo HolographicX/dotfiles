@@ -17,7 +17,8 @@ in {
 
     hardware.audio.enable = true;
     hardware.networking.enable = true;
-    hardware.bluetooth.enable = true;
+    hardware.bt.enable = true;
+
 
 
     services = {
