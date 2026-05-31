@@ -56,6 +56,8 @@ in {
       kicad.enable = true;
       another-rawtherapee.enable = true;
       tailscale.enable = true;
+      transmission.enable = true;
+
 
       # gaming
       steam.enable = true;
