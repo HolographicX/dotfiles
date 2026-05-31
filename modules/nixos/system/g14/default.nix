@@ -33,7 +33,7 @@ in {
     };
     
     boot.kernelParams = ["nvidia-drm.modeset=1" "mem_sleep_default=deep" "amdgpu.dcdebugmask=0x10"];
-    boot.blacklistedKernelModules = ["noveau"];
+    boot.blacklistedKernelModules = ["nouveau"];
   
   };
 }

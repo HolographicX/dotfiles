@@ -21,7 +21,7 @@ in {
 
     hardware.nvidia.powerManagement = {
       enable = true;
-      finegrained = true;
+      finegrained = false;
     };
 
 
