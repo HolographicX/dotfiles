@@ -2,6 +2,7 @@
   options,
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -29,5 +30,13 @@ in {
       };
 
       services.blueman.enable = true;
+
+      hardware.xpadneo.enable = true; # xbox controllers
+      boot.kernelModules = [ "hid-playstation" ]; # dualsense controllers
+
+      # nintendo controllers
+      services.joycond.enable = true;
+      services.udev.packages = with pkgs; [ game-devices-udev ];
+
   };
 }
