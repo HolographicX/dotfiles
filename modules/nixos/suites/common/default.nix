@@ -59,8 +59,6 @@ in {
       transmission.enable = true;
       lmstudio.enable = true;
 
-
-
       # gaming
       steam.enable = true;
       eden.enable = true;

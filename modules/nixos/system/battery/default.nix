@@ -16,6 +16,8 @@ in {
     # Better scheduling for CPU cycles - thanks System76!!!
     services.system76-scheduler.settings.cfsProfiles.enable = true;
 
+    powerManagement.enable = true;
+
     # Enable AutoCPUfreq
     services.auto-cpufreq = {
       enable = true;

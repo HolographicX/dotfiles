@@ -19,10 +19,7 @@ in {
     hardware.nvidia.open = false;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-    hardware.nvidia.powerManagement = {
-      enable = true;
-      finegrained = false;
-    };
+    hardware.nvidia.powerManagement.enable = false;
 
 
     hardware.nvidia.nvidiaSettings = true;
