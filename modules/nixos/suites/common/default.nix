@@ -55,6 +55,8 @@ in {
       vesktop.enable = true;
       kicad.enable = true;
       another-rawtherapee.enable = true;
+      geeqie.enable = true;
+      shotwell.enable = true;
       tailscale.enable = true;
       transmission.enable = true;
       lmstudio.enable = true;
