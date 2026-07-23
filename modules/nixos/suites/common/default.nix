@@ -67,6 +67,7 @@ in {
       dolphin.enable = true;
       cemu.enable = true;
       balatro.enable = true;
+      wheelwizard.enable = true;
     };
 
   };
