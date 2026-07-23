@@ -3,7 +3,7 @@
       ./hardware-configuration.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   system.boot.bios.enable = true;
   system.g14.enable = true;
   system.battery.enable = true; 

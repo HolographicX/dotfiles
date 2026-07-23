@@ -8,7 +8,11 @@
             url = "github:snowfallorg/lib";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+        nixos-hardware = {
+          url = "github:NixOS/nixos-hardware";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
 
         dotfiles = {
           url = "git+https://github.com/holographicx/dots-hyprland?submodules=1";

@@ -16,6 +16,7 @@ in {
   config = mkIf cfg.enable {
       hardware.bluetooth = {
         enable = true;
+        package = pkgs.bluez5-experimental;
         powerOnBoot = true;
 
         settings = {
@@ -33,9 +34,8 @@ in {
 
       hardware.xpadneo.enable = true; # xbox controllers
       boot.kernelModules = [ "hid-playstation" ]; # dualsense controllers
-
-      # nintendo controllers
-      services.joycond.enable = true;
+      services.joycond.enable = true; # nintendo controllers
+      
       services.udev.packages = with pkgs; [ game-devices-udev-rules ];
 
   };

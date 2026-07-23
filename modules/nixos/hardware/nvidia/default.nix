@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = ["modesetting" "nvidia"];
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = false;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
