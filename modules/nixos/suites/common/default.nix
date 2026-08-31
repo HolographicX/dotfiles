@@ -54,9 +54,14 @@ in {
       arduino.enable = true;
       vesktop.enable = true;
       kicad.enable = true;
+      
+      # art
       another-rawtherapee.enable = true;
+      rawtherapee.enable = true;
       geeqie.enable = true;
       shotwell.enable = true;
+      gimp.enable = true;
+      
       tailscale.enable = true;
       transmission.enable = true;
       lmstudio.enable = true;
@@ -68,6 +73,7 @@ in {
       cemu.enable = true;
       balatro.enable = true;
       wheelwizard.enable = true;
+      heroic.enable = true;
     };
 
   };

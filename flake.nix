@@ -1,8 +1,8 @@
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-        home-manager.url = "github:nix-community/home-manager/release-25.11";
+        home-manager.url = "github:nix-community/home-manager/release-26.05";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
         snowfall-lib = {
             url = "github:snowfallorg/lib";
@@ -34,7 +34,7 @@
         blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
         stylix = {
-          url = "github:nix-community/stylix/release-25.11";
+          url = "github:nix-community/stylix/release-26.05";
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -53,8 +53,12 @@
           namespace = "custom";
         };
 
+
         channels-config = {
           allowUnfree = true;
+          # permittedInsecurePackages = [
+          #   "electron-39.8.10"
+          # ];
         };
 
         overlays = with inputs; [
@@ -73,5 +77,6 @@
         systems.hosts.holographic.modules = with inputs; [
           nixos-hardware.nixosModules.asus-zephyrus-gu603h
         ];
+
     };
 }
