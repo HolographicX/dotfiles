@@ -49,6 +49,7 @@ in {
 
       firefox.enable = true;
       nautilus.enable = true;
+      foliate.enable = true;
 
       rpi-imager.enable = true;
       arduino.enable = true;
