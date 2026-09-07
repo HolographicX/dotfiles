@@ -18,6 +18,7 @@ in {
       enable = true;
       package = pkgs.firefox-bin;
       profiles.default.extensions.force = true;
+      programs.firefox.configPath = ".mozilla/firefox";
     };
   };
 }
