@@ -30,7 +30,9 @@ in {
         };
       };
 
-      services.blueman.enable = true;
+      environment.systemPackages = with pkgs; [
+        overskride
+      ];
 
       hardware.xpadneo.enable = true; # xbox controllers
       boot.kernelModules = [ "hid-playstation" ]; # dualsense controllers
