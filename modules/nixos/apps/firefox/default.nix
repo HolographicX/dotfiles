@@ -14,14 +14,19 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.programs.firefox = {
-      enable = true;
-      package = pkgs.firefox-bin;
-      profiles.default.extensions.force = true;
-      programs.firefox.configPath = ".mozilla/firefox";
-    };
+    home = {
+      programs.firefox = {
+        enable = true;
+        package = pkgs.firefox-bin;
+        profiles.default.extensions.force = true;
+        configPath = ".mozilla/firefox";
+      };
 
-    stylix.targets.firefox.profileNames = [ "default" ];
-    
+      # Move the settings INSIDE the home block so they map to Home Manager
+      extraOptions = {
+        stylix.targets.firefox.enable = true;
+        stylix.targets.firefox.profileNames = [ "default" ];
+      };
+    };    
   };
 }

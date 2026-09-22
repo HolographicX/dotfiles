@@ -21,7 +21,7 @@ in {
     };
 
     users.users = let 
-        publicKey = ""; # Enter your ssh public key
+        publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIP/IjN2C3y2CKNmVxRUyYPxSYDluf628pHnA2/i/nv9m";
     in
     {
       root.openssh.authorizedKeys.keys = [
@@ -35,5 +35,9 @@ in {
     home.file.".ssh/config".text = ''
       identityfile ~/.ssh/key 
     '';
+
+    programs.ssh.startAgent = true;
+    programs.gnupg.agent.enable = true;
+
   };
 }
