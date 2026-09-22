@@ -34,7 +34,7 @@ in {
 
     home.file.".ssh/config".text = ''
       Host *
-        IdentityFile ~/.ssh/key
+        IdentityFile ~/.ssh/id_ed25519
         AddKeysToAgent yes
     '';
 
