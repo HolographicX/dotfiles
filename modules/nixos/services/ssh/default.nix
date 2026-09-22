@@ -21,7 +21,7 @@ in {
     };
 
     users.users = let 
-        publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIP/IjN2C3y2CKNmVxRUyYPxSYDluf628pHnA2/i/nv9m";
+        publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIEy114E9KBCLE5Ooilm2XY+oV8YkelTg8jyxsGBVpQXT";
     in
     {
       root.openssh.authorizedKeys.keys = [
@@ -33,11 +33,12 @@ in {
     };
 
     home.file.".ssh/config".text = ''
-      identityfile ~/.ssh/key 
+      Host *
+        IdentityFile ~/.ssh/key
+        AddKeysToAgent yes
     '';
 
     programs.ssh.startAgent = true;
-    programs.gnupg.agent.enable = true;
 
   };
 }
