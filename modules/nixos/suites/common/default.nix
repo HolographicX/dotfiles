@@ -62,6 +62,7 @@ in {
       geeqie.enable = true;
       shotwell.enable = true;
       gimp.enable = true;
+      siril.enable = true;
       
       tailscale.enable = true;
       transmission.enable = true;
