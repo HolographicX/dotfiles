@@ -15,8 +15,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      siril
+    environment.systemPackages = [
+      pkgs.custom.siril
     ];
   };
 }

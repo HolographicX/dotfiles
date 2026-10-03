@@ -63,6 +63,7 @@ in {
       shotwell.enable = true;
       gimp.enable = true;
       siril.enable = true;
+      rapidraw.enable = true;
       
       tailscale.enable = true;
       transmission.enable = true;
