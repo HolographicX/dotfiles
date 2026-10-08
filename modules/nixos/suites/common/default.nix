@@ -64,6 +64,7 @@ in {
       gimp.enable = true;
       siril.enable = true;
       rapidraw.enable = true;
+      super-slicer.enable = true;
       
       tailscale.enable = true;
       transmission.enable = true;
