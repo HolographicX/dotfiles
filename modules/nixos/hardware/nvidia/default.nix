@@ -20,7 +20,7 @@ in {
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     hardware.nvidia.powerManagement.enable = false;
-
+    
 
     hardware.nvidia.nvidiaSettings = true;
     # OpenGL support

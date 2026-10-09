@@ -68,7 +68,7 @@ in {
       
       tailscale.enable = true;
       transmission.enable = true;
-      lmstudio.enable = true;
+      # lmstudio.enable = true;
 
       # gaming
       steam.enable = true;
