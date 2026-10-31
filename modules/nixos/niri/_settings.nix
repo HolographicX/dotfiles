@@ -76,7 +76,7 @@ in {
   gestures.hot-corners.enable = true;
 
   cursor = {
-    size = 24;
+    size = 12;
     theme = pointer;
   };
 

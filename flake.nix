@@ -17,6 +17,10 @@
           url = "github:sodiboo/niri-flake";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+        noctalia = {
+          url = "github:noctalia-dev/noctalia";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         dotfiles = {
           url = "git+https://github.com/holographicx/dots-hyprland?submodules=1";

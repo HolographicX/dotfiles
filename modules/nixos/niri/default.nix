@@ -23,9 +23,34 @@ in
 
     home.programs.niri.settings = settings // {inherit binds;} // rules;
 
-    environment.systemPackages = with pkgs; [ noctalia ]
 
-    services.displayManager.gdm.enable = true;
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings = {
+        cursor.size = 12;
+        keyboard.layout = "us";
+      };
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+      };
+      programs.noctalia = {
+        enable = true;
+
+        settings = {
+          theme = {
+            mode = "dark";
+            source = "builtin";
+            builtin = "Catppuccin";
+          };
+
+          wallpaper = {
+            enabled = true;
+          };
+        };
+      };
+    };
+
     systemd.user.services.niri-flake-polkit.enable = false;
   };
 }
