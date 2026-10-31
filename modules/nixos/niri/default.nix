@@ -23,33 +23,34 @@ in
 
     home.programs.niri.settings = settings // {inherit binds;} // rules;
 
-    services.displayManager.gdm.enable = true;
-    # services.displayManager.noctalia-greeter = {
-    #   enable = true;
-    #   settings = {
-    #     cursor.size = 12;
-    #     keyboard.layout = "us";
-    #   };
-    #   cursorTheme = {
-    #     package = pkgs.bibata-cursors;
-    #     name = "Bibata-Modern-Ice";
-    #   };
-    #   programs.noctalia = {
-    #     enable = true;
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings = {
+        cursor = {
+          theme = "Bibata-Modern-Ice";
+          size = 12;
+          path = pkgs.bibata-cursors;
+        };
+      };
+    };
+    
+    home.programs.noctalia = {
+      enable = true;
+      settings = {
+        theme = {
+          mode = "dark";
+          source = "builtin";
+          builtin = "Catppuccin";
+        };
+        wallpaper = {
+          enabled = true;
+        };
+      };
+    };
 
-    #     settings = {
-    #       theme = {
-    #         mode = "dark";
-    #         source = "builtin";
-    #         builtin = "Catppuccin";
-    #       };
-
-    #       wallpaper = {
-    #         enabled = true;
-    #       };
-    #     };
-    #   };
-    # };
+    environment.systemPackages = with pkgs; [
+      wl-clipboard
+    ];
 
     systemd.user.services.niri-flake-polkit.enable = false;
   };

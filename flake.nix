@@ -22,6 +22,20 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        noctalia-greeter = {
+          url = "github:noctalia-dev/noctalia-greeter";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        zen-browser = {
+          url = "github:0xc000022070/zen-browser-flake";
+          inputs = {
+            # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
+            nixpkgs.follows = "nixpkgs";
+            home-manager.follows = "home-manager";
+          };
+        };
+
         dotfiles = {
           url = "git+https://github.com/holographicx/dots-hyprland?submodules=1";
           flake = false;
@@ -67,6 +81,7 @@
               "https://cache.nixos-cuda.org"
               "https://hyprland.cachix.org"
               "https://niri.cachix.org"
+              "https://noctalia.cachix.org"
             ];
             extra-trusted-substituters = [
               "https://hyprland.cachix.org"
@@ -76,6 +91,7 @@
               "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
               "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
               "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+              "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
             ];
         };
 
@@ -90,12 +106,16 @@
 
         homes.modules = with inputs; [
           niri.homeModules.config
+          niri.homeModules.stylix
+          noctalia.homeModules.default
           illogical-flake.homeManagerModules.default
+          inputs.zen-browser.homeModules.beta
         ];
 
         systems.modules.nixos = with inputs; [
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          noctalia-greeter.nixosModules.default
         ];
 
         systems.hosts.holographic.modules = with inputs; [

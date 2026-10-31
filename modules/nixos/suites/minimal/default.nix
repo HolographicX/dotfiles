@@ -45,7 +45,7 @@ in {
       vscodium.enable = true;
       utils.enable = true;
 
-      firefox.enable = true;
+      zen.enable = true;
       nautilus.enable = true;
       foliate.enable = true;      
     

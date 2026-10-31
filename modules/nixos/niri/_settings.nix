@@ -1,5 +1,5 @@
 _: let
-  pointer = "MacTahoe-dark-cursors";
+  pointer = "Bibata-Modern-Ice";
 in {
   environment = {
     CLUTTER_BACKEND = "wayland";
@@ -25,7 +25,7 @@ in {
   ];
 
   input = {
-    keyboard.xkb.layout = "latam";
+    keyboard.xkb.layout = "us";
     touchpad = {
       click-method = "button-areas";
       dwt = true;
