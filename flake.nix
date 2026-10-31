@@ -13,6 +13,10 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        niri = {
+          url = "github:sodiboo/niri-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         dotfiles = {
           url = "git+https://github.com/holographicx/dots-hyprland?submodules=1";
@@ -75,6 +79,7 @@
 
         overlays = with inputs; [
           blender-bin.overlays.default
+          niri.overlays.niri
         ];
 
         homes.modules = with inputs; [

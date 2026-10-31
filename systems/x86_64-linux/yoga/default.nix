@@ -1,0 +1,21 @@
+{pkgs, inputs, ...}: {
+  imports = with inputs; [
+      ./hardware-configuration.nix
+    ];
+
+  boot.kernelPackages = pkgs.linuxPackages;
+  system.boot.bios.enable = true;
+  system.battery.enable = true; 
+  hardware.swap.enable = true;
+
+  
+  suites.minimal.enable = true;
+
+  hardware.cpu.intel.npu.enable = true;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.05";
+}
