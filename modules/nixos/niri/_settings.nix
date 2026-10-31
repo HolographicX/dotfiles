@@ -20,7 +20,7 @@ in {
   spawn-at-startup = [
     {argv = ["wl-paste" "--watch" "cliphist" "store"];}
     {argv = ["wl-paste" "--type" "text" "--watch" "cliphist" "store"];}
-    {argv = ["qs" "-c" "noctalia"];}
+    {argv = ["noctalia"];}
     {argv = ["dbus-update-activation-environment" "--systemd" "--all"];}
   ];
 
