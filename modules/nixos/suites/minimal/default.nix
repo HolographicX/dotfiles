@@ -24,7 +24,6 @@ in {
     services = {
       ssh.enable = true;
       printing.enable = true;
-      flatpak.enable = true;
       upower.enable = true;
     };
 
