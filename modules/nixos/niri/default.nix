@@ -25,6 +25,8 @@ in
 
     home.programs.niri.settings = settings // {inherit binds;} // rules;
 
+    environment.systemPackages = with pkgs; [ noctalia-qs ]
+
     services.displayManager.gdm.enable = true;
     systemd.user.services.niri-flake-polkit.enable = false;
   };
