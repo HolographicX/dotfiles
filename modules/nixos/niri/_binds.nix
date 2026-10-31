@@ -32,7 +32,6 @@
     action.spawn = ["noctalia" "msg" "volume-down"];
   };
 
-  // --- Display Brightness ---
   "XF86MonBrightnessUp" = {
     allow-when-locked = true;
     action.spawn = ["noctalia" "msg" "brightness-up"];
@@ -62,7 +61,6 @@
   "Mod+3".action.set-column-width = "75%";
   "Mod+4".action.set-column-width = "100%";
   "Mod+Shift+F".action.expand-column-to-available-width = [];
-  "Mod+Space".action.toggle-window-floating = [];
   "Mod+W".action.toggle-column-tabbed-display = [];
   "Mod+Comma".action.consume-window-into-column = [];
   "Mod+Period".action.expel-window-from-column = [];
