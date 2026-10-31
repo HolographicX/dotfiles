@@ -46,7 +46,7 @@
   "Mod+V".action.spawn = ["noctalia" "msg" "panel-toggle" "clipboard"];
   "Mod+E".action.spawn = ["noctalia" "msg" "panel-toggle" "emoji"];
   "Mod+U".action.spawn = ["noctalia" "msg" "settings-toggle"];
-  "Mod+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
+  "Mod+Space".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
 
   "Print".action.screenshot-screen = [];
   "Mod+Shift+Alt+S".action.screenshot-window = [];
