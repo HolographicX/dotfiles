@@ -22,7 +22,7 @@ in {
 
 
     services = {
-      ssh.enable = true;
+      # ssh.enable = true;
       printing.enable = true;
       upower.enable = true;
     };
