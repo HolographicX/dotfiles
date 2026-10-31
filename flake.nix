@@ -83,13 +83,13 @@
         ];
 
         homes.modules = with inputs; [
+          niri.homeModules.config
           illogical-flake.homeManagerModules.default
         ];
 
         systems.modules.nixos = with inputs; [
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
-          niri.nixosModules.niri
         ];
 
         systems.hosts.holographic.modules = with inputs; [

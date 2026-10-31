@@ -20,8 +20,9 @@ in
   config = mkIf cfg.enable {
     programs.niri = {
       enable = true;
-      # settings = settings // {inherit binds;} // rules;
     };
+
+    home.programs.niri.settings = settings // {inherit binds;} // rules;
 
     services.displayManager.gdm.enable = true;
     systemd.user.services.niri-flake-polkit.enable = false;
