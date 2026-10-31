@@ -20,6 +20,7 @@ in
   config = mkIf cfg.enable {
     programs.niri = {
       enable = true;
+      package = pkgs.niri-stable;
     };
 
     home.programs.niri.settings = settings // {inherit binds;} // rules;
