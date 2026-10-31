@@ -1,49 +1,53 @@
 {pkgs, ...}: {
   "XF86AudioPlay" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "media" "playPause"];
+    action.spawn = ["noctalia" "msg" "media-play-pause"];
   };
   "XF86AudioStop" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "media" "stop"];
+    action.spawn = ["noctalia" "msg" "media-stop"];
   };
   "XF86AudioNext" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "media" "next"];
+    action.spawn = ["noctalia" "msg" "media-next"];
   };
   "XF86AudioPrev" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "media" "previous"];
+    action.spawn = ["noctalia" "msg" "media-previous"];
   };
   "XF86AudioMute" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "volume" "muteOutput"];
+    action.spawn = ["noctalia" "msg" "volume-mute-toggle"];
   };
   "XF86AudioMicMute" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "volume" "muteInput"];
+    action.spawn = ["noctalia" "msg" "microphone-mute-toggle"];
   };
   "XF86AudioRaiseVolume" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "volume" "increase"];
+    action.spawn = ["noctalia" "msg" "volume-up"];
   };
   "XF86AudioLowerVolume" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "volume" "decrease"];
+    action.spawn = ["noctalia" "msg" "volume-down"];
   };
+
+  // --- Display Brightness ---
   "XF86MonBrightnessUp" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "brightness" "increase"];
+    action.spawn = ["noctalia" "msg" "brightness-up"];
   };
   "XF86MonBrightnessDown" = {
     allow-when-locked = true;
-    action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "brightness" "decrease"];
+    action.spawn = ["noctalia" "msg" "brightness-down"];
   };
-  "Ctrl+Alt+L".action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "lockScreen" "lock"];
-  "Mod+V".action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "launcher" "clipboard"];
-  "Mod+E".action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "launcher" "emoji"];
-  "Mod+U".action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "settings" "toggle"];
-  "Mod+D".action.spawn = ["qs" "-c" "noctalia" "ipc" "call" "launcher" "toggle"];
+
+  "Ctrl+Alt+L".action.spawn = ["noctalia" "msg" "session" "lock"];
+  "Mod+V".action.spawn = ["noctalia" "msg" "panel-toggle" "clipboard"];
+  "Mod+E".action.spawn = ["noctalia" "msg" "panel-toggle" "emoji"];
+  "Mod+U".action.spawn = ["noctalia" "msg" "settings-toggle"];
+  "Mod+D".action.spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
+
   "Print".action.screenshot-screen = [];
   "Mod+Shift+Alt+S".action.screenshot-window = [];
   "Mod+Shift+S".action.screenshot = [];
