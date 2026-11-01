@@ -1,5 +1,5 @@
 _: let
-  pointer = "Bibata-Modern-Ice";
+  pointer = "capitaine-cursors";
 in {
   environment = {
     CLUTTER_BACKEND = "wayland";
@@ -76,7 +76,7 @@ in {
   gestures.hot-corners.enable = true;
 
   cursor = {
-    size = 12;
+    size = 18;
     theme = pointer;
   };
 

@@ -27,9 +27,9 @@ in
       enable = true;
       settings = {
         cursor = {
-          theme = "Bibata-Modern-Ice";
-          size = 12;
-          path = pkgs.bibata-cursors;
+          theme = "pkgs.capitaine-cursors";
+          size = 18;
+          path = pkgs.capitaine-cursors;
         };
       };
     };

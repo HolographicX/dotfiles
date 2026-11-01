@@ -2,6 +2,7 @@
   options,
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -15,6 +16,8 @@ in {
   config = mkIf cfg.enable {
     hardware.enableRedistributableFirmware = true;
     networking.networkmanager.enable = true;
+
+    environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
     networking.firewall = {
       enable = true;
