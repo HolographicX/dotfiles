@@ -106,7 +106,6 @@
 
         homes.modules = with inputs; [
           niri.homeModules.config
-          niri.homeModules.stylix
           noctalia.homeModules.default
           illogical-flake.homeManagerModules.default
           inputs.zen-browser.homeModules.beta

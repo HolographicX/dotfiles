@@ -29,7 +29,6 @@ in {
     
     system = {
       fonts.enable = true;
-      theme.enable = true;
       time.enable = true;
       shell.enable = true;
     };
