@@ -21,7 +21,7 @@ in {
     };
 
     users.users = let 
-        publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIEy114E9KBCLE5Ooilm2XY+oV8YkelTg8jyxsGBVpQXT";
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEy114E9KBCLE5Ooilm2XY+oV8YkelTg8jyxsGBVpQXT";
     in
     {
       root.openssh.authorizedKeys.keys = [
