@@ -6,8 +6,8 @@
   boot.kernelPackages = pkgs.linuxPackages;
   system.boot.bios.enable = true;
   system.battery.enable = true; 
-  hardware.swap.enable = true;
-
+  hardware.swap.enable = true;  
+  hardware.nvidia.enable = true;
   
   suites.server.enable = true;
 
