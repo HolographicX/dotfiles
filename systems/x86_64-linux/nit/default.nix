@@ -11,6 +11,7 @@
   
   suites.server.enable = true;
 
+  networking.hostName = "nit";
   hardware.cpu.intel.updateMicrocode = true;
 
 
