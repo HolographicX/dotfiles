@@ -24,6 +24,7 @@ in {
     services = {
       ssh.enable = true;
     };
+    networking.firewall.allowedTCPPorts = [ 22 ];
 
     security.polkit.enable = true;
     
