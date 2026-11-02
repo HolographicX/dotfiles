@@ -44,6 +44,7 @@ in {
       alacritty.enable = true;
       vscodium.enable = true;
       utils.enable = true;
+      opencode.enable = true;
 
       zen.enable = true;
       nautilus.enable = true;

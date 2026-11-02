@@ -17,11 +17,11 @@
   };
   "XF86AudioMute" = {
     allow-when-locked = true;
-    action.spawn = ["noctalia" "msg" "volume-mute-toggle"];
+    action.spawn = ["noctalia" "msg" "volume-mute"];
   };
   "XF86AudioMicMute" = {
     allow-when-locked = true;
-    action.spawn = ["noctalia" "msg" "microphone-mute-toggle"];
+    action.spawn = ["noctalia" "msg" "mic-mute"];
   };
   "XF86AudioRaiseVolume" = {
     allow-when-locked = true;
@@ -50,7 +50,7 @@
   "Print".action.screenshot-screen = [];
   "Mod+Shift+Alt+S".action.screenshot-window = [];
   "Mod+Shift+S".action.screenshot = [];
-  "Mod+Return".action.spawn = ["${pkgs.foot}/bin/foot"];
+  "Mod+Return".action.spawn = ["alacritty"];
   "Mod+Q".action.close-window = [];
   "Mod+X".action.spawn = ["fish" "-c" "niri msg pick-color | grep -oP '#[0-9a-fA-F]+' | wl-copy"];
   "Mod+S".action.switch-preset-column-width = [];
@@ -61,7 +61,7 @@
   "Mod+3".action.set-column-width = "75%";
   "Mod+4".action.set-column-width = "100%";
   "Mod+Shift+F".action.expand-column-to-available-width = [];
-  "Mod+W".action.toggle-column-tabbed-display = [];
+  "Mod+W".action.spawn = ["zen-beta"];
   "Mod+Comma".action.consume-window-into-column = [];
   "Mod+Period".action.expel-window-from-column = [];
   "Mod+C".action.center-visible-columns = [];

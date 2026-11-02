@@ -27,7 +27,7 @@ in {
   input = {
     keyboard.xkb.layout = "us";
     touchpad = {
-      click-method = "button-areas";
+      click-method = "clickfinger";
       dwt = true;
       dwtp = true;
       natural-scroll = true;
