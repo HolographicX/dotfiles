@@ -22,7 +22,7 @@ in {
 
 
     services = {
-      # ssh.enable = true;
+      ssh.enable = true;
       printing.enable = true;
       upower.enable = true;
     };
@@ -49,9 +49,9 @@ in {
       zen.enable = true;
       nautilus.enable = true;
       foliate.enable = true;      
-    
+      vesktop.enable = true;
+      
       tailscale.enable = true;
-      transmission.enable = true;
     };
 
   };

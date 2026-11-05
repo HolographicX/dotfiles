@@ -38,7 +38,5 @@ in {
         AddKeysToAgent yes
     '';
 
-    programs.ssh.startAgent = true;
-
   };
 }
