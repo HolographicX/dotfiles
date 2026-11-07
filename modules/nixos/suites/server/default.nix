@@ -39,5 +39,9 @@ in {
       tailscale.enable = true;
     };
 
+    hosted = {
+      immich.enable = true;
+    }
+
   };
 }
