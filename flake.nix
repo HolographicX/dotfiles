@@ -26,7 +26,6 @@
           url = "github:noctalia-dev/noctalia-greeter";
           inputs.nixpkgs.follows = "nixpkgs";
         };
-        cloudflared.url = github:piperswe/nix-cloudflared;
 
         zen-browser = {
           url = "github:0xc000022070/zen-browser-flake";
@@ -116,7 +115,6 @@
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           noctalia-greeter.nixosModules.default
-          cloudflared.nixosModules.cloudflared
         ];
 
         systems.hosts.holographic.modules = with inputs; [
