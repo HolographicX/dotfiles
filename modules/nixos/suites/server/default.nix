@@ -41,7 +41,7 @@ in {
 
     hosted = {
       immich.enable = true;
-    }
+    };
 
   };
 }
