@@ -19,8 +19,6 @@ in {
     hardware.networking.enable = true;
     hardware.bt.enable = true;
 
-
-
     services = {
       ssh.enable = true;
     };
@@ -41,6 +39,7 @@ in {
 
     hosted = {
       immich.enable = true;
+      cloudflared.enable = true;
     };
 
   };
