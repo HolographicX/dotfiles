@@ -6,9 +6,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.services.immich;
+  cfg = config.hosted.immich;
 in {
-  options.services.immich = with types; {
+  options.hosted.immich = with types; {
     enable = mkBoolOpt false "Enable immich";
   };
 
