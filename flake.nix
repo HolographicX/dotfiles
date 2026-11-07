@@ -53,6 +53,9 @@
           inputs.hyprland.follows = "hyprland";
         };
 
+        sops-nix.url = "github:Mic92/sops-nix";
+        sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
         blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
         stylix = {
@@ -115,6 +118,7 @@
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           noctalia-greeter.nixosModules.default
+          sops-nix.nixosModules.sops
         ];
 
         systems.hosts.holographic.modules = with inputs; [

@@ -121,24 +121,6 @@
         "type": "github"
       }
     },
-    "cloudflared": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1759772084,
-        "narHash": "sha256-uwi7XLZXCca8KK8NYdU9sRjAgHgRHvXbj+WYD6ZG3Xw=",
-        "owner": "piperswe",
-        "repo": "nix-cloudflared",
-        "rev": "e05ec74c283982a1eb0de93686542c964fdc9065",
-        "type": "github"
-      },
-      "original": {
-        "owner": "piperswe",
-        "repo": "nix-cloudflared",
-        "type": "github"
-      }
-    },
     "dotfiles": {
       "flake": false,
       "locked": {
@@ -441,7 +423,7 @@
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
         "hyprwire": "hyprwire",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems",
         "xdph": "xdph"
@@ -869,20 +851,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1759632233,
-        "narHash": "sha256-krgZxGAIIIKFJS+UB0l8do3sYUDWJc75M72tepmVMzE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d7f52a7a640bc54c7bb414cca603835bf8dd4b10",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1791048980,
         "narHash": "sha256-KgItSKML8Xvte0B7/uGnBDsYzSnnKHcOaiUbgWBXLXw=",
         "owner": "NixOS",
@@ -897,7 +865,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1791426274,
         "narHash": "sha256-MWhktfFtFE8Jl7bf9Pkp7TR5MSdYCjCswSo0Gkb4ywc=",
@@ -1046,7 +1014,6 @@
     "root": {
       "inputs": {
         "blender-bin": "blender-bin",
-        "cloudflared": "cloudflared",
         "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
@@ -1054,7 +1021,7 @@
         "illogical-flake": "illogical-flake",
         "niri": "niri",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
