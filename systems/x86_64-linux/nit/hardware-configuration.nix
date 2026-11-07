@@ -24,9 +24,9 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/exampleDrive" = {
+  fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/E79D-CC2B";
-    fsType = "exfat";
+    fsType = "vfat";
     options = [ "users" "nofail" "exec" ];
   };
 
