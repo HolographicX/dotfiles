@@ -24,6 +24,12 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/exampleDrive" = {
+    device = "/dev/disk/by-uuid/E79D-CC2B";
+    fsType = "exfat";
+    options = [ "users" "nofail" "exec" ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
