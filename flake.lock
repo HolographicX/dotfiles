@@ -1026,6 +1026,7 @@
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "snowfall-lib": "snowfall-lib",
+        "sops-nix": "sops-nix",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }
@@ -1049,6 +1050,26 @@
       "original": {
         "owner": "snowfallorg",
         "repo": "lib",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793995029,
+        "narHash": "sha256-ZlE4BtMjWhfC6rFXLO9Qimn36Ene1INqCgKDDvazjhc=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "89a234ce2daf6e568a7d4b4fe250afdd23d84e20",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },

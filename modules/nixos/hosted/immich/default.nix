@@ -18,7 +18,7 @@ in {
     services.immich.host = "0.0.0.0";
     services.immich.openFirewall = true;
     services.immich.accelerationDevices = null;
-    services.immich.mediaLocation = "/mnt/media/immich";
+    # services.immich.mediaLocation = "/mnt/media/immich";
     users.users.postgres.ignoreShellProgramCheck = true;
     users.users.immich.extraGroups = [ "video" "render" ];
 

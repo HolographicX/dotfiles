@@ -30,6 +30,7 @@ in {
       tunnels = {
         "4fbee666-5c78-4a4a-a5c6-4c0147d71a29" = {
           credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+          default = "http_status:404";
         };
       };
     };
