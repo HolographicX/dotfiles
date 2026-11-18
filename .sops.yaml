@@ -1,0 +1,8 @@
+keys:
+  - &admin age150tyg6xqjp70wvy5p9edxg5dvsp03se5g6jqshnf9crkvk9axqrqp2gn63
+
+creation_rules:
+  - path_regex: modules/nixos/hosted/cloudflared/secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *admin
