@@ -41,10 +41,14 @@ in {
     };
 
     apps = {
+      astronomy.enable = true;
       alacritty.enable = true;
+      arduino.enable = true;
       vscodium.enable = true;
       utils.enable = true;
       opencode.enable = true;
+
+      steam.enable = true;
 
       zen.enable = true;
       nautilus.enable = true;

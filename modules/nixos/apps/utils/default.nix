@@ -11,7 +11,7 @@ with lib.custom; let
 in
 {
   options.apps.utils = with types; {
-    enable = mkBoolOpt false "rpi-imager.";
+    enable = mkBoolOpt false "utils.";
   };
 
   config = mkIf cfg.enable {
@@ -19,6 +19,7 @@ in
       git 
       git-remote-gcrypt
       gh
+      python3
     ];
 
     programs.nix-ld.enable = true;
