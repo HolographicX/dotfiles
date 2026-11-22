@@ -10,7 +10,7 @@ with lib;
 with lib.custom; let
   cfg = config.apps.astronomy;
 in {
-  options.apps.arduino = with types; {
+  options.apps.astronomy = with types; {
     enable = mkBoolOpt false "Enable or disable astronomy softwave";
   };
 

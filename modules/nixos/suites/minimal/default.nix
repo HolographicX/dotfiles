@@ -50,6 +50,8 @@ in {
 
       steam.enable = true;
 
+      orca-slicer.enable = true;
+
       zen.enable = true;
       nautilus.enable = true;
       foliate.enable = true;      
