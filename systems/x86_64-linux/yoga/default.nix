@@ -8,6 +8,7 @@
   system.battery.enable = true; 
   hardware.swap.enable = true;
   hardware.fingerprint.enable = true;
+  hardware.ctrl-swap.enable = true;
 
   
   suites.minimal.enable = true;

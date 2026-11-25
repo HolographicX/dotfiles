@@ -15,6 +15,9 @@ in {
 
   config = mkIf cfg.enable {
     services.fprintd.enable = true;
+    services.fprintd.tod.enable = true;
+    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan;
+
     security.pam.services.sudo.fprintAuth = true;
     security.pam.services.polkit-1.fprintAuth = true;
   };

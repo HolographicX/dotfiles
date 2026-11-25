@@ -20,6 +20,7 @@ in
       git-remote-gcrypt
       gh
       python3
+      xwayland-satellite
     ];
 
     programs.nix-ld.enable = true;

@@ -51,6 +51,7 @@ in {
       steam.enable = true;
 
       orca-slicer.enable = true;
+      super-slicer.enable = true;
 
       zen.enable = true;
       nautilus.enable = true;
